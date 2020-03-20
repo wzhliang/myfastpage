@@ -1,4 +1,285 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wzhliang.github.io/myfastpage/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wzhliang.github.io/myfastpage/" rel="alternate" type="text/html" /><updated>2020-03-20T05:11:38-05:00</updated><id>https://wzhliang.github.io/myfastpage/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">Fastpages Notebook Blog Post</title><link href="https://wzhliang.github.io/myfastpage/jupyter/2020/02/20/test.html" rel="alternate" type="text/html" title="Fastpages Notebook Blog Post" /><published>2020-02-20T00:00:00-06:00</published><updated>2020-02-20T00:00:00-06:00</updated><id>https://wzhliang.github.io/myfastpage/jupyter/2020/02/20/test</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/jupyter/2020/02/20/test.html">&lt;!--
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wzhliang.github.io/myfastpage/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wzhliang.github.io/myfastpage/" rel="alternate" type="text/html" /><updated>2020-03-20T08:48:29-05:00</updated><id>https://wzhliang.github.io/myfastpage/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">Agile Notes</title><link href="https://wzhliang.github.io/myfastpage/2020/03/03/agile-notes.html" rel="alternate" type="text/html" title="Agile Notes" /><published>2020-03-03T00:00:00-06:00</published><updated>2020-03-03T00:00:00-06:00</updated><id>https://wzhliang.github.io/myfastpage/2020/03/03/agile-notes</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/2020/03/03/agile-notes.html">&lt;h1 id=&quot;general&quot;&gt;General&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;a lot of people think Agile is mainly about project management, but the
+creators of Agile put equal if not greater emphasis on engineering as well.&lt;/li&gt;
+  &lt;li&gt;the software craftsmanship movement preserves the coupling between practices
+and culture by emphasizing that technical practices are important for agile to
+be successful.&lt;/li&gt;
+  &lt;li&gt;For any behavior change, people learn first by practicing, and then learn to
+relate their practices back to principles and values.&lt;/li&gt;
+  &lt;li&gt;Agile is about doing the most valuable thing at any given moment.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Produce running, tested, working, integrated software every two weeks, every week. Build your skills until you can create a new fully operational version every day, twice a day, multiple times a day.&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Agile is a set of values and principles generalized from the practices of several similar methodologies. Agile does not define any particular practices; but it has no meaning without them. Agile is the abstract class. Practices are the implementation.&lt;/em&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Bob Martin on twitter&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;PBI: product backlog items&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;extreme-programming&quot;&gt;Extreme Programming&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;invented by Kent Beck&lt;/li&gt;
+  &lt;li&gt;prior to scrum&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dzone.com/articles/scrum-and-xp&quot;&gt;dzone&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;scrum and xp&lt;/li&gt;
+      &lt;li&gt;&lt;em&gt;This book shows readers how to use Scrum, and Agile software development process, to quickly and seamlessly implement XP in their shops while still producing actual software. Using Scrum in the Agile process can virtually eliminate all downtime during an XP implementation.&lt;/em&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;12-practices&quot;&gt;12 Practices&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;The Planning Game&lt;/li&gt;
+  &lt;li&gt;Small Releases&lt;/li&gt;
+  &lt;li&gt;Metaphore&lt;/li&gt;
+  &lt;li&gt;Simple Design&lt;/li&gt;
+  &lt;li&gt;Testing&lt;/li&gt;
+  &lt;li&gt;Refactoring&lt;/li&gt;
+  &lt;li&gt;Pair Programming&lt;/li&gt;
+  &lt;li&gt;Collective Ownership&lt;/li&gt;
+  &lt;li&gt;Continuous Integration&lt;/li&gt;
+  &lt;li&gt;40-Hour Workweek&lt;/li&gt;
+  &lt;li&gt;On-site Customer&lt;/li&gt;
+  &lt;li&gt;Coding Standards&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;code-smells&quot;&gt;Code Smells&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&amp;lt;img src=”http://borlandc.pek3b.qingstor.com/soft-skill/code-smells.png” width=75%&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;scrum&quot;&gt;Scrum&lt;/h1&gt;
+&lt;p&gt;&amp;lt;img src=”http://borlandc.pek3b.qingstor.com/devops/scrum.png” width=65%&amp;gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;terms&quot;&gt;Terms&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;burndown - how much work is remaining to be done&lt;/li&gt;
+  &lt;li&gt;burnup - how much work has been completed&lt;/li&gt;
+  &lt;li&gt;DRE - defect removal efficiency
+    &lt;ul&gt;
+      &lt;li&gt;DRE is the percentage of bugs identified and corrected internally compared to the total bugs in the complete release life cycle.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;CSAT - customer satisfaction&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;user-story-map&quot;&gt;User Story Map&lt;/h2&gt;
+&lt;p&gt;&amp;lt;img src=”http://borlandc.pek3b.qingstor.com/devops/user-story-mapping-3.png” width=75%&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;User story mapping is a technique developed by Jeff Patton during his long practice as an Agile product owner/scrum master. A story map received its name because it helps map out user stories and other backlog items visually. Items are arranged in two dimensions: The vertical one denotes priority, while the horizontal one represents steps a user takes to perform actions in the system (user journey).&lt;/p&gt;
+
+&lt;h1 id=&quot;code-review&quot;&gt;Code Review&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dzone.com/articles/4-types-of-code-reviews-any-professional-developer&quot;&gt;dzone&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;4 types of code review&lt;/li&gt;
+      &lt;li&gt;suggests async by default&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://smartbear.com/learn/code-review/guide-to-code-review-process/&quot;&gt;smartbear&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;general&lt;/li&gt;
+      &lt;li&gt;performance&lt;/li&gt;
+      &lt;li&gt;security&lt;/li&gt;
+      &lt;li&gt;documentation&lt;/li&gt;
+      &lt;li&gt;testing&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/agile/software-development/code-reviews&quot;&gt;atlassian&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.to/codemouse92/10-principles-of-a-good-code-review-2eg&quot;&gt;dev.to&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;practical principles of code review&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nyu-cds.github.io/effective-code-reviews/03-checklist/&quot;&gt;nyu&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;effective code review check list&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/SonarSource/sonar-go&quot;&gt;sonar-go&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;replaces community plugin since May 2018&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/joho/awesome-code-review&quot;&gt;awesome code review&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jboss.org/dms/judcon/presentations/Boston2011/JUDConBoston2011_day1track2session6.pdf&quot;&gt;jboss&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;slides about git but has 2 pages on code review&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://kellysutton.com/2018/10/08/8-tips-for-great-code-reviews.html&quot;&gt;tips, 8&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;em&gt;Latency is Key&lt;/em&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;goals&quot;&gt;Goals&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;goal
+    &lt;ul&gt;
+      &lt;li&gt;catch bug&lt;/li&gt;
+      &lt;li&gt;share knowledge&lt;/li&gt;
+      &lt;li&gt;increase readbility&lt;/li&gt;
+      &lt;li&gt;increase communication&lt;/li&gt;
+      &lt;li&gt;learn, mentorship&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;non goal
+    &lt;ul&gt;
+      &lt;li&gt;i am smarter than you&lt;/li&gt;
+      &lt;li&gt;i write better code&lt;/li&gt;
+      &lt;li&gt;you suck!&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;best-practices&quot;&gt;Best Practices&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;self review by author him/her self&lt;/li&gt;
+  &lt;li&gt;patch size matters
+    &lt;ul&gt;
+      &lt;li&gt;400 lines or less, otherwise breaks into smaller commits&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;time matters
+    &lt;ul&gt;
+      &lt;li&gt;60 minutes or less&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;think of all scenarios&lt;/li&gt;
+  &lt;li&gt;golang: separate vendor commit and actual change&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-to-review&quot;&gt;What to Review&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;logic error&lt;/li&gt;
+  &lt;li&gt;correct and full understanding of requirements&lt;/li&gt;
+  &lt;li&gt;design: easy to implement, easy to understand
+    &lt;ul&gt;
+      &lt;li&gt;ask questions, discuss them!&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;test: is there unit test that can be added?&lt;/li&gt;
+  &lt;li&gt;style: does the code conform to existing style
+    &lt;ul&gt;
+      &lt;li&gt;var name&lt;/li&gt;
+      &lt;li&gt;comments adequte&lt;/li&gt;
+      &lt;li&gt;function complexity?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;unchecked return value&lt;/li&gt;
+  &lt;li&gt;are all input checked?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;user-story&quot;&gt;User Story&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;User Story is a small (actually, the smallest) piece of work that represents some value to an end user and can be delivered during a sprint.&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;template
+    &lt;ul&gt;
+      &lt;li&gt;“As a [persona], I [want to], [so that].”&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Epics&lt;/strong&gt; are large work items broken down into a set of stories, and multiple epics comprise an &lt;strong&gt;initiative.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Epics are not testable, otherwise, user stories should be testable
+    &lt;ul&gt;
+      &lt;li&gt;with the exception of non-funcitonal stories&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;INVEST
+    &lt;ul&gt;
+      &lt;li&gt;independent&lt;/li&gt;
+      &lt;li&gt;negotiable&lt;/li&gt;
+      &lt;li&gt;valuable&lt;/li&gt;
+      &lt;li&gt;estimable&lt;/li&gt;
+      &lt;li&gt;small&lt;/li&gt;
+      &lt;li&gt;testable&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/agile/project-management/user-stories&quot;&gt;atlassian&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;apparently Atlassian knows something about user stories&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stormotion.io/blog/how-to-write-a-good-user-story-with-examples-templates/&quot;&gt;stormotion&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;nice introduction article&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;scaling-agile&quot;&gt;Scaling Agile&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;LeSS - large scale scrum
+    &lt;ul&gt;
+      &lt;li&gt;Sprint Planning, Sprint Review and Sprint Retrospective runs at the same time for all teams.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;culture&quot;&gt;Culture&lt;/h1&gt;
+
+&lt;h2 id=&quot;team-culture&quot;&gt;Team Culture&lt;/h2&gt;
+&lt;p&gt;&amp;lt;img src=”http://borlandc.pek3b.qingstor.com/devops/team-culture.jpeg” width=75%&amp;gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;by a guy from Windows NT team&lt;/li&gt;
+  &lt;li&gt;referenced by Dave Chaney &lt;a href=&quot;https://dave.cheney.net/2020/02/23/the-zen-of-go&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;links&quot;&gt;Links&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.infoq.com/news/2018/06/developers-should-abandon-agile&quot;&gt;infoq&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Ron Jeffries says developers should abandon Agile&lt;/li&gt;
+      &lt;li&gt;Faux Agile, Dark Agile&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ronjeffries.com/articles/018-01ff/abandon-1/&quot;&gt;ronjeffries&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;developers abandon Agile&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://agilemanifesto.org&quot;&gt;the manifestor&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.wikiwand.com/en/Agile_software_development&quot;&gt;wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.cleancoder.com/uncle-bob/2018/08/28/CraftsmanshipMovement.html&quot;&gt;cleancoder&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;agile vs manager&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.infoq.com/articles/scrum-multiple-teams-frameworks&quot;&gt;infoq&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;multiple teams scrum framework&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.slideshare.net/jexp/refactoring-2nd-edition&quot;&gt;refactoring 2nd ed&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;slides on refactoring 2nd edition&lt;/li&gt;
+      &lt;li&gt;by one of the book reviewer&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://martinfowler.com/articles/agile-aus-2018.html&quot;&gt;martin, 2018, aus&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;the state of agile in 2018&lt;/li&gt;
+      &lt;li&gt;a talk Martin Fowler given in Austrilia&lt;/li&gt;
+      &lt;li&gt;summary:
+        &lt;ol&gt;
+          &lt;li&gt;Get rid of the Agile Industrial Complex and the idea of imposing stuff on teams. Let teams work out the way they should work themselves.&lt;/li&gt;
+          &lt;li&gt;Raise the importance of technical excellence, and never forget that when writing software, the technology side is really vital&lt;/li&gt;
+          &lt;li&gt;and organize around products.&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.infoq.com/articles/metrics-agile-teams&quot;&gt;infoq, metrics&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;The Importance of Metrics to Agile Teams&lt;/li&gt;
+      &lt;li&gt;&lt;em&gt;Firstly, the reporting found within common workflow management tools like Jira is not optimised to provide the level of reporting that many teams require for an effective SI programme.&lt;/em&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">General a lot of people think Agile is mainly about project management, but the creators of Agile put equal if not greater emphasis on engineering as well. the software craftsmanship movement preserves the coupling between practices and culture by emphasizing that technical practices are important for agile to be successful. For any behavior change, people learn first by practicing, and then learn to relate their practices back to principles and values. Agile is about doing the most valuable thing at any given moment. Produce running, tested, working, integrated software every two weeks, every week. Build your skills until you can create a new fully operational version every day, twice a day, multiple times a day. Agile is a set of values and principles generalized from the practices of several similar methodologies. Agile does not define any particular practices; but it has no meaning without them. Agile is the abstract class. Practices are the implementation. Bob Martin on twitter PBI: product backlog items</summary></entry><entry><title type="html">Fastpages Notebook Blog Post</title><link href="https://wzhliang.github.io/myfastpage/jupyter/2020/02/20/test.html" rel="alternate" type="text/html" title="Fastpages Notebook Blog Post" /><published>2020-02-20T00:00:00-06:00</published><updated>2020-02-20T00:00:00-06:00</updated><id>https://wzhliang.github.io/myfastpage/jupyter/2020/02/20/test</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/jupyter/2020/02/20/test.html">&lt;!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
