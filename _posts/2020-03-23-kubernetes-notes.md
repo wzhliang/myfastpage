@@ -186,7 +186,7 @@ title: On Kubernetes
 # Functionality
 
 ## Ring Graph
-<img src="http://borlandc.pek3b.qingstor.com/k8s/k8s-rings.png" width=65%>
+<img src="http://borlandc.pek3b.qingstor.com/k8s/k8s-rings.png">
 
 ## Health check
 * liveness probe checks if the container is broken and should be restarted
