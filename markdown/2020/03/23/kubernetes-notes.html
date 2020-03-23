@@ -1,0 +1,5137 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>On Kubernetes | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="On Kubernetes" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Rather complete and tedious Kubernetes notes" />
+<meta property="og:description" content="Rather complete and tedious Kubernetes notes" />
+<link rel="canonical" href="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html" />
+<meta property="og:url" content="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-23T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-03-23T00:00:00-05:00","dateModified":"2020-03-23T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html"},"description":"Rather complete and tedious Kubernetes notes","@type":"BlogPosting","url":"https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html","headline":"On Kubernetes","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/myfastpage/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://wzhliang.github.io/myfastpage/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/myfastpage/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>On Kubernetes | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="On Kubernetes" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Rather complete and tedious Kubernetes notes" />
+<meta property="og:description" content="Rather complete and tedious Kubernetes notes" />
+<link rel="canonical" href="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html" />
+<meta property="og:url" content="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-23T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-03-23T00:00:00-05:00","dateModified":"2020-03-23T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html"},"description":"Rather complete and tedious Kubernetes notes","@type":"BlogPosting","url":"https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html","headline":"On Kubernetes","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://wzhliang.github.io/myfastpage/feed.xml" title="fastpages" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/myfastpage/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/myfastpage/about/">About Me</a><a class="page-link" href="/myfastpage/search/">Search</a><a class="page-link" href="/myfastpage/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">On Kubernetes</h1><p class="page-description">Rather complete and tedious Kubernetes notes</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-03-23T00:00:00-05:00" itemprop="datePublished">
+        Mar 23, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      50 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/myfastpage/categories/#markdown">markdown</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#general">General</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#history">History</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#terminologies">Terminologies</a></li>
+<li class="toc-entry toc-h1"><a href="#components">Components</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#cluster-components">Cluster Components</a></li>
+<li class="toc-entry toc-h2"><a href="#software-components">Software Components</a></li>
+<li class="toc-entry toc-h2"><a href="#arch">Arch</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#high-level-architecture">High Level Architecture</a></li>
+<li class="toc-entry toc-h3"><a href="#2">2</a></li>
+<li class="toc-entry toc-h3"><a href="#3">3</a></li>
+<li class="toc-entry toc-h3"><a href="#with-edge-router">with edge router</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#functionality">Functionality</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#ring-graph">Ring Graph</a></li>
+<li class="toc-entry toc-h2"><a href="#health-check">Health check</a></li>
+<li class="toc-entry toc-h2"><a href="#composing">Composing</a></li>
+<li class="toc-entry toc-h2"><a href="#configuration-management">Configuration Management</a></li>
+<li class="toc-entry toc-h2"><a href="#service">Service</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#service-types">Service types</a></li>
+<li class="toc-entry toc-h3"><a href="#headless-service">Headless service</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#deployment">Deployment</a></li>
+<li class="toc-entry toc-h2"><a href="#daemonset">DaemonSet</a></li>
+<li class="toc-entry toc-h2"><a href="#jobs">Jobs</a></li>
+<li class="toc-entry toc-h2"><a href="#cronjob">CronJob</a></li>
+<li class="toc-entry toc-h2"><a href="#init-containers">Init Containers</a></li>
+<li class="toc-entry toc-h2"><a href="#lifecycle-hooks">Lifecycle Hooks</a></li>
+<li class="toc-entry toc-h2"><a href="#affinity">Affinity</a></li>
+<li class="toc-entry toc-h2"><a href="#taint-and-toleration">Taint and toleration</a></li>
+<li class="toc-entry toc-h2"><a href="#statefulset">StatefulSet</a></li>
+<li class="toc-entry toc-h2"><a href="#configmap">ConfigMap</a></li>
+<li class="toc-entry toc-h2"><a href="#namespace">Namespace</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#dns">DNS</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#ingress">Ingress</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#philosophy">Philosophy</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#links">Links</a></li>
+<li class="toc-entry toc-h2"><a href="#downward-api">Downward API</a></li>
+<li class="toc-entry toc-h2"><a href="#autoscaling">Autoscaling</a></li>
+<li class="toc-entry toc-h2"><a href="#admission-webhook">Admission Webhook</a></li>
+<li class="toc-entry toc-h2"><a href="#flow-from-banzai-cloud">Flow (from Banzai Cloud)</a></li>
+<li class="toc-entry toc-h2"><a href="#initialiser">Initialiser</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#networking">Networking</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#cni">CNI</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#plugins">Plugins</a></li>
+<li class="toc-entry toc-h3"><a href="#ipam-plugins">IPAM Plugins</a></li>
+<li class="toc-entry toc-h3"><a href="#plugin-api">Plugin API</a></li>
+<li class="toc-entry toc-h3"><a href="#flannel">Flannel</a></li>
+<li class="toc-entry toc-h3"><a href="#calico">Calico</a></li>
+<li class="toc-entry toc-h3"><a href="#weave">Weave</a></li>
+<li class="toc-entry toc-h3"><a href="#canal">Canal</a></li>
+<li class="toc-entry toc-h3"><a href="#kubenet-plugin">kubenet plugin</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#dns-1">DNS</a></li>
+<li class="toc-entry toc-h2"><a href="#networking-policy">Networking Policy</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#storage">Storage</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#volume-types">Volume types</a></li>
+<li class="toc-entry toc-h2"><a href="#persistentvolume">PersistentVolume</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#chapter-6">Chapter 6</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#spec">Spec</a></li>
+<li class="toc-entry toc-h2"><a href="#flexvolume">FlexVolume</a></li>
+<li class="toc-entry toc-h2"><a href="#dynamic-provisioning">Dynamic Provisioning</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#internal">Internal</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#csi">CSI</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#arch-1">Arch</a></li>
+<li class="toc-entry toc-h3"><a href="#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#api-authentication-and-authorization">API Authentication and Authorization</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#service-account">Service Account</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#nice-picture">Nice Picture</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#rbac">RBAC</a></li>
+<li class="toc-entry toc-h2"><a href="#oidc-plugin">OIDC Plugin</a></li>
+<li class="toc-entry toc-h2"><a href="#links-1">Links</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#resource-definition-file">Resource Definition File</a></li>
+<li class="toc-entry toc-h1"><a href="#kubectl">kubectl</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#troubleshooting">Troubleshooting</a></li>
+<li class="toc-entry toc-h2"><a href="#security">Security</a></li>
+<li class="toc-entry toc-h2"><a href="#configuration">Configuration</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#cli">CLI</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#plugins-1">Plugins</a></li>
+<li class="toc-entry toc-h2"><a href="#links-2">Links</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#yaml">YAML</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#meta">Meta</a></li>
+<li class="toc-entry toc-h2"><a href="#spec-1">Spec</a></li>
+<li class="toc-entry toc-h2"><a href="#sample">Sample</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#api-1">API</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#convention">Convention</a></li>
+<li class="toc-entry toc-h2"><a href="#links-3">Links</a></li>
+<li class="toc-entry toc-h2"><a href="#proxy">Proxy</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#ui">UI</a></li>
+<li class="toc-entry toc-h1"><a href="#install">Install</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#kubernetes-the-hard-way">kubernetes the hard way</a></li>
+<li class="toc-entry toc-h2"><a href="#minikube">minikube</a></li>
+<li class="toc-entry toc-h2"><a href="#kubeadm">kubeadm</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#install-1">Install</a></li>
+<li class="toc-entry toc-h3"><a href="#configurable">Configurable</a></li>
+<li class="toc-entry toc-h3"><a href="#each-host">Each host</a></li>
+<li class="toc-entry toc-h3"><a href="#steps">Steps</a></li>
+<li class="toc-entry toc-h3"><a href="#internal-1">Internal</a></li>
+<li class="toc-entry toc-h3"><a href="#okdc">OKDC</a></li>
+<li class="toc-entry toc-h3"><a href="#commands">commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#security-1">Security</a></li>
+<li class="toc-entry toc-h1"><a href="#scheduling">Scheduling</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#pdb">PDB</a></li>
+<li class="toc-entry toc-h2"><a href="#resource">Resource</a></li>
+<li class="toc-entry toc-h2"><a href="#security-context">Security Context</a></li>
+<li class="toc-entry toc-h2"><a href="#pod-security-policy">Pod Security Policy</a></li>
+<li class="toc-entry toc-h2"><a href="#secrets">Secrets</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#access">Access</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#cli-1">CLI</a></li>
+<li class="toc-entry toc-h2"><a href="#links-4">Links</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#monitoring">Monitoring</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#cadvisor">cAdvisor</a></li>
+<li class="toc-entry toc-h2"><a href="#links-5">Links</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#container-runtime">Container Runtime</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#arch-2">Arch</a></li>
+<li class="toc-entry toc-h2"><a href="#cri">CRI</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#spec-2">Spec</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#cri-o">CRI-O</a></li>
+<li class="toc-entry toc-h2"><a href="#containerd">containerd</a></li>
+<li class="toc-entry toc-h2"><a href="#rurnc">rurnc</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#rancher">Rancher</a></li>
+<li class="toc-entry toc-h1"><a href="#helm">Helm</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#arch-3">Arch</a></li>
+<li class="toc-entry toc-h2"><a href="#cli-2">CLI</a></li>
+<li class="toc-entry toc-h2"><a href="#chart">Chart</a></li>
+<li class="toc-entry toc-h2"><a href="#helm-3">Helm 3</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#high-availability">High Availability</a></li>
+<li class="toc-entry toc-h1"><a href="#kompose">kompose</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#unsupported-syntax">Unsupported syntax</a></li>
+<li class="toc-entry toc-h2"><a href="#links-6">Links</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#internal-2">Internal</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#kubelet">kubelet</a></li>
+<li class="toc-entry toc-h2"><a href="#scheduler">scheduler</a></li>
+<li class="toc-entry toc-h2"><a href="#controller-manager">controller manager</a></li>
+<li class="toc-entry toc-h2"><a href="#pod-creation-sequence">Pod creation sequence</a></li>
+<li class="toc-entry toc-h2"><a href="#links-7">Links</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#troubleshooting-1">Troubleshooting</a></li>
+<li class="toc-entry toc-h1"><a href="#extending">Extending</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#crdtpr">CRD/TPR</a></li>
+<li class="toc-entry toc-h2"><a href="#api-aggregation">API Aggregation</a></li>
+<li class="toc-entry toc-h2"><a href="#custom-sub-resource">Custom Sub resource</a></li>
+<li class="toc-entry toc-h2"><a href="#admission-webhook-1">Admission Webhook</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#operator">Operator</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#arch-4">Arch</a></li>
+<li class="toc-entry toc-h2"><a href="#links-8">Links</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#windows">Windows</a></li>
+<li class="toc-entry toc-h1"><a href="#vm-virtualised-hardware">VM, Virtualised Hardware</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#frakti">Frakti</a></li>
+<li class="toc-entry toc-h2"><a href="#kubevirt">kubevirt</a></li>
+<li class="toc-entry toc-h2"><a href="#virtlet">virtlet</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#arch-5">Arch</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#kata-container">kata container</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#distributions">Distributions</a></li>
+<li class="toc-entry toc-h1"><a href="#release-history">Release History</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#18">1.8</a></li>
+<li class="toc-entry toc-h2"><a href="#19">1.9</a></li>
+<li class="toc-entry toc-h2"><a href="#110">1.10</a></li>
+<li class="toc-entry toc-h2"><a href="#111">1.11</a></li>
+<li class="toc-entry toc-h2"><a href="#112">1.12</a></li>
+<li class="toc-entry toc-h2"><a href="#113">1.13</a></li>
+<li class="toc-entry toc-h2"><a href="#114">1.14</a></li>
+<li class="toc-entry toc-h2"><a href="#115">1.15</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#cves">CVEs</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#116">1.16</a></li>
+<li class="toc-entry toc-h2"><a href="#117">1.17</a></li>
+<li class="toc-entry toc-h2"><a href="#118">1.18</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#cves-1">CVEs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#questions">Questions</a></li>
+<li class="toc-entry toc-h1"><a href="#links-9">Links</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#poc">POC</a></li>
+</ul>
+</li>
+</ul><h1 id="general">
+<a class="anchor" href="#general" aria-hidden="true"><span class="octicon octicon-link"></span></a>General</h1>
+<ul>
+  <li>backed by google and has a long history (in container’s term)</li>
+  <li>currently managed by Linux foundation</li>
+  <li>google also provide GKE (Google Container Engine) built on top of it</li>
+  <li>supports both docker and rtk</li>
+  <li>bad UI</li>
+  <li>container-agnostic orchestration system
+    <ul>
+      <li>docker is one of the supported run-time</li>
+      <li>and currently the only one officially</li>
+    </ul>
+  </li>
+  <li>documentation is sub par but Slack and Stackoverflow community is very active</li>
+  <li>
+<a href="https://github.com/kubernetes/kubernetes/blob/master/LICENSE">apache license</a>
+    <ul>
+      <li>kubernetes/LICENSE at master · kubernetes/kubernetes · GitHub</li>
+    </ul>
+  </li>
+  <li>GFW, Aliyun repo: <code class="highlighter-rouge">registry.cn-hangzhou.aliyuncs.com/google_containers</code>
+</li>
+  <li>quarterly release cycle</li>
+</ul>
+
+<h2 id="history">
+<a class="anchor" href="#history" aria-hidden="true"><span class="octicon octicon-link"></span></a>History</h2>
+<ul>
+  <li>originated from Google internal project Borg (now called Omega)</li>
+  <li>open sourced in 2014</li>
+  <li>1.0: July 2015</li>
+  <li>graduated from CNCF (first project to do so) in March 2018</li>
+</ul>
+
+<h1 id="terminologies">
+<a class="anchor" href="#terminologies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Terminologies</h1>
+<ul>
+  <li>node
+    <ul>
+      <li>a worker machine in k8s</li>
+      <li>also called minion</li>
+    </ul>
+  </li>
+  <li>pod
+    <ul>
+      <li>a smallest deployable unit</li>
+      <li>logical collection of containers that belong to an application</li>
+      <li>containers that <strong>should</strong> go hand in hand together as if they were in
+a single physical host</li>
+      <li>has single shared unique <strong>dynamic</strong> virtual IP</li>
+      <li>shared volume</li>
+      <li>most of the time it has a single container</li>
+      <li>think of it as a way of running multiple processes with container</li>
+      <li>share
+        <ul>
+          <li><code class="highlighter-rouge">-net=container:bla</code></li>
+          <li><code class="highlighter-rouge">-ipc=container:bla</code></li>
+          <li>volume</li>
+          <li>PID name space</li>
+          <li>time namespace</li>
+        </ul>
+      </li>
+      <li>there is a <code class="highlighter-rouge">pause</code> container that holds the network namespace for all other
+containers that has separate life cycle
+        <ul>
+          <li>
+<a href="http://stackoverflow.com/questions/33472741/what-work-does-the-process-in-container-gcr-io-google-containers-pause0-8-0-d">so</a>
+            <ul>
+              <li>docker - What work does the process in container "gcr.io/google_containers/pause:0.8.0" do? - Stack Overflow</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>replica set
+    <ul>
+      <li>in terms of pods</li>
+      <li>k8s maintain user specified number of pods in a set</li>
+      <li>kill or add pod when necessary</li>
+      <li>replaces replication controller</li>
+    </ul>
+  </li>
+  <li>replication controller
+    <ul>
+      <li>takes care of one or more pods</li>
+      <li>make sure of the correct number of pods are running</li>
+      <li>this is an k8s object that’s injected into the cluster, not a daemon like
+kubelet</li>
+    </ul>
+  </li>
+  <li>deployments
+    <ul>
+      <li>declarative update for pods/replica set</li>
+      <li>describe only desired state</li>
+      <li>image, cpu, mem, envar</li>
+      <li>it’s like app configuration</li>
+      <li>uses replication set</li>
+      <li>deployment file are pretty much like docker compose file</li>
+      <li>
+<code class="highlighter-rouge">Deployment -&gt; Replica Set -&gt; Pod(s)</code>
+        <ul>
+          <li>RS gets automatically created</li>
+        </ul>
+      </li>
+      <li><code class="highlighter-rouge">apiVersion: extensions/v1beta1</code></li>
+      <li><code class="highlighter-rouge">kind: Deployment</code></li>
+      <li>higher level concepts than replication set</li>
+      <li>
+<code class="highlighter-rouge">Deployment.spec.revisionHistoryLimit: 100</code> asks to store 100 history
+        <ul>
+          <li>default is 10</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>service
+    <ul>
+      <li>abstraction on top of pod</li>
+      <li>provides single static virtual IP and DNS name</li>
+      <li>provides load balancing</li>
+      <li>a named load balancer</li>
+      <li>can be exposed both externally and internally to the cluster</li>
+      <li>can also expose non-k8s endpoints</li>
+    </ul>
+  </li>
+  <li>label
+    <ul>
+      <li>key/value pair attached to an object, such as pod</li>
+      <li>used to group pods, etc</li>
+      <li>values are restricted to <code class="highlighter-rouge">[a-zA-Z0-9]-_</code>
+        <ul>
+          <li>annotation doesn’t have such restriction</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>selector
+    <ul>
+      <li>the other side of label</li>
+      <li>can be used to search for pod, etc</li>
+    </ul>
+  </li>
+  <li>namespace
+    <ul>
+      <li>total separation of environments</li>
+      <li>e.g <code class="highlighter-rouge">staging</code>, <code class="highlighter-rouge">production</code>
+</li>
+    </ul>
+  </li>
+  <li>kubernetes has an implicit assumption that all the state that is shared
+between service instances (e.g. a Mongo cluster that stores user profiles) is
+managed outside of Kubernetes.
+    <ul>
+      <li><a href="https://opensource.com/business/14/12/containers-microservices-and-orchestrating-whole-symphony">from here</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="components">
+<a class="anchor" href="#components" aria-hidden="true"><span class="octicon octicon-link"></span></a>Components</h1>
+<h2 id="cluster-components">
+<a class="anchor" href="#cluster-components" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cluster Components</h2>
+<ul>
+  <li>master
+    <ul>
+      <li>manages a number of nodes</li>
+      <li>HA is available</li>
+      <li>runs API server, scheduler, and controllers</li>
+      <li>scheduler decides where a pod goes into the cluster</li>
+      <li>essentially it’s just a node running master processes</li>
+      <li>typically doesn’t run pods</li>
+    </ul>
+  </li>
+  <li>node
+    <ul>
+      <li>also called minion</li>
+      <li>manages pods, volume, secretes, etc</li>
+      <li>health check</li>
+      <li>proxy for port forwarding, etc</li>
+      <li>runs kubelet, kube-proxy and things like fluentd</li>
+      <li>also runs optional addons like dns, dashboard UI</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="software-components">
+<a class="anchor" href="#software-components" aria-hidden="true"><span class="octicon octicon-link"></span></a>Software Components</h2>
+<ul>
+  <li>etcd
+    <ul>
+      <li>lightweight key-value data store</li>
+      <li>distributed database</li>
+      <li>can be configured to form a cluster automatically</li>
+    </ul>
+  </li>
+  <li>API Server
+    <ul>
+      <li>serves kubernets API over HTTP+JSON</li>
+      <li>kubernetes API</li>
+      <li>extension API</li>
+      <li>autoscaling API</li>
+      <li>batch API</li>
+    </ul>
+  </li>
+  <li>scheduler
+    <ul>
+      <li>monitors resource and decide which pod runs on which node</li>
+    </ul>
+  </li>
+  <li>controller manager
+    <ul>
+      <li>makes sure the current status matches user’s desire</li>
+    </ul>
+  </li>
+  <li>kubelet
+    <ul>
+      <li>runs on nodes, drives pod stat towards desired one</li>
+    </ul>
+  </li>
+  <li>kube-proxy
+    <ul>
+      <li>
+<em>Communication between pods in Kubernetes is managed by the Service resource. By default, this resource creates a virtual IP address: the ClusterIP. When a pod decides it wants to talk to another service, DNS returns the cluster IP of this service. As the pod tries to connect to the cluster IP, iptables on the local node has been configured to pick a destination pod IP address randomly. kube-proxy is in charge of configuring iptables on each node in the cluster and does this whenever a service is changed, a pod starts or stops. These changes happen on every node and because of iptables implementation details are extremely expensive.</em>
+        <ul>
+          <li><a href="https://linkerd.io/2020/02/17/architecting-for-multicluster-kubernetes/">here</a></li>
+        </ul>
+      </li>
+      <li>forward network traffic looking for cluster IP service to their endpoint</li>
+      <li>runs on every node</li>
+      <li>network proxy and load-balancer</li>
+      <li>monitors API from master</li>
+      <li>uses virtual IP and <code class="highlighter-rouge">iptables</code>
+</li>
+      <li>at one stage it was a real proxy that packets pass through</li>
+      <li>userspace mode -&gt; iptable -&gt; moved on to use ipvs</li>
+      <li>
+<a href="https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#is-the-kube-proxy-working">debug kube proxy</a>
+        <ul>
+          <li>with iptable rule examples</li>
+          <li>
+<code class="highlighter-rouge">KUBE-SVC-*</code> rule and <code class="highlighter-rouge">KUBE-SEP-*</code> rule</li>
+        </ul>
+      </li>
+      <li>
+<a href="https://kubernetes.io/blog/2019/03/29/kube-proxy-subtleties-debugging-an-intermittent-connection-reset/">k8s blog, 2019, bug</a>
+        <ul>
+          <li>a war story about a bug, with clear explanation of iptables programmed by kube-proxy</li>
+          <li>
+<code class="highlighter-rouge">KUBE-SERVICES</code> - entrypoin, points to <code class="highlighter-rouge">KUBE-SVC</code> chain</li>
+          <li>
+<code class="highlighter-rouge">KUBE-SVC-*</code> chain - one per clusterIP service, load balanced to <code class="highlighter-rouge">KUBE-SEP-*</code> chain</li>
+          <li>
+<code class="highlighter-rouge">KUBE-SEP-*</code> chain - one per service endpoint, simple DNAT</li>
+        </ul>
+      </li>
+      <li>
+<a href="https://prefetch.net/blog/2018/02/09/understanding-the-network-plumbing-that-makes-kubernetes-pods-and-services-work/">prefetch</a>
+        <ul>
+          <li>with actual iptable chain examples</li>
+        </ul>
+      </li>
+      <li>
+<a href="https://kubernetes.io/blog/2018/07/09/ipvs-based-in-cluster-load-balancing-deep-dive/">ipvs, k8s.io, 2018</a>
+        <ul>
+          <li>iptable is a bottle neck for scaling</li>
+          <li>ipvs uses hash table that scales much better</li>
+          <li>scheduler can be configured: round robin, destination hashing, etc</li>
+          <li>there is actually a <code class="highlighter-rouge">kube-ipvs0</code> dummy device that has the cluster IP</li>
+          <li>one IPVS virtual server per service IP</li>
+          <li>
+<code class="highlighter-rouge">ipvsadm -ln</code> <a href="https://gist.github.com/674e275a47d4328befe24a666edd045c">gist</a>
+</li>
+        </ul>
+      </li>
+      <li>
+<a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/">cli, reference</a>
+        <ul>
+          <li>kube-proxy command line reference</li>
+        </ul>
+      </li>
+      <li>
+<a href="https://arthurchiao.github.io/blog/cracking-k8s-node-proxy/">chiao, detail</a>
+        <ul>
+          <li><strong>Cracking kubernetes node proxy (aka kube-proxy)</strong></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>cAdvisor
+    <ul>
+      <li>monitoring agent</li>
+      <li>
+<code class="highlighter-rouge">kubectl proxy</code> &amp;&amp; GET <code class="highlighter-rouge">/api/v1/nodes/${1}/proxy/metrics/cadvisor</code>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="arch">
+<a class="anchor" href="#arch" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arch</h2>
+<h3 id="high-level-architecture">
+<a class="anchor" href="#high-level-architecture" aria-hidden="true"><span class="octicon octicon-link"></span></a>High Level Architecture</h3>
+<p>&lt;img alt=”arch” src=”http://k8s.info/resources/cheatsheet/k8s-cheatsheet-physical-layout.png” width=75%&gt;</p>
+
+<h3 id="2">
+<a class="anchor" href="#2" aria-hidden="true"><span class="octicon octicon-link"></span></a>2</h3>
+<p>&lt;img alt=”another arch” src=”http://cythumb.cyworld.com/810x0/c2down.cyworld.co.kr/download?fid=64224fe7c9ab420678b250019c2ac900&amp;name=2015_09_25_kubernetes_architecture_with_flannel.png” width=75%&gt;</p>
+
+<h3 id="3">
+<a class="anchor" href="#3" aria-hidden="true"><span class="octicon octicon-link"></span></a>3</h3>
+<p>&lt;img alt=”black and white” src=”http://blog.octo.com/wp-content/uploads/2017/01/architecturenormal-1024x843.png” width=75%&gt;</p>
+
+<h3 id="with-edge-router">
+<a class="anchor" href="#with-edge-router" aria-hidden="true"><span class="octicon octicon-link"></span></a>with edge router</h3>
+<p>&lt;img src=”https://cdn-images-1.medium.com/max/1600/1*_ArjfIk34Op6qQWoYCPhOA.png” width=75%&gt;</p>
+
+<h1 id="functionality">
+<a class="anchor" href="#functionality" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functionality</h1>
+
+<h2 id="ring-graph">
+<a class="anchor" href="#ring-graph" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ring Graph</h2>
+<p>&lt;img src=”http://borlandc.pek3b.qingstor.com/k8s/k8s-rings.png” width=65%&gt;</p>
+
+<h2 id="health-check">
+<a class="anchor" href="#health-check" aria-hidden="true"><span class="octicon octicon-link"></span></a>Health check</h2>
+<ul>
+  <li>liveness probe checks if the container is broken and should be restarted
+    <ul>
+      <li>this is only necessary if the application is <strong>not</strong> able to crash itself.</li>
+    </ul>
+  </li>
+  <li>readiness probe
+    <ul>
+      <li>check if the service is ready, e.g. depending service like mysql, redis, are ready</li>
+      <li>k8s will only send traffic to the pod if it’s ready</li>
+    </ul>
+  </li>
+  <li>both probes are periodical</li>
+  <li>both support three types of diagnose: http, tcp and command line</li>
+  <li>
+<code class="highlighter-rouge">deploymentspec.restartPolicy</code>
+    <ul>
+      <li>values can be <code class="highlighter-rouge">Always</code> (default), <code class="highlighter-rouge">OnFailure</code>, and <code class="highlighter-rouge">Never</code>
+</li>
+      <li>applies to all containers</li>
+    </ul>
+  </li>
+  <li><a href="https://www.ianlewis.org/en/using-kubernetes-health-checks">article by ianlewis</a></li>
+  <li><a href="https://medium.com/virtuslab/think-twice-before-using-helm-25fbb18bc822">think twice before using helm</a></li>
+</ul>
+
+<h2 id="composing">
+<a class="anchor" href="#composing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Composing</h2>
+<ul>
+  <li>pod definition in YAML</li>
+  <li>also possible to use JSON</li>
+</ul>
+
+<h2 id="configuration-management">
+<a class="anchor" href="#configuration-management" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration Management</h2>
+<ul>
+  <li>config map and secretes</li>
+  <li>secretes can be accessed from volume files or environment variable</li>
+  <li>updated secretes are NOT handled automatically</li>
+  <li>ConfigMaps are meant for non-secure informations
+    <ul>
+      <li>can support JSON blobs and entire files</li>
+    </ul>
+  </li>
+  <li>ConfigMaps can be used as
+    <ul>
+      <li>envvar</li>
+      <li>file in volume
+        <ul>
+          <li>automatically updated but it takes a while</li>
+        </ul>
+      </li>
+      <li>docker run command line</li>
+    </ul>
+  </li>
+  <li><a href="https://blog.giantswarm.io/understanding-basic-kubernetes-concepts-iv-secrets-and-configmaps/">giantswarm</a></li>
+  <li><a href="https://mp.weixin.qq.com/s?__biz=MzI4NDYxOTgwMw==&amp;mid=2247483735&amp;idx=1&amp;sn=5b7479abd4d0f087bf8f5459d4a6333a&amp;chksm=ebf9e423dc8e6d35a57fb36df2e4499c5d28f90ba76625ca338e8775a5246e6ee9eb3bb4adf0&amp;mpshare=1&amp;scene=1&amp;srcid=0413rcM3LonF0Za813KVw1Yw&amp;key=c006b033843dca2ee6bc8cc04ddeb9e55487b95915484e764697c4c94ce622bd9f6ca3888575d511b9e1b85ecdaa1debef744509477167c6b052de4105b0754bac7776773f686e99e9d97386ca684c8d&amp;ascene=0&amp;uin=MjIxNDYyOTkwMg%3D%3D&amp;">k8s技术社区</a></li>
+</ul>
+
+<h2 id="service">
+<a class="anchor" href="#service" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service</h2>
+<ul>
+  <li>session affinity can be specified in service <code class="highlighter-rouge">spec</code>
+    <ul>
+      <li>
+<code class="highlighter-rouge">spec.sessionAffinity</code>, value can be <code class="highlighter-rouge">ClientIP</code> or <code class="highlighter-rouge">None</code>
+</li>
+      <li>generates separate iptable run from kube-proxy</li>
+    </ul>
+  </li>
+  <li>when a service is created without selectors, the <code class="highlighter-rouge">Endpoints</code> object is not
+going to be created and has to be defined by the user
+    <ul>
+      <li>suitable for defining external services</li>
+    </ul>
+  </li>
+  <li>service handles layer 4 routing, while ingress handles layer 7</li>
+  <li>service can expose more than one port
+    <ul>
+      <li>each port shoud be named in this case</li>
+    </ul>
+  </li>
+  <li>service can be discovered by environment variable
+    <ul>
+      <li>when a new pod is created, existing service will be available in the pod
+via envar</li>
+      <li>
+<code class="highlighter-rouge">XXX_SERVICE_HOST</code>, <code class="highlighter-rouge">XXX_SERVICE_PORT</code>
+</li>
+    </ul>
+  </li>
+  <li>service can also be discovered by DNS</li>
+</ul>
+
+<h3 id="service-types">
+<a class="anchor" href="#service-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service types</h3>
+<ul>
+  <li>
+<code class="highlighter-rouge">ClusterIP</code>
+    <ul>
+      <li>this is the default type</li>
+      <li>enable pod to pod communication</li>
+      <li>provides service discovery</li>
+      <li>provides DNS</li>
+      <li>only accessible from inside the cluster</li>
+      <li>
+<code class="highlighter-rouge">None</code>: for <strong>headless</strong> service</li>
+      <li>
+<code class="highlighter-rouge">""</code>: automatic assigned from a special IP segment</li>
+      <li>
+<code class="highlighter-rouge">x.x.x.x</code>: pre-allocated IP</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">NodePort</code>
+    <ul>
+      <li>a port on a node</li>
+      <li>externally exposed service</li>
+      <li>once exposed, the port is available on all nodes</li>
+      <li>builds on top of cluster ip and route request from all nodes on that port</li>
+      <li>can be specified by user, default is automatic
+        <ul>
+          <li>default automatic range is 30000-32767, user configurable</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">LoadBalancer</code>
+    <ul>
+      <li>external IP acting as a load balancer</li>
+      <li>actual load balancer provided by the <strong>cloud provider</strong>
+</li>
+      <li>builds on top of <code class="highlighter-rouge">NodePort</code> and creates an load balancer</li>
+      <li><code class="highlighter-rouge">type: LoadBalancer</code></li>
+      <li><code class="highlighter-rouge">kubectl expose --type=LoadBalancer</code></li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">ExternalName</code>
+    <ul>
+      <li>DNS alias for external services</li>
+      <li>this doesn’t involve <code class="highlighter-rouge">kube-proxy</code>
+</li>
+      <li>no port or endpoint is defined</li>
+      <li>
+<code class="highlighter-rouge">my-service.prod.svc.CLUSTER</code> points to name in <code class="highlighter-rouge">spec.my.database.example.com</code>
+</li>
+      <li>add an CNAME record into kube-dns</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="headless-service">
+<a class="anchor" href="#headless-service" aria-hidden="true"><span class="octicon octicon-link"></span></a>Headless service</h3>
+<ul>
+  <li>service with <code class="highlighter-rouge">ClusterIP</code> set to <code class="highlighter-rouge">None</code>
+</li>
+  <li>no IP will be configured and thus no iptable rules will be created</li>
+  <li>DNS entries are added depending on whether there is selector or not</li>
+</ul>
+
+<h2 id="deployment">
+<a class="anchor" href="#deployment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deployment</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">spec.strategy</code>
+    <ul>
+      <li>controls upgrade strategy</li>
+      <li>
+<code class="highlighter-rouge">.type</code>: <code class="highlighter-rouge">Recreate</code>  or <code class="highlighter-rouge">RollingUpdate</code> (default)</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl rollout status deploy/foo</code>
+    <ul>
+      <li>check rollout status</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl rollout history deploy/foo</code>
+    <ul>
+      <li>check rollout history</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl rollout undo deploy/foo</code>
+    <ul>
+      <li>rollback to previous version</li>
+      <li>can also rollback to a specific version with e.g. <code class="highlighter-rouge">--to-version=2</code>
+</li>
+    </ul>
+  </li>
+  <li>a rollout is triggered when part of <code class="highlighter-rouge">.spec.template</code> is modified</li>
+</ul>
+
+<h2 id="daemonset">
+<a class="anchor" href="#daemonset" aria-hidden="true"><span class="octicon octicon-link"></span></a>DaemonSet</h2>
+<ul>
+  <li>ensure that a pod is available on selected nodes</li>
+  <li>
+<code class="highlighter-rouge">RestartPolicy</code> has to be <code class="highlighter-rouge">Always</code>
+</li>
+  <li>
+<code class="highlighter-rouge">spec.nodeSelector</code> can be used to select node</li>
+</ul>
+
+<h2 id="jobs">
+<a class="anchor" href="#jobs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Jobs</h2>
+<ul>
+  <li><code class="highlighter-rouge">kind: Job</code></li>
+  <li>pods that run for a while and stop and not to be restarted</li>
+  <li>3 kinds
+    <ul>
+      <li>non-parallel jobs</li>
+      <li>parallel jobs with a fixed completion count <code class="highlighter-rouge">spec.completions</code>
+        <ul>
+          <li>controls how many completions is desired</li>
+        </ul>
+      </li>
+      <li>parallel jobs with a work queue: <code class="highlighter-rouge">spec.parallelism</code>
+        <ul>
+          <li>controls number of pod running at the same time</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cronjob">
+<a class="anchor" href="#cronjob" aria-hidden="true"><span class="octicon octicon-link"></span></a>CronJob</h2>
+<ul>
+  <li><code class="highlighter-rouge">kind: CronJob</code></li>
+  <li><code class="highlighter-rouge">spec.schedule: "*/1 * * * *"</code></li>
+  <li>available from 1.5+</li>
+  <li>API server has to be started with <code class="highlighter-rouge">--runtime-config=batch/v2alpha1=true</code>
+</li>
+</ul>
+
+<h2 id="init-containers">
+<a class="anchor" href="#init-containers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Init Containers</h2>
+<ul>
+  <li>a feature added in 1.5</li>
+  <li>within a pod, a set of containers can be specified to run before the app containers.</li>
+  <li>different to regular containers
+    <ul>
+      <li>run to completion</li>
+      <li>runs one after another</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">metadata.annotation.pod.beta.kubernetes.io/init-containers</code>
+    <ul>
+      <li>1.5 +</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">spec.initContainers</code>
+    <ul>
+      <li>1.6 +</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="lifecycle-hooks">
+<a class="anchor" href="#lifecycle-hooks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lifecycle Hooks</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">postStart</code> in container spec
+    <ul>
+      <li>called right after container creation</li>
+      <li>blocking all following operations</li>
+      <li>no gurantee that it’ll be triggered before <code class="highlighter-rouge">ENTRYPOINT</code>
+</li>
+      <li>no parameter</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">preStop</code> in container spec
+    <ul>
+      <li>blocking, stop only happens when hook handler returns</li>
+    </ul>
+  </li>
+  <li>hook handler can be
+    <ul>
+      <li>shell script: <code class="highlighter-rouge">exec</code>
+</li>
+      <li>HTTP: <code class="highlighter-rouge">httpGet</code>
+</li>
+    </ul>
+  </li>
+  <li>hooks are delivered at least once</li>
+  <li>
+<a href="https://blog.openshift.com/kubernetes-pods-life/">openshift</a>
+    <ul>
+      <li>blog about pod lifecycle</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="affinity">
+<a class="anchor" href="#affinity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Affinity</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">spec.nodeSelector</code> provides simple way of scheduling pods on host</li>
+  <li>node affinity introduced in 1.2, rather flexible syntax allowed</li>
+  <li>inter-pod affinity introduced in 1.4</li>
+  <li>can be
+    <ul>
+      <li><code class="highlighter-rouge">nodeAffinity</code></li>
+      <li><code class="highlighter-rouge">podAffinity</code></li>
+      <li><code class="highlighter-rouge">podAntiAffinity</code></li>
+      <li>there is no <code class="highlighter-rouge">nodeAntiAffinity</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">spec.affinity.nodeAffinity</code>
+    <ul>
+      <li><code class="highlighter-rouge">requiredDuringSchedulingIgnoredDuringExecution</code></li>
+      <li>
+<code class="highlighter-rouge">preferredDuringSchedulingIgnoredDuringExecution</code>
+        <ul>
+          <li>for preferred, <code class="highlighter-rouge">weight</code> is required</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>operator supported
+    <ul>
+      <li><code class="highlighter-rouge">In</code></li>
+      <li><code class="highlighter-rouge">NotIn</code></li>
+      <li><code class="highlighter-rouge">Exists</code></li>
+      <li><code class="highlighter-rouge">DoesNotExists</code></li>
+      <li><code class="highlighter-rouge">Gt</code></li>
+      <li><code class="highlighter-rouge">Lt</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="taint-and-toleration">
+<a class="anchor" href="#taint-and-toleration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Taint and toleration</h2>
+<ul>
+  <li>related to node/pod affinity</li>
+  <li>taint roughly means <em>mark</em>
+</li>
+  <li>
+<code class="highlighter-rouge">kubectl taint nodes node1 key=value:NoSchedule</code>
+    <ul>
+      <li>pod cannot be scheduled on this node <code class="highlighter-rouge">node1</code>
+</li>
+      <li>unless there is a toleration that matches the KV pair and effect
+<code class="highlighter-rouge">NoSchedule</code>
+</li>
+    </ul>
+  </li>
+  <li>effect
+    <ul>
+      <li>
+<code class="highlighter-rouge">NoSchedule</code> no pod will be scheduled</li>
+      <li>
+<code class="highlighter-rouge">PreferNoSchedule</code> same as above but soft</li>
+      <li>
+<code class="highlighter-rouge">NoExecute</code> evict pod from node</li>
+    </ul>
+  </li>
+  <li>toleration is declared inside a <strong>pod spec</strong> to make exception to the above rule
+    <ul>
+      <li>key</li>
+      <li>value</li>
+      <li>operation: <code class="highlighter-rouge">Exists, Equal</code>
+</li>
+      <li>effect</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="statefulset">
+<a class="anchor" href="#statefulset" aria-hidden="true"><span class="octicon octicon-link"></span></a>StatefulSet</h2>
+<ul>
+  <li>mimics virtual machine
+    <ul>
+      <li>stable, unique network ID:
+        <ul>
+          <li><code class="highlighter-rouge">{statefulset-name}-{ordinal}</code></li>
+          <li>each pod gets: <code class="highlighter-rouge">podname.headless_service_name</code> as DNS</li>
+        </ul>
+      </li>
+      <li>stable, persistent storage</li>
+      <li>
+<strong>stable</strong> means persistence across pod reschedule</li>
+    </ul>
+  </li>
+  <li>used to be called <strong>PetSets</strong>
+</li>
+  <li>beta from 1.5</li>
+  <li>includes
+    <ul>
+      <li>a headless service that controls the domain <code class="highlighter-rouge">$svc.$ns.svc.cluster.local</code>
+</li>
+      <li>stateful set, the application itself, e.g. nginx</li>
+      <li>volume claim templates, each replicate will have its own PVC</li>
+    </ul>
+  </li>
+  <li>meant for service with
+    <ul>
+      <li>a pre-defined cluster size</li>
+      <li>network attached shared storage</li>
+    </ul>
+  </li>
+  <li>replicas will be brought up one after another: <code class="highlighter-rouge">{0 ... N-1}</code>
+    <ul>
+      <li>deletion reverses the order</li>
+    </ul>
+  </li>
+  <li>nodes can communicate with one another through stable network names
+    <ul>
+      <li>point of the headless service</li>
+    </ul>
+  </li>
+  <li>can be scaled through hpa
+    <ul>
+      <li><a href="https://raw.githubusercontent.com/janakiramm/wp-statefulset/master/wordpress.yml">here</a></li>
+      <li>how successful this operation is depends on the actual application that’s 
+being scaled</li>
+      <li>when scaling down, the pvc and pv won’t be removed, so that when it’s
+scaled up again, they’ll be reused, retaining the data</li>
+    </ul>
+  </li>
+  <li>each pod
+    <ul>
+      <li>has stable hostname <code class="highlighter-rouge">statefullsetname-ordinal</code>
+</li>
+      <li>has <code class="highlighter-rouge">$podname.$service-name</code>
+</li>
+    </ul>
+  </li>
+  <li>leadership select can thus be performed</li>
+  <li>data on pvc will be retained even if the set is scaled down or deleted</li>
+  <li>
+<code class="highlighter-rouge">spec.serviceName</code> must point to the headless that pre-exists
+    <ul>
+      <li>pod get DNS entry like <code class="highlighter-rouge">pod-specific-string.serviceName.default.svc.cluster.local</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">terminationGracePeriodSeconds</code> cannot be 0</li>
+  <li><a href="http://blog.kubernetes.io/2016/12/statefulset-run-scale-stateful-applications-in-kubernetes.html">blog</a></li>
+  <li>
+<a href="https://github.com/Yolean/kubernetes-mysql-cluster">mysql</a>
+    <ul>
+      <li>github repo for running mysql cluster</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://thenewstack.io/deploy-highly-available-wordpress-instance-statefulset-kubernetes-1-5/">newstack</a>
+    <ul>
+      <li>deploying wordpress with statefulset and pv</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://raw.githubusercontent.com/cockroachdb/cockroach/master/cloud/kubernetes/cockroachdb-statefulset.yaml">cockroach</a>
+    <ul>
+      <li>example deploy</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="configmap">
+<a class="anchor" href="#configmap" aria-hidden="true"><span class="octicon octicon-link"></span></a>ConfigMap</h2>
+<ul>
+  <li>config can be exported to
+    <ul>
+      <li>envar</li>
+      <li>command line argument</li>
+      <li>config file in volume</li>
+    </ul>
+  </li>
+  <li>creation
+    <ul>
+      <li><code class="highlighter-rouge">kubectl create configmap my-config</code></li>
+      <li><code class="highlighter-rouge">--from-literal=literal-key=literal-value</code></li>
+      <li><code class="highlighter-rouge">--from-file=ui.properties</code></li>
+      <li><code class="highlighter-rouge">--from-file=path/to/config/dir</code></li>
+    </ul>
+  </li>
+  <li>consumption
+    <ul>
+      <li><code class="highlighter-rouge">valueFrom: {configMapKeyRef: bla}</code></li>
+      <li><code class="highlighter-rouge">volumes[].configMap</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="namespace">
+<a class="anchor" href="#namespace" aria-hidden="true"><span class="octicon octicon-link"></span></a>Namespace</h2>
+<ul>
+  <li>by default, there are 2: <code class="highlighter-rouge">default</code> and <code class="highlighter-rouge">kube-system</code>
+</li>
+  <li>one can create new namespaces with YAML file (<code class="highlighter-rouge">kind: Namespace</code>)
+    <ul>
+      <li>or directly with <code class="highlighter-rouge">kubectl create ns</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl config set-context &lt;context&gt; --namespace=test</code>
+    <ul>
+      <li>sets the current namespace</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl create -f foo.yaml --namespace wisebuild</code>
+    <ul>
+      <li>create objetcs inside a namespace</li>
+    </ul>
+  </li>
+  <li>namespace can also be specified in YAML files</li>
+  <li>namespace cannot be nested</li>
+  <li>network is not firewalled between namespaces</li>
+</ul>
+
+<h3 id="dns">
+<a class="anchor" href="#dns" aria-hidden="true"><span class="octicon octicon-link"></span></a>DNS</h3>
+<ul>
+  <li><code class="highlighter-rouge">&lt;service-name&gt;.&lt;namespace-name&gt;.svc.cluster.local</code></li>
+  <li>name must be DNS-1035 valid: <code class="highlighter-rouge">'[a-z]([-a-z0-9]*[a-z0-9])?</code>
+    <ul>
+      <li>this applies only to service and not pod or deployment</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">hostname.subdomain.namespace.svc.....</code>
+    <ul>
+      <li>
+<code class="highlighter-rouge">pod.spec.hostname</code> over <code class="highlighter-rouge">pod.metadata.name</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl run --generator=run-pod/v1 tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash</code>
+    <ul>
+      <li>handy command to run netshoot</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="ingress">
+<a class="anchor" href="#ingress" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ingress</h2>
+<ul>
+  <li>an Ingress is a collection of rules that allow inbound connections to reach the cluster <strong>services</strong>.</li>
+  <li><code class="highlighter-rouge">internet ==&gt; Ingress ==&gt; Services</code></li>
+  <li>benefits:
+    <ul>
+      <li>virtual domain</li>
+      <li>TLS termination</li>
+    </ul>
+  </li>
+  <li>requires a ingress controller to be deployed on the master node</li>
+  <li>a ingress controller:
+    <ul>
+      <li>is a reverse proxy that’s kubernetes aware</li>
+      <li>watches creation/update/deletion of rules</li>
+      <li>configure itself accordingly</li>
+      <li>not part of <code class="highlighter-rouge">kube-controller-manager</code>
+</li>
+      <li>officially nginx controller is supported as well as GCE</li>
+      <li>requires default backend for ingress</li>
+    </ul>
+  </li>
+  <li>ingress resource
+    <ul>
+      <li><code class="highlighter-rouge">kind: Ingress</code></li>
+      <li><code class="highlighter-rouge">spec.rules</code></li>
+    </ul>
+  </li>
+  <li>multple ingress controller can run in parallel
+    <ul>
+      <li>
+<code class="highlighter-rouge">annotations:</code>
+        <ul>
+          <li><code class="highlighter-rouge">kubernetes.io/ingress.class: "gce"</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/kubernetes/ingress/blob/master/controllers/nginx/README.md">nginx ingress controller</a>
+    <ul>
+      <li>receive events from k8s and update config file</li>
+      <li>reload configuration when needed</li>
+      <li>borrows stuff from openresty</li>
+      <li>customizable from annotation</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="philosophy">
+<a class="anchor" href="#philosophy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Philosophy</h1>
+<p>&lt;img src=”https://pbs.twimg.com/media/DZVaE83U8AAMyqh.jpg” width=75%&gt;</p>
+
+<h3 id="links">
+<a class="anchor" href="#links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h3>
+<ul>
+  <li>
+<a href="https://docs.traefik.io/user-guide/kubernetes/">traffik</a>
+    <ul>
+      <li>official user guide for traffik</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://hackernoon.com/kubernetes-ingress-controllers-and-traefik-a32648a4ae95">hackernoon</a>
+    <ul>
+      <li>pratical article of using trafik as a ingress controller</li>
+      <li>deploying trafik only on <strong>edge router</strong> nodes is a nice idea</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://crondev.com/kubernetes-nginx-ingress-controller/">crondev</a>
+    <ul>
+      <li>nginx controller</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/kubernetes/ingress-nginx/blob/master/deploy/README.md">deploy</a>
+    <ul>
+      <li>official deploy document</li>
+      <li>on baremetal, it’s a deployment with nodeport</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://speakerdeck.com/thockin/sig-network-deep-dive-kubecon-eu-2019?slide=33">speakerdeck, ingress, dns, ipv6, thockin</a>
+    <ul>
+      <li>SIG-Network Deep-Dive, KubeCon EU 2019</li>
+      <li>a large part of it is what’s wrong with current ingress and how to fix them.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="downward-api">
+<a class="anchor" href="#downward-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Downward API</h2>
+<ul>
+  <li>mechanism to expose pod level information to container</li>
+  <li>info can be exposed to
+    <ul>
+      <li>envar</li>
+      <li>volume file</li>
+    </ul>
+  </li>
+  <li>envar
+    <ul>
+      <li><code class="highlighter-rouge">env.valueFrom.fieldRef</code></li>
+      <li><code class="highlighter-rouge">fieldPath: spec.nodeName</code></li>
+      <li><code class="highlighter-rouge">fieldPath: metadata.namespace</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="autoscaling">
+<a class="anchor" href="#autoscaling" aria-hidden="true"><span class="octicon octicon-link"></span></a>Autoscaling</h2>
+<ul>
+  <li>HPA</li>
+  <li><code class="highlighter-rouge">kind: HorizontalPodAutoscaler</code></li>
+  <li>
+<code class="highlighter-rouge">kubectl</code> can specify policies directly</li>
+  <li><code class="highlighter-rouge">kubectl get hpa</code></li>
+  <li>seems to only support CPU at the moment</li>
+  <li>require <strong>heapster</strong> for collecting metrics
+    <ul>
+      <li>in turn requires storage solution like influxdb</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="admission-webhook">
+<a class="anchor" href="#admission-webhook" aria-hidden="true"><span class="octicon octicon-link"></span></a>Admission Webhook</h2>
+<ul>
+  <li>hook for customized logic on job admission
+    <ul>
+      <li>job filtering (reject/allow)</li>
+      <li>object injection</li>
+      <li>mutation - modify object</li>
+    </ul>
+  </li>
+  <li>two types: <code class="highlighter-rouge">MutatingAdmissionWebhook</code>, <code class="highlighter-rouge">ValidatingAdmissionWebhook</code>
+</li>
+  <li>just a basic HTTP server that works with a particular API
+    <ul>
+      <li>has to be TLS enabled so preparing certs is a pain</li>
+      <li>k8s API server uses CA bundle to access secure webhooks server</li>
+    </ul>
+  </li>
+  <li>configured through:
+    <ul>
+      <li><code class="highlighter-rouge">ValidatingWebhookConfiguration</code></li>
+      <li><code class="highlighter-rouge">MutatingWebhookConfiguration</code></li>
+    </ul>
+  </li>
+  <li>different from initializer</li>
+  <li>usage:
+    <ul>
+      <li>mutate resource before creating them</li>
+      <li>automatic provisioning of storage class</li>
+      <li>validation</li>
+      <li>namespace restriction</li>
+    </ul>
+  </li>
+  <li>debug
+    <ul>
+      <li>
+<code class="highlighter-rouge">kc describe rs ....</code> can see something</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://medium.com/ibm-cloud/diving-into-kubernetes-mutatingadmissionwebhook-6ef3c5695f74">ibm</a>
+    <ul>
+      <li>Diving into Kubernetes MutatingAdmissionWebhook – IBM Cloud – Medium</li>
+      <li>nice diagram</li>
+      <li><a href="https://github.com/kubernetes/kubernetes/blob/v1.9.0/pkg/apis/admission/types.go">actual api</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/morvencao/kube-mutating-webhook-tutorial">github</a>
+    <ul>
+      <li>mutating tutorial code</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/kubernetes/kubernetes/tree/release-1.9/test/images/webhook">github</a>
+    <ul>
+      <li>official test/sample code in 1.9 release</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/istio/istio/tree/master/pilot/pkg/kube/inject">istio</a>
+    <ul>
+      <li>where istio injects its own sidecar</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://banzaicloud.com/blog/k8s-admission-webhooks/">banzaicloud</a>
+    <ul>
+      <li>blog post about using admission hooks</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/slok/kubewebhook">kubewebhooklok</a>
+    <ul>
+      <li>Go framework that makes creating a hook easier</li>
+      <li>makes writing webhook very easy but … the hard part is preparing certs</li>
+    </ul>
+  </li>
+  <li>API and CLI</li>
+  <li><code class="highlighter-rouge">v1beta.AdmissionReview</code></li>
+  <li><code class="highlighter-rouge">v1beta1.AdmissionResponse</code></li>
+  <li><code class="highlighter-rouge">admissionregistration.k8s.io/v1beta1</code></li>
+  <li><code class="highlighter-rouge">kc delete mutatingWebhookConfiguration</code></li>
+</ul>
+
+<h2 id="flow-from-banzai-cloud">
+<a class="anchor" href="#flow-from-banzai-cloud" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flow (from Banzai Cloud)</h2>
+<p>&lt;img src=”http://borlandc.pek3b.qingstor.com/k8s/k8s-webhooks.png” width=75%&gt;</p>
+
+<h2 id="initialiser">
+<a class="anchor" href="#initialiser" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialiser</h2>
+<ul>
+  <li>can’t be used for <code class="highlighter-rouge">DELETE</code>
+</li>
+  <li><a href="https://medium.com/ibm-cloud/kubernetes-initializers-deep-dive-and-tutorial-3bc416e4e13e">ibm</a></li>
+  <li><a href="https://ahmet.im/blog/initializers/">ahmet</a></li>
+</ul>
+
+<h1 id="networking">
+<a class="anchor" href="#networking" aria-hidden="true"><span class="octicon octicon-link"></span></a>Networking</h1>
+<ul>
+  <li>three networks
+    <ul>
+      <li>infra network that connects nodes</li>
+      <li>service network: pure virtual network, handled by firewall rules</li>
+      <li>pod network</li>
+    </ul>
+  </li>
+  <li>each pod has its own IP address
+    <ul>
+      <li>This is a balanced design between IP per host and IP per container</li>
+    </ul>
+  </li>
+  <li>no NAT allowed between containers or containers and node (minion)</li>
+  <li>kubernetes has the concept of cloud provider, which handles
+    <ul>
+      <li>load balancing</li>
+      <li>routes</li>
+    </ul>
+  </li>
+  <li>in general, two ways of achieving connectivity
+    <ul>
+      <li>overlay</li>
+      <li>direct</li>
+    </ul>
+  </li>
+  <li>solutions include
+    <ul>
+      <li>flannel</li>
+      <li>calico</li>
+      <li>romana</li>
+      <li>weave</li>
+      <li>canal = flannel + calico</li>
+      <li>open vswitch</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://machinezone.github.io/research/networking-solutions-for-kubernetes/">comparison</a>
+    <ul>
+      <li>compares net host, ipvlan and flannel</li>
+      <li>a bit dated</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://docs.google.com/spreadsheets/d/1qCOlor16Wp5mHd6MQxB5gUEQILnijyDLIExEpqmee2k/edit#gid=0">google sheet</a>
+    <ul>
+      <li>large table with CNI plugins side by side</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://kubedex.com/kubernetes-network-plugins/">kubedex</a>
+    <ul>
+      <li>a lot of vendors uses Calico by default</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cni">
+<a class="anchor" href="#cni" aria-hidden="true"><span class="octicon octicon-link"></span></a>CNI</h2>
+<ul>
+  <li>invoke:
+    <ul>
+      <li>runtime creates network namespace</li>
+      <li>runtime checks the <code class="highlighter-rouge">type</code> field in JSON file and invokes the right plugin</li>
+    </ul>
+  </li>
+  <li>a CNI plugin is responsible for:
+    <ol>
+      <li>insert network interface into a network namespace (e.g. container)</li>
+      <li>arrange things on the host (e.g. attach veth to a bridge)</li>
+      <li>assign IP (invoking IPAM plugin)</li>
+    </ol>
+  </li>
+  <li>IPAM plugin is separate
+    <ul>
+      <li><a href="https://github.com/containernetworking/plugins/tree/master/plugins/ipam">IPAM plugin code</a></li>
+      <li>dhcp, host-local and static</li>
+    </ul>
+  </li>
+  <li>each plugin is implemented by a binary
+    <ul>
+      <li>normally the plugin binaries are installed <code class="highlighter-rouge">/opt/cni/bin</code>
+</li>
+      <li>
+<strong>NOTE</strong> that these are plugin binaries, not daemon/controller binaries like <code class="highlighter-rouge">flanneld</code>
+</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">--network-plugin=cni</code></li>
+  <li>
+<code class="highlighter-rouge">/etc/cni/net.d</code> as conf directory</li>
+  <li>
+<a href="https://github.com/containernetworking/cni">github</a>
+    <ul>
+      <li>GitHub - containernetworking/cni: Container Network Interface - networking for Linux containers</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/containernetworking/plugins">plugins github</a>
+    <ul>
+      <li>GitHub - containernetworking/plugins: Some standard networking plugins, maintained by the CNI team.</li>
+      <li>
+<code class="highlighter-rouge">main</code> contains default plugins like bridge, macvlan, ipvlan, etc</li>
+      <li>
+<code class="highlighter-rouge">meta</code> contains flannel, calico, etc</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/containernetworking/cni/blob/master/SPEC.md">actual spec</a>
+    <ul>
+      <li>cni/SPEC.md at master · containernetworking/cni · GitHub</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://www.dasblinkenlichten.com/understanding-cni-container-networking-interface/">dasb</a>
+    <ul>
+      <li>Das Blinken Lichten · Understanding CNI (Container Networking Interface)</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://www.dasblinkenlichten.com/using-cni-docker/">dasb</a>
+    <ul>
+      <li>Das Blinken Lichten · Using CNI with Docker</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.altoros.com/blog/kubernetes-networking-writing-your-own-simple-cni-plug-in-with-bash/">altoros</a>
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>Kubernetes Networking: How to Write Your Own CNI Plug-in with Bash</td>
+              <td>Altoros</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>shell script for managing bridge, subnet, allocating new IP, etc</li>
+    </ul>
+  </li>
+  <li>plugin can have delegate
+    <ul>
+      <li>the flannel plugin delegates bridge creation and IPAM to the <code class="highlighter-rouge">bridge</code> plugin</li>
+    </ul>
+  </li>
+  <li>plugin can be chained
+    <ul>
+      <li>looks like it started with CNI spec 0.3.0</li>
+      <li><code class="highlighter-rouge">plugins: [{type: calico}, {type: portMap}]</code></li>
+      <li>also called config list</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="plugins">
+<a class="anchor" href="#plugins" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plugins</h3>
+<ul>
+  <li>bridge
+    <ul>
+      <li>find the bridge (default to <code class="highlighter-rouge">cni0</code>)</li>
+      <li>connects both ends of veth</li>
+    </ul>
+  </li>
+  <li>macvlan
+    <ul>
+      <li>a virtual device enslaved to a physical device, e.g. <code class="highlighter-rouge">eth0</code>
+</li>
+      <li>WLAN device cannot be enslaved to</li>
+      <li>works with a IPAM plugin</li>
+      <li>supports a lot of different mode, defaults to <code class="highlighter-rouge">bridge</code>
+        <ul>
+          <li>not sure what the different modes are</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>ipvlan</li>
+  <li>ptp
+    <ul>
+      <li>point to point between container and host</li>
+    </ul>
+  </li>
+  <li>host-device
+    <ul>
+      <li>move an existing device into container netns</li>
+    </ul>
+  </li>
+  <li>loopback
+    <ul>
+      <li>creates the <code class="highlighter-rouge">lo</code> device in netns</li>
+    </ul>
+  </li>
+  <li>flannel
+    <ul>
+      <li>works with <code class="highlighter-rouge">flanneld</code>
+</li>
+      <li>delegates to <code class="highlighter-rouge">bridge</code> plugin</li>
+      <li>default <code class="highlighter-rouge">bridge</code> configuration is to use <code class="highlighter-rouge">host-local</code> IPAM</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="ipam-plugins">
+<a class="anchor" href="#ipam-plugins" aria-hidden="true"><span class="octicon octicon-link"></span></a>IPAM Plugins</h3>
+<ul>
+  <li>host-local
+    <ul>
+      <li><a href="https://github.com/containernetworking/cni/issues/303">discussion on static IP</a></li>
+    </ul>
+  </li>
+  <li>static
+    <ul>
+      <li>seems useless as it can only give on set of static IP</li>
+    </ul>
+  </li>
+  <li>DHCP</li>
+</ul>
+
+<h3 id="plugin-api">
+<a class="anchor" href="#plugin-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plugin API</h3>
+<ul>
+  <li>
+<code class="highlighter-rouge">ADD</code>
+    <ul>
+      <li>INPUT: network namespace, network configuration</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">DELETE</code></li>
+  <li><code class="highlighter-rouge">VERSION</code></li>
+  <li><code class="highlighter-rouge">GET</code></li>
+</ul>
+
+<h3 id="flannel">
+<a class="anchor" href="#flannel" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flannel</h3>
+<ul>
+  <li>etcd backed overlay</li>
+  <li>cross host shared routing table stored in etcd</li>
+  <li>each node has its own subnet</li>
+  <li>
+<code class="highlighter-rouge">flanneld</code>
+    <ul>
+      <li>manages the subnet</li>
+      <li>distribute IP address for each pod</li>
+    </ul>
+  </li>
+  <li>configuration exposed with <code class="highlighter-rouge">/run/flannel/subnet.env</code>
+</li>
+  <li>on host
+    <ul>
+      <li>
+<code class="highlighter-rouge">cni0</code> is like docker bridge that all pods connects to</li>
+      <li>
+<code class="highlighter-rouge">flannel.1</code> is a virtual device that wraps all data in VXLAN (if
+necessary) and routes all data to <code class="highlighter-rouge">eth0</code> on the host</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://blog.laputa.io/kubernetes-flannel-networking-6a1cb1f8ec7c">laputa</a>
+    <ul>
+      <li>very detailed explaination how flannel works</li>
+      <li>container’s gateway is <code class="highlighter-rouge">cni0</code>, packets goes to <code class="highlighter-rouge">cni0</code> first (10.96.1.1/24)</li>
+      <li>routing rule forward the packet to <code class="highlighter-rouge">flannel.1</code> (10.96.1.0/16)</li>
+      <li>
+<code class="highlighter-rouge">flannel.1</code> is a TUN device, which is a kernel virtual L2 device</li>
+      <li>all incoming/outgoing packets gets forwarded to <code class="highlighter-rouge">flanneld</code>
+</li>
+      <li>
+<code class="highlighter-rouge">flanneld</code> knows how to forward/tunnel the packets to which hosts, as all <code class="highlighter-rouge">flanneld</code> are connected to <code class="highlighter-rouge">etcd</code> cluster where such information is stored</li>
+      <li><code class="highlighter-rouge">etcdctl ls /coreos.com/network/subnets</code></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/coreos/flannel/blob/master/Documentation/alicloud-vpc-backend.md">alicloud</a>
+    <ul>
+      <li>flannel alicloud VPC backend</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="calico">
+<a class="anchor" href="#calico" aria-hidden="true"><span class="octicon octicon-link"></span></a>Calico</h3>
+<ul>
+  <li>Layer 3 model</li>
+  <li>Uses BGP</li>
+  <li>No NATting</li>
+</ul>
+
+<h3 id="weave">
+<a class="anchor" href="#weave" aria-hidden="true"><span class="octicon octicon-link"></span></a>Weave</h3>
+<ul>
+  <li>Overlay networking</li>
+  <li>Compatible with both libnetwork and k8s</li>
+</ul>
+
+<h3 id="canal">
+<a class="anchor" href="#canal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Canal</h3>
+<ul>
+  <li>canal = calico + flannel</li>
+  <li>company behind it is called Tigera</li>
+  <li>technically it’s possible to combine networking from flannel and policy side
+from calico</li>
+  <li><a href="https://www.projectcalico.org/canal-tigera/">news</a></li>
+</ul>
+
+<h3 id="kubenet-plugin">
+<a class="anchor" href="#kubenet-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>kubenet plugin</h3>
+<ul>
+  <li>simple plugin implementation</li>
+  <li>no cross-node networking by itself</li>
+  <li>implements: <code class="highlighter-rouge">cbr0</code>
+</li>
+</ul>
+
+<h2 id="dns-1">
+<a class="anchor" href="#dns-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>DNS</h2>
+<ul>
+  <li>services
+    <ul>
+      <li>each normal service has an DNS entry like <code class="highlighter-rouge">foo</code>.
+        <ul>
+          <li>resolves to cluster IP of the service</li>
+        </ul>
+      </li>
+      <li>headless service has an DNS entry like <code class="highlighter-rouge">foo</code>.
+        <ul>
+          <li>resolves to IPs from all end point that’s associated with the service</li>
+          <li>client side round robin expected</li>
+        </ul>
+      </li>
+      <li>FQDN is <code class="highlighter-rouge">service.namespace.svc.cluster.local</code>
+        <ul>
+          <li>
+<code class="highlighter-rouge">cluster.local</code> part can be configured with kubelet</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>pod
+    <ul>
+      <li>each pod has DNS entry like <code class="highlighter-rouge">1-2-3-4.default.pod.cluster.local</code> where
+<code class="highlighter-rouge">1-2-3-4</code> is the IP of the POD</li>
+      <li>
+<code class="highlighter-rouge">spec.subDomain</code> can be used to specify subdomain, after which,
+<code class="highlighter-rouge">hostname.subdomain.ns.cluster.local</code> is in the DNS records</li>
+    </ul>
+  </li>
+  <li>each pod can have a <code class="highlighter-rouge">dnsPolicy</code> defined
+    <ul>
+      <li>
+<code class="highlighter-rouge">Default</code>: inherit configuration from node</li>
+      <li>
+<code class="highlighter-rouge">ClusterFirst</code>: queries are sent to <code class="highlighter-rouge">kube-dns</code> service
+        <ul>
+          <li>this is the default behavior</li>
+        </ul>
+      </li>
+      <li>
+<code class="highlighter-rouge">ClusterFirstWithHostNet</code> ???</li>
+    </ul>
+  </li>
+  <li>deployed as an add-on
+    <ul>
+      <li><a href="https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/dns/README.md">github md</a></li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">/etc/resolve.conf</code> adds a lot of search for k8s namespaces
+    <ul>
+      <li><code class="highlighter-rouge">search default.svc.cluster.local svc.cluster.local cluster.local wise2c.com</code></li>
+    </ul>
+  </li>
+  <li>actual records are stored in etcd for internal resolver to query through HTTP</li>
+  <li>
+<code class="highlighter-rouge">dnsmasq</code> handles caching of records</li>
+  <li>even if a pod is using host network, DNS resolving works as expected</li>
+  <li>it is possible to setup sub domain servers and upstream servers
+    <ul>
+      <li><a href="https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/">here</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://sysdig.com/blog/understanding-how-kubernetes-services-dns-work/">sysdig</a>
+    <ul>
+      <li>tracing DNS using sysdig</li>
+    </ul>
+  </li>
+  <li>trouble-shooting
+    <ul>
+      <li><code class="highlighter-rouge">kubectl get pods --namespace=kube-system -l k8s-app=kube-dns</code></li>
+      <li><code class="highlighter-rouge">kubectl logs --namespace=kube-system $(kubectl get pods --namespace=kube-system -l k8s-app=kube-dns -o name) -c kubedns</code></li>
+      <li><code class="highlighter-rouge">kubectl logs --namespace=kube-system $(kubectl get pods --namespace=kube-system -l k8s-app=kube-dns -o name) -c dnsmasq</code></li>
+      <li><code class="highlighter-rouge">kubectl logs --namespace=kube-system $(kubectl get pods --namespace=kube-system -l k8s-app=kube-dns -o name) -c healthz</code></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/kubernetes/dns/blob/master/docs/specification.md">spec</a>
+    <ul>
+      <li>kubernetes DNS spec</li>
+      <li>zone is like <code class="highlighter-rouge">cluster.local</code>
+</li>
+      <li>
+<code class="highlighter-rouge">dns-version TXT</code> stores schema version</li>
+      <li>
+<code class="highlighter-rouge">A</code> record for <code class="highlighter-rouge">svc.ns.zone</code>
+</li>
+      <li>for headless service, <code class="highlighter-rouge">svc.ns.zone</code> resolves to endpiont IP</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://rsmitty.github.io/Manually-Checking-Out-KubeDNS/">internal</a>
+    <ul>
+      <li>what’s in the pod: etcd, kube2sky, skydns, exechealthz</li>
+      <li>where in etcd is the records</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="networking-policy">
+<a class="anchor" href="#networking-policy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Networking Policy</h2>
+<ul>
+  <li>introduced in 1.3, GA in 1.7</li>
+  <li>ingress policy only as of now</li>
+  <li><code class="highlighter-rouge">apiVersion: networking.k8s.io/v1</code></li>
+  <li><code class="highlighter-rouge">kind: NetworkPolicy</code></li>
+  <li>
+<code class="highlighter-rouge">spec.podSelector</code>
+    <ul>
+      <li>pod that’s affected</li>
+      <li>empty means all</li>
+      <li>
+<code class="highlighter-rouge">matchLabels</code> or <code class="highlighter-rouge">matchExpressions[]</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">spec.ingress[]</code>
+    <ul>
+      <li>empty means nothing is allowed</li>
+      <li>list of white listed items</li>
+      <li><code class="highlighter-rouge">ingress[].from.podSelector</code></li>
+      <li><code class="highlighter-rouge">ingress[].from.nameSpaceSelector</code></li>
+      <li>
+<code class="highlighter-rouge">ingress[].ports</code>
+        <ul>
+          <li>empty or missing means all ports, i.e. not restricted</li>
+          <li>otherwise white listing</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="storage">
+<a class="anchor" href="#storage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Storage</h1>
+<ul>
+  <li>in k8s’ term, <strong>persistent</strong> disk</li>
+  <li>supports:
+    <ul>
+      <li>docker volume</li>
+      <li>GCE disk</li>
+      <li>AWS EBS</li>
+      <li>NFS</li>
+      <li>gitrepo, clones a git repo</li>
+    </ul>
+  </li>
+  <li>supports for cloud storage is specified as <code class="highlighter-rouge">spec.volumes</code>
+    <ul>
+      <li>e.g <code class="highlighter-rouge">spec.volumes.gcePersistentDisk</code>
+</li>
+      <li>this implies that the core kubernetes code understands the syntax</li>
+      <li>so FlexVolume might be the only option when one wants to add customized volumes</li>
+    </ul>
+  </li>
+  <li>PV reclaim policy
+    <ul>
+      <li>Retain, where the volume is in a released state but the data is retained and can be recovered.</li>
+      <li>Delete, where the volume is deleted.</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/kubernetes/community/blob/master/sig-storage/volume-plugin-faq.md">faq</a>
+    <ul>
+      <li>k8s volume plugin FAQ</li>
+      <li>three methods:
+        <ol>
+          <li>in tree volume plugin</li>
+          <li>out-of-tree FlexVolume driver</li>
+          <li>out-of-tree CSI driver</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>
+<a href="https://rancher.com/blog/2018/2018-09-20-unexpected-kubernetes-part-1/?utm_campaign=Blog%202018&amp;utm_content=77602215&amp;utm_medium=social&amp;utm_source=twitter">sheng yang</a>
+    <ul>
+      <li>rants about PV, PVC, StorageClass, etc by an Rancher engineer</li>
+      <li>special rants about <code class="highlighter-rouge">Volume</code> object</li>
+      <li><a href="https://rancher.com/blog/2018/2018-10-11-unexpected-kubernetes-part-2/">part-2</a></li>
+      <li>verdict: use storage in the following order when possible:
+        <ul>
+          <li>use Volume when necessary (cm, secrete, etc)</li>
+          <li>use provisioner where can</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+<a href="https://softwareengineeringdaily.com/2019/01/11/why-is-storage-on-kubernetes-is-so-hard/">software engineering daily, simsek</a>
+    <ul>
+      <li>why is storage on kubernetes so hard</li>
+      <li>pretty decent summary of storage on kubernetes</li>
+      <li>CSI, rook, PV, PVC</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="volume-types">
+<a class="anchor" href="#volume-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Volume types</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">emptyDir</code>
+    <ul>
+      <li>for scratch space</li>
+      <li>will be removed once pod is gone</li>
+      <li>use host storage by default, can be configured to use RAM</li>
+      <li>
+<code class="highlighter-rouge">sizeLimit</code> can be used to limit its size</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">hostPath</code>
+    <ul>
+      <li>similar to docker’s <code class="highlighter-rouge">/hostpath:/containerpath</code>
+</li>
+      <li>given target will be created as an empty directory owned by root if it does not already exist.</li>
+      <li>? What if it already exists?</li>
+      <li>data only writable by <code class="highlighter-rouge">root</code>
+</li>
+      <li>??? remove once pod is gone?</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">nfs</code></li>
+  <li><code class="highlighter-rouge">iscsi</code></li>
+  <li><code class="highlighter-rouge">secret</code></li>
+  <li>
+<code class="highlighter-rouge">persistentVolumeClaim</code>
+    <ul>
+      <li>
+<code class="highlighter-rouge">spec.storageClassName</code> what type of storage to claim</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">gitRepo</code>
+    <ul>
+      <li>allow to specify git repo with commit hash</li>
+      <li>looks like this is not the <a href="https://github.com/kubernetes/kubernetes/issues/17676">right way</a> and is deprecated</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="persistentvolume">
+<a class="anchor" href="#persistentvolume" aria-hidden="true"><span class="octicon octicon-link"></span></a>PersistentVolume</h2>
+<ul>
+  <li>aka PV</li>
+  <li>it’s like a node, which means that it’s a cluster resource provided by an
+admin</li>
+  <li>
+<strong>NOT</strong> namespaced!!!</li>
+  <li>procedure
+    <ul>
+      <li>create persistent volume <code class="highlighter-rouge">kubctl create -f</code>
+</li>
+      <li>create persistent volume claim, status of that volume changes to <code class="highlighter-rouge">BOUND</code>
+</li>
+      <li>create pod that uses the volume</li>
+    </ul>
+  </li>
+  <li>life-cycle
+    <ul>
+      <li>static volume: provisioned by admin and available all the time</li>
+      <li>dynamic volume: when <code class="highlighter-rouge">StorageClass</code> is defined</li>
+      <li><code class="highlighter-rouge">volume.beta.kubernetes.io/storage-class: "example-nfs"</code></li>
+    </ul>
+  </li>
+  <li>storage class
+    <ul>
+      <li>PVC can request for a certain <strong>class</strong> of storage. E.g. google</li>
+      <li>PVC class has to match PV class for it to bound</li>
+      <li>in this case, the storage can be automatically allocated from the vendor</li>
+      <li><code class="highlighter-rouge">storageClassName</code></li>
+    </ul>
+  </li>
+  <li>access mode
+    <ul>
+      <li>
+<code class="highlighter-rouge">ReadWriteOnce</code> single node only, <code class="highlighter-rouge">R+W</code>
+</li>
+      <li>
+<code class="highlighter-rouge">ReadWriteMany</code> many nodes, <code class="highlighter-rouge">R+W</code>
+</li>
+      <li>
+<code class="highlighter-rouge">ReadOnlyMany</code> many nodes, <code class="highlighter-rouge">R</code>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="chapter-6">
+<a class="anchor" href="#chapter-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Chapter 6</h3>
+<p>&lt;img src=”http://borlandc.pek3b.qingstor.com/k8s/pvc-provisoner-chapter6.png” width=75%&gt;</p>
+
+<h2 id="spec">
+<a class="anchor" href="#spec" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spec</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">spec.volumes</code>
+    <ul>
+      <li>
+<code class="highlighter-rouge">emptyDir</code>, <code class="highlighter-rouge">hostPath</code>, etc</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">spec.containers.volumeMounts</code>
+    <ul>
+      <li>
+<code class="highlighter-rouge">mountPath</code>: container path</li>
+      <li>
+<code class="highlighter-rouge">name</code>: which volume</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="flexvolume">
+<a class="anchor" href="#flexvolume" aria-hidden="true"><span class="octicon octicon-link"></span></a>FlexVolume</h2>
+<ul>
+  <li><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/flexvolume.md">github md</a></li>
+  <li>installation is by copying binary into a specific path on node
+    <ul>
+      <li><code class="highlighter-rouge">/usr/libexec/kubernetes/kubelet-plugins/volume/exec/&lt;vendor~driver&gt;/&lt;driver&gt;</code></li>
+      <li>or it has to be <code class="highlighter-rouge">/driver/driver</code>
+</li>
+    </ul>
+  </li>
+  <li>alpha from 1.2, GA from 1.8
+    <ul>
+      <li>supposedly replaced by CSI but k8s will <a href="https://github.com/kvaps/kube-loop-flexvolume">continue supports it</a>
+</li>
+    </ul>
+  </li>
+  <li>API are defined as argument to the binary <code class="highlighter-rouge">driver-exec &lt;args&gt;</code>. Return of the API
+should be in JSON format
+    <ul>
+      <li><code class="highlighter-rouge">init</code></li>
+      <li>
+<code class="highlighter-rouge">attach</code>
+        <ul>
+          <li>in: json option, node name</li>
+          <li>useful for remote volumes such as EBS</li>
+          <li>this is optional, return <code class="highlighter-rouge">Not supported</code> in status string</li>
+        </ul>
+      </li>
+      <li>
+<code class="highlighter-rouge">mount</code>: Mount device mounts the device to a global path <strong>on the host</strong>
+which individual pods can then bind mount.
+        <ul>
+          <li>in: <code class="highlighter-rouge">mount_dir, mount device, json options</code>
+</li>
+        </ul>
+      </li>
+      <li><code class="highlighter-rouge">unmount</code></li>
+      <li>
+<code class="highlighter-rouge">detach</code>
+        <ul>
+          <li>in: json option, node name</li>
+          <li>optional</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>example are under <code class="highlighter-rouge">git://examples/volumes/flexvolume</code>
+</li>
+  <li>
+<a href="http://leebriggs.co.uk/blog/2017/03/12/kubernetes-flexvolumes.html">leebrigg</a>
+    <ul>
+      <li>nice introduction</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/rancher/rancher-flexvol">rancher</a></li>
+  <li><a href="https://github.com/fvigotti/cifs_k8s_plugin/blob/master/cifs.sh">cifs</a></li>
+</ul>
+
+<h2 id="dynamic-provisioning">
+<a class="anchor" href="#dynamic-provisioning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dynamic Provisioning</h2>
+<ul>
+  <li>
+<a href="https://github.com/kubernetes-incubator/external-storage">out of tree dynamic pv</a>
+    <ul>
+      <li><a href="http://blog.kubernetes.io/2016/10/dynamic-provisioning-and-storage-in-kubernetes.html">blog</a></li>
+      <li>storage class is global, not namespaced</li>
+      <li>PVC is namespaced</li>
+    </ul>
+  </li>
+  <li>objects involved
+    <ul>
+      <li>
+<code class="highlighter-rouge">StorageClass</code> defines a new storage class backed by code
+        <ul>
+          <li>
+<code class="highlighter-rouge">provisioner</code> has to match the actual POD envar for the handler to
+work</li>
+          <li><a href="https://github.com/kubernetes-incubator/external-storage/blob/master/nfs-client/cmd/nfs-client-provisioner/provisioner.go">code is here</a></li>
+        </ul>
+      </li>
+      <li>
+<code class="highlighter-rouge">PersistenVolumeClaim</code>
+        <ul>
+          <li>with <code class="highlighter-rouge">volume.beta.kubernetes.io/storage-class</code>
+</li>
+          <li>triggers the Pod to dynamically create a PVC</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="internal">
+<a class="anchor" href="#internal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Internal</h3>
+<ul>
+  <li>a controller is implemented that listens on volume creation and dynamically creates <code class="highlighter-rouge">v1.PersistentVolume</code> objects that will be handled by k8s</li>
+  <li>it creats a provision controller and run it non stop</li>
+</ul>
+
+<h2 id="csi">
+<a class="anchor" href="#csi" aria-hidden="true"><span class="octicon octicon-link"></span></a>CSI</h2>
+<ul>
+  <li>Container Storage Interface</li>
+  <li>an initiative to unify the storage interface of Container Orchestrator Systems (COs) like Kubernetes, Mesos, Docker swarm, cloud foundry, etc. combined with storage vendors like Ceph, Portworx, NetApp etc</li>
+  <li>cross orchestration platform</li>
+  <li>
+<strong>Bugs in volume plugins can crash critical Kubernetes components, instead of just the plugin.</strong>
+    <ul>
+      <li>!!!</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/container-storage-interface/spec/releases/tag/v1.0.0">spec 1.0</a>
+    <ul>
+      <li><a href="https://github.com/container-storage-interface/spec/blob/master/spec.md">markdown</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://kubernetes.io/blog/2019/01/15/container-storage-interface-ga/">blog, k8s</a>
+    <ul>
+      <li><strong>Container Storage Interface (CSI) for Kubernetes GA</strong></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://medium.com/google-cloud/understanding-the-container-storage-interface-csi-ddbeb966a3b">medium, google-cloud</a>
+    <ul>
+      <li><strong>Understanding the Container Storage Interface (CSI)</strong></li>
+      <li>nice colorful architecturual diagrams</li>
+    </ul>
+  </li>
+  <li><a href="https://schd.ws/hosted_files/kccnceu18/fb/CloudNativeCon%20EU%202018%20CSI%20Jie%20Yu.pdf">pdf, yu jie</a></li>
+  <li>
+<a href="https://arslan.io/2018/06/21/how-to-write-a-container-storage-interface-csi-plugin/">fatih, how-to</a>
+    <ul>
+      <li><strong>How to write a Container Storage Interface (CSI) plugin</strong></li>
+      <li>all functions have to be idempotent</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/kubernetes-csi/drivers">driver, github</a>
+    <ul>
+      <li>https://github.com/kubernetes-csi/drivers</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="arch-1">
+<a class="anchor" href="#arch-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arch</h3>
+<p>&lt;img src=”http://borlandc.pek3b.qingstor.com/k8s/csi-arch-1.png” width=75%&gt;</p>
+
+<h3 id="api">
+<a class="anchor" href="#api" aria-hidden="true"><span class="octicon octicon-link"></span></a>API</h3>
+<ul>
+  <li>gRPC</li>
+  <li>
+<code class="highlighter-rouge">service Identity</code>
+    <ul>
+      <li>both node and controller plugin have to implement this</li>
+      <li><code class="highlighter-rouge">GetPluginInfo()</code></li>
+      <li><code class="highlighter-rouge">GetPluginCapabilities()</code></li>
+      <li><code class="highlighter-rouge">Probe()</code></li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">service Controller</code>
+    <ul>
+      <li>controller plugin must implement this</li>
+      <li>cloud providers has to implement this</li>
+      <li><code class="highlighter-rouge">CreateVolume()</code></li>
+      <li><code class="highlighter-rouge">DeleteVolume()</code></li>
+      <li><code class="highlighter-rouge">ControllerPublishVolume()</code></li>
+      <li><code class="highlighter-rouge">ControllerUnpublishVolume()</code></li>
+      <li><code class="highlighter-rouge">ValidateVolumeCapabilities()</code></li>
+      <li><code class="highlighter-rouge">ListVolumes()</code></li>
+      <li><code class="highlighter-rouge">GetCapacities()</code></li>
+      <li><code class="highlighter-rouge">ControllerGetCapabilities()</code></li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">service Node</code>
+    <ul>
+      <li>node plugin must implement  this</li>
+      <li><code class="highlighter-rouge">NodeStageVolume()</code></li>
+      <li><code class="highlighter-rouge">NodeUnstageVolume()</code></li>
+      <li><code class="highlighter-rouge">NodePublishVolume()</code></li>
+      <li><code class="highlighter-rouge">NodeUnpublishVolume()</code></li>
+      <li><code class="highlighter-rouge">NodeGetId()</code></li>
+      <li><code class="highlighter-rouge">NodeGetCapabilities()</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="api-authentication-and-authorization">
+<a class="anchor" href="#api-authentication-and-authorization" aria-hidden="true"><span class="octicon octicon-link"></span></a>API Authentication and Authorization</h1>
+<ul>
+  <li>API requests are tied to a user (see below) or executed anonymously</li>
+  <li>2 kinds of user: normal user and service account. service account is managed
+by kubernetes, normal user is not</li>
+  <li>Authz
+    <ul>
+      <li>node</li>
+      <li>APAC</li>
+      <li>RBAC</li>
+      <li>Webhook</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="service-account">
+<a class="anchor" href="#service-account" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service Account</h2>
+<ul>
+  <li>injects auth info into pods to talk to kubernetes services like the apiserver
+    <ul>
+      <li>
+<code class="highlighter-rouge">spec.serviceAccountName</code> in pod spec</li>
+    </ul>
+  </li>
+  <li>this is a namespaced resource</li>
+  <li>as oppose to user account that’s for humans</li>
+  <li>when no service account is specified for a Pod, it’ll be default</li>
+  <li>default service account is injected into <code class="highlighter-rouge">/var/run/secrets/kubernetes.io/serviceaccount</code>
+    <ul>
+      <li>namespace</li>
+      <li>
+<code class="highlighter-rouge">ca.crt</code> (the global root certificate), allows secure communication with API server</li>
+      <li>token, says who you are and what you can do</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="nice-picture">
+<a class="anchor" href="#nice-picture" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nice Picture</h3>
+<p>&lt;img src=”http://borlandc.pek3b.qingstor.com/k8s/k8s-service-account.png” width=75%&gt;</p>
+
+<h2 id="rbac">
+<a class="anchor" href="#rbac" aria-hidden="true"><span class="octicon octicon-link"></span></a>RBAC</h2>
+<ul>
+  <li>role based access control</li>
+  <li>introduced in 1.6 as beta</li>
+  <li>apiserver needs to start with <code class="highlighter-rouge">--authorization-mode=RBAC</code>
+</li>
+  <li>4 kinds of object defined
+    <ul>
+      <li>Role</li>
+      <li>ClusterRole</li>
+      <li>RoleBinding</li>
+      <li>ClusterRoleBinding</li>
+    </ul>
+  </li>
+  <li>a <strong>Role</strong> is a collection of permissions.
+    <ul>
+      <li>by default a Role is bound to a namespace</li>
+      <li>there is <strong>ClusterRole</strong> that applies across the cluter</li>
+    </ul>
+  </li>
+  <li>a <strong>RoleBinding</strong> binds a role to a <strong>subject</strong>
+    <ul>
+      <li>subject can be
+        <ul>
+          <li>user</li>
+          <li>group</li>
+          <li>service account</li>
+        </ul>
+      </li>
+      <li>binding can be namespaced or cluster level across namespaces</li>
+    </ul>
+  </li>
+  <li>CLI
+    <ul>
+      <li><code class="highlighter-rouge">kubectl get clusterroles --namespace=kube-system</code></li>
+    </ul>
+  </li>
+  <li><a href="http://blog.kubernetes.io/2017/04/rbac-support-in-kubernetes.html">official blog</a></li>
+</ul>
+
+<h2 id="oidc-plugin">
+<a class="anchor" href="#oidc-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>OIDC Plugin</h2>
+<ul>
+  <li>CLI
+    <ul>
+      <li><code class="highlighter-rouge">--oidc-issuer-url=URL</code></li>
+      <li><code class="highlighter-rouge">--oidc-client-id=ID</code></li>
+      <li><code class="highlighter-rouge">--oidc-username-claim=email</code></li>
+      <li><code class="highlighter-rouge">--oidc-groups-claim=groups</code></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/dexidp/dex/blob/master/Documentation/kubernetes.md">dex, k8s</a>
+    <ul>
+      <li>Kubernetes authentication through dex</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="links-1">
+<a class="anchor" href="#links-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+<ul>
+  <li><a href="https://kubernetes.io/docs/admin/authentication/">k8s auth</a></li>
+  <li>
+<a href="https://banzaicloud.com/blog/k8s-rbac/">rbac, banzaicloud</a>
+    <ul>
+      <li>mainly talks about LDAP RBAC integration but has nice explannation of authenticating with API server</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="resource-definition-file">
+<a class="anchor" href="#resource-definition-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resource Definition File</h1>
+<ul>
+  <li>YAML file that presents a spec for a resource
+    <ul>
+      <li>can also be JSON</li>
+    </ul>
+  </li>
+  <li>Sections
+    <ul>
+      <li><code class="highlighter-rouge">apiVersion</code></li>
+      <li><code class="highlighter-rouge">kind</code></li>
+      <li><code class="highlighter-rouge">metadata</code></li>
+      <li><code class="highlighter-rouge">spec</code></li>
+    </ul>
+  </li>
+  <li>
+<strong>NOTE</strong>: it’s not possible to use environment variable in spec file</li>
+</ul>
+
+<h1 id="kubectl">
+<a class="anchor" href="#kubectl" aria-hidden="true"><span class="octicon octicon-link"></span></a>kubectl</h1>
+<ul>
+  <li>kubectl supports one version forward and backward skew</li>
+  <li>looks for <code class="highlighter-rouge">$HOME/.kube/config</code> file for configuration
+    <ul>
+      <li>can also be specified with <code class="highlighter-rouge">--kubeconfig</code> flag</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">export KUBERNETES_MASTER=http://host01:8080</code>
+    <ul>
+      <li>defines master to communicate with</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">kubectl get pod pod1</code></li>
+  <li><code class="highlighter-rouge">kubectl get pods</code></li>
+  <li>
+<code class="highlighter-rouge">kubectl get pod -l run=my-nginx</code>
+    <ul>
+      <li>get pod with specific label</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">kubectl get deployments</code></li>
+  <li>
+<code class="highlighter-rouge">kubectl config use-context xxx</code>
+    <ul>
+      <li>swtich context (environment)</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl run my-web --image=nginx --port=80</code>
+    <ul>
+      <li>creates a <strong>deployment</strong> object</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl expose deployment my-web --target-port=80 --type=NodePort</code>
+    <ul>
+      <li>creates a service that exposes a deployment</li>
+      <li>allows external access through <code class="highlighter-rouge">NodePort</code>
+</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">kubectl scale deployment hello-node --replicas=4</code></li>
+  <li>
+<code class="highlighter-rouge">kubectl get svc</code>
+    <ul>
+      <li>list services</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectrl create -f storage-memory.yaml</code>
+    <ul>
+      <li>create pod, namespace etc</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl create namespace staging</code>
+    <ul>
+      <li>create new namespace</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl exec foo-37kj5 -i -t -- sh</code>
+    <ul>
+      <li>like <code class="highlighter-rouge">docker exec</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl exec -it two-containers -c nginx-container -- /bin/bash</code>
+    <ul>
+      <li>specifies pod <strong>and</strong> container</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl logs foo-37kj5</code>
+    <ul>
+      <li>check log from a pod</li>
+      <li>
+<code class="highlighter-rouge">-c</code> to specify a container</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl get pod nginx -o go-template=''</code>
+    <ul>
+      <li>get IP of pod named <code class="highlighter-rouge">nginx</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl describe namespace/test</code>
+    <ul>
+      <li>describe stuff</li>
+      <li>other stuff maybe <code class="highlighter-rouge">rc/busybox-ns</code>
+</li>
+      <li><code class="highlighter-rouge">kubectl describe service ghost</code></li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl set image deployment/hello-node hello-node=gcr.io/$PROJECT_ID/hello-node:v2</code>
+    <ul>
+      <li>upgrade a service by setting a new version of image</li>
+      <li>won’t work if the image name stays the same, e.g. <code class="highlighter-rouge">:latest</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl delete pod nginx</code>
+    <ul>
+      <li>
+<code class="highlighter-rouge">kubectl delete pods &lt;pod&gt; --grace-period=0 --force</code> to force it</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl delete rc nginx</code>
+    <ul>
+      <li>delete replication controller</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl delete svc nginx</code>
+    <ul>
+      <li>delete service</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">kubectl logs -c container pod</code></li>
+  <li>
+<code class="highlighter-rouge">kubectl config use-context k3</code>
+    <ul>
+      <li>switch cluster</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl cordon $NODENAME</code>
+    <ul>
+      <li>make node unschedlable</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">kubectl get nodes -o jsonpath='{range.items[*].metadata}{.name} {end}'</code></li>
+  <li>
+<code class="highlighter-rouge">kubectl get pod liang-web-3685169472-vbxh6 -o jsonpath='{.status.podIP}'</code>
+    <ul>
+      <li>specific information retrieval</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl patch node k8s-node-1 -p '{"spec":{"unschedulable":true}}</code>
+    <ul>
+      <li>patch a node so that it’ll not be scheduled on</li>
+      <li><code class="highlighter-rouge">kubectl patch (-f FILENAME TYPENAME) -p PATCH</code></li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl edit deploy/orchestration</code>
+    <ul>
+      <li>fire up editor and edit YAML definition of a deployment</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl convert -f pod.yaml --output-version v1</code>
+    <ul>
+      <li>convert/migrate file between API version</li>
+      <li>can be done locally or through API server</li>
+      <li>schema are stored under <code class="highlighter-rouge">$HOME/.kube/schema/</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl explain --recursive pod</code>
+    <ul>
+      <li>describes what a pod definition is</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl get pods --all-namespaces -o custom-columns=NAME:.metadata.name,NAMESPACE:.metadata.namespace,QOS-CLASS:.status.qosClass</code>
+    <ul>
+      <li>customized field</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">kubectl get rs,secrets -o json --namespace old | jq '.items[].metadata.namespace = "new"' | kubectl create -f  -</code></li>
+  <li>
+<code class="highlighter-rouge">kubectl get node -v8</code>
+    <ul>
+      <li>very verbose, good for debugging</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000</code>
+    <ul>
+      <li>
+<code class="highlighter-rouge">port-forward</code> forward one or more local ports to a pod</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl cordon</code>
+    <ul>
+      <li>make the node unschedulable</li>
+      <li>same as <code class="highlighter-rouge">node.Spec.Unschedulable=true</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl drain</code>
+    <ul>
+      <li>first it <em>cordon</em> the node</li>
+      <li>then does <em>evict</em> of pods
+        <ul>
+          <li>
+            <blockquote>
+              <p>1.7</p>
+            </blockquote>
+          </li>
+        </ul>
+      </li>
+      <li>pods can be filtered, e.g. <code class="highlighter-rouge">--ignore-daemonsets</code>
+</li>
+      <li><a href="https://banzaicloud.com/blog/drain/">banzaicloud</a></li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl get secret gitlab-registry --namespace=revsys-com --export -o yaml |\ kubectl apply --namespace=devspectrum-dev -f -</code>
+    <ul>
+      <li>copy objects betwen namespaces</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="troubleshooting">
+<a class="anchor" href="#troubleshooting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Troubleshooting</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">kubectl get cs</code>
+    <ul>
+      <li>get componentstatuses for master: scheduler, controller manager, etcd</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl top</code>
+    <ul>
+      <li>requires heapster to work</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="security">
+<a class="anchor" href="#security" aria-hidden="true"><span class="octicon octicon-link"></span></a>Security</h2>
+<ul>
+  <li><code class="highlighter-rouge">kubectl certificate approve</code></li>
+  <li><code class="highlighter-rouge">kubectl certificate deny</code></li>
+</ul>
+
+<h2 id="configuration">
+<a class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">$HOME/.kube/config</code> includes configuration for all contexts</li>
+  <li>it has several sections
+    <ul>
+      <li>cluster</li>
+      <li>context</li>
+      <li>user</li>
+    </ul>
+  </li>
+  <li>to get a new cluster into the <code class="highlighter-rouge">config</code> file, one has to merge content of <code class="highlighter-rouge">admin.conf</code>
+into it</li>
+  <li>
+<code class="highlighter-rouge">kubectl --kubeconfig ./admin.conf get nodes</code>
+    <ul>
+      <li>config file is generated by <code class="highlighter-rouge">kubeadm</code> in <code class="highlighter-rouge">/etc/kubernetes/admin/.conf</code>
+</li>
+    </ul>
+  </li>
+  <li>use the following combination
+    <ul>
+      <li>kube-ps1 + kubectx + kubens!!!</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://medium.com/@ahmetb/mastering-kubeconfig-4e447aa32c75">medium, master</a>
+    <ul>
+      <li>merge, extract, direct use of username, password</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cli">
+<a class="anchor" href="#cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Save certificates and the key as files
+ $ kubectl config set-cluster default-cluster --server=https://45.32.47.214  --certificate-authority=${CA_CERT}
+ $ kubectl config set-credentials default-admin --certificate-authority=${CA_CERT} --client-key=${ADMIN_KEY} --client-certificate=${ADMIN_CERT}
+ $ kubectl config set-context default-system --cluster=default-cluster --user=default-admin
+ $ kubectl config use-context default-system
+</code></pre></div></div>
+
+<h2 id="plugins-1">
+<a class="anchor" href="#plugins-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plugins</h2>
+<ul>
+  <li>loaded from predefined directories:
+    <ul>
+      <li><code class="highlighter-rouge">$HOME/.kube/plugin</code></li>
+      <li>e.g. <code class="highlighter-rouge">.kube/plugin/hello/plugin.yaml</code> has to follow this naming</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl plugin hello</code> runs the plugin</li>
+</ul>
+
+<h2 id="links-2">
+<a class="anchor" href="#links-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+<ul>
+  <li><a href="https://www.mankier.com/package/kubernetes-client">kubectl man pages</a></li>
+  <li>
+<a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/#download-as-part-of-the-google-cloud-sdk">installation</a>
+    <ul>
+      <li>with manual download instruction</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="yaml">
+<a class="anchor" href="#yaml" aria-hidden="true"><span class="octicon octicon-link"></span></a>YAML</h1>
+
+<h2 id="meta">
+<a class="anchor" href="#meta" aria-hidden="true"><span class="octicon octicon-link"></span></a>Meta</h2>
+<ul>
+  <li><code class="highlighter-rouge">apiVersion</code></li>
+  <li>
+<code class="highlighter-rouge">kind</code>
+    <ul>
+      <li>pod</li>
+      <li>rc</li>
+      <li>Deployment</li>
+      <li>Service</li>
+      <li>etc</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">label</code></li>
+</ul>
+
+<h2 id="spec-1">
+<a class="anchor" href="#spec-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spec</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">containers</code>: type list
+    <ul>
+      <li><code class="highlighter-rouge">image</code></li>
+      <li><code class="highlighter-rouge">name</code></li>
+      <li>
+<code class="highlighter-rouge">ports</code>
+        <ul>
+          <li>has <code class="highlighter-rouge">name</code>!!!</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="sample">
+<a class="anchor" href="#sample" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: web
+    spec:
+      containers:
+      - image: gcr.io/&lt;YOUR-PROJECT-ID&gt;/myapp
+        name: web
+        ports:
+        - name: http-server
+          containerPort: 3000
+</code></pre></div></div>
+
+<h1 id="api-1">
+<a class="anchor" href="#api-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>API</h1>
+
+<h2 id="overview">
+<a class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h2>
+<ul>
+  <li>resource catagory
+    <ul>
+      <li>workloads</li>
+      <li>discovery &amp; LB</li>
+      <li>config and storage</li>
+      <li>cluster</li>
+      <li>metadata</li>
+    </ul>
+  </li>
+  <li>resource objects
+    <ul>
+      <li>spec</li>
+      <li>status</li>
+      <li>meta</li>
+    </ul>
+  </li>
+  <li>resource operation
+    <ul>
+      <li>create</li>
+      <li>read</li>
+      <li>delete</li>
+      <li>rollback</li>
+    </ul>
+  </li>
+  <li>workloads
+    <ul>
+      <li>deployments: for stateless apps</li>
+      <li>statefullset: for persistent apps</li>
+      <li>jobs: run-to-completion apps</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="convention">
+<a class="anchor" href="#convention" aria-hidden="true"><span class="octicon octicon-link"></span></a>Convention</h2>
+<ul>
+  <li>Kind</li>
+  <li>Resource</li>
+  <li>API Group
+    <ul>
+      <li>group/version</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="links-3">
+<a class="anchor" href="#links-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+<ul>
+  <li><a href="https://kubernetes.io/docs/api-reference/v1.6/#podspec-v1-core">1.6 pod spec</a></li>
+  <li><a href="https://kubernetes.io/docs/api-reference/v1.6/#container-v1-core">1.6 container</a></li>
+  <li><a href="https://kubernetes.io/docs/api-reference/v1.6/#deployment-v1beta1-apps">1.6 deployment</a></li>
+  <li><a href="https://kubernetes.io/docs/api-reference/v1.6/#service-v1-core">1.6 service</a></li>
+  <li>
+<a href="https://docs.openshift.com/container-platform/3.7/rest_api/index.html">openshift 3.7</a>
+    <ul>
+      <li>REST API reference</li>
+      <li>not directly k8s but should be the same</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="proxy">
+<a class="anchor" href="#proxy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proxy</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">kubectl proxy -p 8001</code>
+    <ul>
+      <li>generates a proxy server that can be used as REST API server</li>
+      <li>handles authentication</li>
+      <li><code class="highlighter-rouge">curl http://localhost:8001/api/v1/namespaces/default/pods</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="ui">
+<a class="anchor" href="#ui" aria-hidden="true"><span class="octicon octicon-link"></span></a>UI</h1>
+<ul>
+  <li>
+<a href="https://codeberg.org/hjacobs/kube-web-view/">kube-web-view</a>
+    <ul>
+      <li><a href="https://kube-web-view.demo.j-serv.de/clusters/local/nodes">live demo</a></li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/herbrandson/k8dash">k8dash</a></li>
+  <li><a href="https://github.com/smpio/kubernator">kubernator</a></li>
+  <li><a href="https://github.com/kubernetes/dashboard">dashboard</a></li>
+  <li>
+<a href="https://github.com/hjacobs/kube-ops-view">kube-ops-view</a>
+    <ul>
+      <li>ops oriented, with node, cpu, ram as center view</li>
+      <li>python, js</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/hjacobs/kube-resource-report/">kube-resource-report</a>
+    <ul>
+      <li>node cost for cloud resources</li>
+      <li>Python, html (static site)</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/vmware/octant">octant, vmware</a>
+    <ul>
+      <li>…</li>
+    </ul>
+  </li>
+  <li><a href="https://srcco.de/posts/kubernetes-web-uis-in-2019.html">comp, blog</a></li>
+</ul>
+
+<h1 id="install">
+<a class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h1>
+<ul>
+  <li><a href="https://get.k8s.io">get</a></li>
+  <li><a href="https://github.com/kubernetes/kubernetes/releases/latest">binary</a></li>
+  <li>each node runs:
+    <ul>
+      <li>docker</li>
+      <li>kubelet</li>
+      <li>kube-proxy (not strictly required on a master node)</li>
+    </ul>
+  </li>
+  <li>kubernetes services, each run as a pod on the master node
+    <ul>
+      <li>apiserver</li>
+      <li>controller manager</li>
+      <li>scheduler</li>
+      <li>all runs the same <code class="highlighter-rouge">hyperkube</code> binary with different swtich
+        <ul>
+          <li>
+<code class="highlighter-rouge">hyperkube</code> is like <code class="highlighter-rouge">busybox</code>
+</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="kubernetes-the-hard-way">
+<a class="anchor" href="#kubernetes-the-hard-way" aria-hidden="true"><span class="octicon octicon-link"></span></a>kubernetes the hard way</h2>
+<ul>
+  <li>download cfssl and cfssljson</li>
+  <li>prepare compute instances (gcloud specific)</li>
+  <li>create CA
+    <ul>
+      <li><code class="highlighter-rouge">cfssl gencert -initca ca-csr.json | cfssljson -bare ca</code></li>
+      <li>creates <code class="highlighter-rouge">ca.pem</code> and <code class="highlighter-rouge">ca-key.pem</code>
+</li>
+    </ul>
+  </li>
+  <li>create admin client certificate
+    <ul>
+      <li><code class="highlighter-rouge">cfssl gencert -ca=xxx -ca-key=xxx -config=xxx -profile=xxx admin-csr.json | cfssljson -bare admin</code></li>
+      <li>ca and ca-key is generated in previous step</li>
+      <li>creates <code class="highlighter-rouge">admin.pem</code> and <code class="highlighter-rouge">admin-key.pem</code>
+</li>
+    </ul>
+  </li>
+  <li>likely, create api server certificate</li>
+  <li>likely, create kubelet client certificate</li>
+  <li>distribute certification
+    <ul>
+      <li>copy <code class="highlighter-rouge">ca.pem</code> and instance certificates to each minion</li>
+      <li>copy <code class="highlighter-rouge">ca.pem</code>, <code class="highlighter-rouge">ca-key.pem</code> and api server certs to each controller</li>
+    </ul>
+  </li>
+  <li>configure encryption configuration</li>
+  <li>bring up etcd
+    <ul>
+      <li><code class="highlighter-rouge">sudo cp ca.pem kubernetes-key.pem kubernetes.pem /etc/etcd/</code></li>
+      <li>configure systemd etcd service</li>
+    </ul>
+  </li>
+  <li>bring up kubernetes control plane
+    <ul>
+      <li>
+<code class="highlighter-rouge">sudo mv ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem encryption-config.yaml /var/lib/kubernetes/</code>
+        <ul>
+          <li>CA key pair</li>
+          <li>api server key pair</li>
+          <li>encryption config</li>
+        </ul>
+      </li>
+      <li>configure apiserver with systemd</li>
+      <li>configure controller manager</li>
+      <li><code class="highlighter-rouge">kubectl get componentstatuses</code></li>
+    </ul>
+  </li>
+  <li>bring up node
+    <ul>
+      <li>download cni binary</li>
+      <li>download crio binary</li>
+      <li>configure network</li>
+      <li>configure kubelet</li>
+      <li>configure kubeproxy</li>
+    </ul>
+  </li>
+  <li>deploy DNS add-on</li>
+  <li><a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">link</a></li>
+</ul>
+
+<h2 id="minikube">
+<a class="anchor" href="#minikube" aria-hidden="true"><span class="octicon octicon-link"></span></a>minikube</h2>
+<ul>
+  <li><code class="highlighter-rouge">brew install Caskroom/cask/minikube</code></li>
+  <li><code class="highlighter-rouge">minikube start</code></li>
+  <li><code class="highlighter-rouge">minikube dashboard</code></li>
+</ul>
+
+<h2 id="kubeadm">
+<a class="anchor" href="#kubeadm" aria-hidden="true"><span class="octicon octicon-link"></span></a>kubeadm</h2>
+<ul>
+  <li>automated installation tool, handles
+    <ul>
+      <li>preflight check</li>
+      <li>PKI creation</li>
+      <li>generates token used for node to join</li>
+      <li>manages kubelet running options</li>
+    </ul>
+  </li>
+  <li>by default, images are pulled from gcr.io/google_containers
+    <ul>
+      <li>apiserver</li>
+      <li>controller-manager</li>
+      <li>scheduler</li>
+      <li>proxy</li>
+      <li>etcd</li>
+      <li>pause</li>
+      <li>dns-sidecar</li>
+      <li>kube-dns</li>
+      <li>dns-masq</li>
+    </ul>
+  </li>
+  <li>installs DNS add-on
+    <ul>
+      <li>can pick from default and coredns</li>
+    </ul>
+  </li>
+  <li>when <code class="highlighter-rouge">KUBE_HYPERKUBE_IMAGE</code> is defined, a single hyperkube image is used</li>
+  <li>configuration can be done through file</li>
+  <li><a href="https://kubernetes.io/docs/admin/kubeadm/">reference</a></li>
+  <li>
+<a href="https://github.com/kubernetes/kubernetes/issues/42791">ntp</a>
+    <ul>
+      <li>ntp should be installed on all nodes</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="install-1">
+<a class="anchor" href="#install-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h3>
+<ul>
+  <li>normally with <code class="highlighter-rouge">apt</code> or <code class="highlighter-rouge">yum</code>
+</li>
+</ul>
+
+<h3 id="configurable">
+<a class="anchor" href="#configurable" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configurable</h3>
+<ul>
+  <li><code class="highlighter-rouge">--pod-network-cidr</code></li>
+  <li>etcd server
+    <ul>
+      <li>either through image envar</li>
+      <li>or config file</li>
+    </ul>
+  </li>
+  <li>repo prefix
+    <ul>
+      <li><code class="highlighter-rouge">KUBE_REPO_PREFIX</code></li>
+      <li>when specified, <code class="highlighter-rouge">--pod-infra-container-image</code> has to be change too</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="each-host">
+<a class="anchor" href="#each-host" aria-hidden="true"><span class="octicon octicon-link"></span></a>Each host</h3>
+<ul>
+  <li>docker</li>
+  <li>kubelet</li>
+  <li>kubectl (master only)</li>
+  <li>kubeadm</li>
+  <li>cni</li>
+</ul>
+
+<h3 id="steps">
+<a class="anchor" href="#steps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Steps</h3>
+<ol>
+  <li>install docker</li>
+  <li>install kubernetes packages (apt)
+    <ul>
+      <li>kubelet</li>
+      <li>kubectl</li>
+      <li>kubeadm</li>
+    </ul>
+  </li>
+  <li>disable SELinux</li>
+  <li>on master, do
+    <ul>
+      <li><code class="highlighter-rouge">kubeadmin init --api-advertise-addresses=&lt;host_ip&gt; --use-kubernetes-version=v1.5.3 --pod-network-cidr=10.244.0.0/16</code></li>
+      <li><code class="highlighter-rouge">kubectl apply -f kube-flannel.yml</code></li>
+      <li>normally kubernets’ images are self contained. but if there is mismatch
+between versions, do <code class="highlighter-rouge">export XXXX_IAMGE=bla</code>
+</li>
+    </ul>
+  </li>
+  <li>on each node
+    <ul>
+      <li>flannel images has to be present on each node</li>
+      <li><code class="highlighter-rouge">kubeadm join --token=d562d2.bf3721e0655d4f12 192.168.0.177</code></li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubctl get nodes</code> on master should show all nodes</li>
+</ol>
+
+<h3 id="internal-1">
+<a class="anchor" href="#internal-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Internal</h3>
+<ul>
+  <li>with control plane, it uses <code class="highlighter-rouge">kubelet</code> to managed components like <code class="highlighter-rouge">etcd, apiserver</code> etc
+    <ul>
+      <li>
+<code class="highlighter-rouge">systemd</code> runs <code class="highlighter-rouge">kubelet</code> as a normal process</li>
+      <li>
+<code class="highlighter-rouge">kubelet --pod-manifest-path /etc/kubernetes/manifests</code> starts everything
+in that directory as pods
+        <ul>
+          <li>files in that folder are simply kubernetes YAML spec that <code class="highlighter-rouge">kubelet</code>
+understands</li>
+          <li>see <code class="highlighter-rouge">/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</code>
+</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="https://www.ianlewis.org/en/how-kubeadm-initializes-your-kubernetes-master">how does it work</a></li>
+</ul>
+
+<h3 id="okdc">
+<a class="anchor" href="#okdc" aria-hidden="true"><span class="octicon octicon-link"></span></a>OKDC</h3>
+<ul>
+  <li><a href="http://www.dockone.io/article/2296">dockone, okdc</a></li>
+  <li>no need to install docker</li>
+  <li>install lsb</li>
+  <li>make sure /etc/hosts has all the nodes</li>
+  <li><code class="highlighter-rouge">setenforce 0</code></li>
+  <li>on master
+    <ul>
+      <li>just run the script</li>
+    </ul>
+  </li>
+  <li>on node
+    <ul>
+      <li>at the end of the master run it actually gives command to run on the node</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="commands">
+<a class="anchor" href="#commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>commands</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat &lt;&lt;EOF &gt; /etc/apt/sources.list.d/kubernetes.list
+   deb http://apt.kubernetes.io/ kubernetes-xenial main
+   EOF
+apt-get update
+apt-get install -y docker.io
+apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+service kubelet stop
+service kubelet start
+kubeadm init --use-kubernetes-version v1.4.1
+</code></pre></div></div>
+
+<h1 id="security-1">
+<a class="anchor" href="#security-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Security</h1>
+<ul>
+  <li>having SSH account into container is bad practice</li>
+  <li>
+<a href="https://github.com/Shopify/kubeaudit">kubeaudit</a>
+    <ul>
+      <li>automatically audit security in a kubernetes cluster</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="scheduling">
+<a class="anchor" href="#scheduling" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scheduling</h1>
+<h2 id="pdb">
+<a class="anchor" href="#pdb" aria-hidden="true"><span class="octicon octicon-link"></span></a>PDB</h2>
+<ul>
+  <li><code class="highlighter-rouge">poddisruptionbudget</code></li>
+  <li>specifies tolerated number of pods to keep alive, making sure that there are
+some left
+    <ul>
+      <li><code class="highlighter-rouge">kubectl create pdb my-pdb --selector=app=nginx --min-available=70%</code></li>
+    </ul>
+  </li>
+  <li>this will be observed by pod <strong>eviction</strong>
+    <ul>
+      <li>which is the difference between <code class="highlighter-rouge">delete</code> and <code class="highlighter-rouge">evict</code>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="resource">
+<a class="anchor" href="#resource" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resource</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">v1/ResourceQuota</code> object
+    <ul>
+      <li>one or more per namespace</li>
+    </ul>
+  </li>
+  <li>once quota is enabled, user must specify request or limits for those values</li>
+  <li><code class="highlighter-rouge">--admission-control=</code></li>
+  <li>quota can be set for computatation resources as well as kubernetes objects
+like service, etc</li>
+  <li>
+<code class="highlighter-rouge">requests.foo</code> makes explict request for resources</li>
+  <li>
+<code class="highlighter-rouge">limits.foo</code> specifies explict limits for resources</li>
+  <li>
+<code class="highlighter-rouge">foo</code> can be <code class="highlighter-rouge">cpu</code>, and <code class="highlighter-rouge">memory</code>, etc</li>
+  <li>memory is total resident set size (RSS) and page cache, swap is disabled so not included
+    <ul>
+      <li>
+<a href="https://medium.com/expedia-group-tech/kubernetes-container-resource-requirements-part-1-memory-a9fbe02c8a5f">here</a>
+        <ul>
+          <li>pretty nice article, explaining memory limit</li>
+        </ul>
+      </li>
+      <li><a href="https://stackoverflow.com/questions/7880784/what-is-rss-and-vsz-in-linux-memory-management">so, RSS</a></li>
+    </ul>
+  </li>
+  <li>1 CPU == 1 hyperthread in a Intel processor</li>
+  <li>
+<code class="highlighter-rouge">LimitRange</code> sets resource usage limits for each kind of resource in a Namespace.
+    <ul>
+      <li><a href="https://github.com/thockin/micro-demos/blob/master/quota/limits.yaml">demo</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://sysdig.com/blog/troubleshoot-kubernetes-oom/">sysdig, oom, trouble</a>
+    <ul>
+      <li><strong>How to troubleshoot Kubernetes OOM and CPU Throttle</strong></li>
+      <li><em>Despite this mechanism, we can still finish up with system OOM kills as Kubernetes memory management runs only every several seconds. If the system memory fills too quickly, the system can kill Kubernetes control processes, making the node unstable.</em></li>
+      <li><em>using CPU can never be the reason of Kubernetes killing a container.</em></li>
+      <li>❓ not sure I fully understand the CPU throttling part</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="security-context">
+<a class="anchor" href="#security-context" aria-hidden="true"><span class="octicon octicon-link"></span></a>Security Context</h2>
+<ul>
+  <li>defines privilege for a Pod as part of a pod spec</li>
+  <li><code class="highlighter-rouge">runAsUser: 1000</code></li>
+  <li><code class="highlighter-rouge">capabilities</code></li>
+</ul>
+
+<h2 id="pod-security-policy">
+<a class="anchor" href="#pod-security-policy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pod Security Policy</h2>
+
+<h2 id="secrets">
+<a class="anchor" href="#secrets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Secrets</h2>
+<ul>
+  <li><code class="highlighter-rouge">v1/Secret</code></li>
+  <li>defined as k/v pairs</li>
+  <li><code class="highlighter-rouge">kubectl create secret &lt;docker-registry, generic, tls&gt;</code></li>
+</ul>
+
+<h3 id="access">
+<a class="anchor" href="#access" aria-hidden="true"><span class="octicon octicon-link"></span></a>Access</h3>
+<ul>
+  <li>volume: <code class="highlighter-rouge">volumes.secret</code>
+    <ul>
+      <li>mounted as directory matching secrete name, under which</li>
+      <li>file name matches key</li>
+      <li>file content matches value</li>
+    </ul>
+  </li>
+  <li>envar: <code class="highlighter-rouge">env.valueFrom.valueFrom</code>
+    <ul>
+      <li>with <code class="highlighter-rouge">name</code> and <code class="highlighter-rouge">key</code> to access the value</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cli-1">
+<a class="anchor" href="#cli-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h2>
+<ul>
+  <li><code class="highlighter-rouge">kubectl get quota --namespace=myspace</code></li>
+  <li><code class="highlighter-rouge">kubectl describe quota compute-resources --namespace=myspace</code></li>
+  <li><code class="highlighter-rouge">kubectl describe quota object-counts --namespace=myspace</code></li>
+</ul>
+
+<h2 id="links-4">
+<a class="anchor" href="#links-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+<ul>
+  <li><a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/">official</a></li>
+  <li><a href="https://kubernetes.io/docs/tasks/administer-cluster/quota-api-object/">official practical</a></li>
+</ul>
+
+<h1 id="monitoring">
+<a class="anchor" href="#monitoring" aria-hidden="true"><span class="octicon octicon-link"></span></a>Monitoring</h1>
+<ul>
+  <li>4 level of monitoring
+    <ul>
+      <li>host</li>
+      <li>containers</li>
+      <li>kubernetes</li>
+      <li>applications</li>
+    </ul>
+  </li>
+  <li>cAdvisor, kubelet -&gt; heapster -&gt; backend
+    <ul>
+      <li>backend supported:
+        <ul>
+          <li>influxdb</li>
+          <li>opentsdb</li>
+          <li>kafka</li>
+          <li>many others</li>
+        </ul>
+      </li>
+      <li>heapster run as a pod in the cluster</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cadvisor">
+<a class="anchor" href="#cadvisor" aria-hidden="true"><span class="octicon octicon-link"></span></a>cAdvisor</h2>
+<ul>
+  <li>runs as part of kubelet</li>
+</ul>
+
+<h2 id="links-5">
+<a class="anchor" href="#links-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+<ul>
+  <li>
+<a href="https://www.datadoghq.com/blog/monitoring-kubernetes-era/">datadog</a>
+    <ul>
+      <li>However, as explained in the first section of this post, to track memory
+and CPU usage you should favor the metrics reported by your container
+technology, such as Docker, rather than the Kubernetes statistics reported
+by Heapster.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="container-runtime">
+<a class="anchor" href="#container-runtime" aria-hidden="true"><span class="octicon octicon-link"></span></a>Container Runtime</h1>
+<ul>
+  <li>
+<a href="https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/">containerd blog</a>
+    <ul>
+      <li>containerd integration goes GA</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="arch-2">
+<a class="anchor" href="#arch-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arch</h2>
+<p><img src="http://borlandc.pek3b.qingstor.com/container/cri-containerd.jpg"></p>
+
+<h2 id="cri">
+<a class="anchor" href="#cri" aria-hidden="true"><span class="octicon octicon-link"></span></a>CRI</h2>
+<ul>
+  <li>container runtime interface for kubernetes</li>
+  <li>parallel to CNI, CSI, etc</li>
+  <li>implementations
+    <ul>
+      <li>containerd (cri, cri-containerd)</li>
+      <li>CRI-O: <a href="https://www.opencontainers.org">OCI</a> conformant, used to be called OCID, RedHat, etc</li>
+      <li>frakti (hyper.sh)</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.openstack.org/assets/presentation-media/hyper-kata-frakti-cri2.pdf">openstack, PDF, PPT</a>
+    <ul>
+      <li>topic is Frakti, but has a good bit of information on CRI, with history,
+landscape, etc</li>
+      <li>kata</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://kubic.opensuse.org/blog/2018-09-17-crio-default/">suse, cri-o, kubic</a>
+    <ul>
+      <li><strong>CRI-O is now our default container runtime interface</strong></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.infoq.com/news/2019/05/cri-o-kubernetes-runtime/">infoq</a>
+    <ul>
+      <li><strong>CRI-O: An Open Source Container Runtime for Kubernetes</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="spec-2">
+<a class="anchor" href="#spec-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spec</h3>
+<ul>
+  <li>Sandbox
+    <ul>
+      <li><code class="highlighter-rouge">Create</code></li>
+      <li><code class="highlighter-rouge">Delete</code></li>
+      <li><code class="highlighter-rouge">List</code></li>
+    </ul>
+  </li>
+  <li>Container
+    <ul>
+      <li><code class="highlighter-rouge">Create</code></li>
+      <li><code class="highlighter-rouge">Start</code></li>
+      <li><code class="highlighter-rouge">Exec</code></li>
+    </ul>
+  </li>
+  <li>Image
+    <ul>
+      <li><code class="highlighter-rouge">Pull</code></li>
+      <li><code class="highlighter-rouge">List</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cri-o">
+<a class="anchor" href="#cri-o" aria-hidden="true"><span class="octicon octicon-link"></span></a>CRI-O</h2>
+<ul>
+  <li><a href="https://cri-o.io/">.io</a></li>
+  <li>conmon handles monitoring, including logging</li>
+  <li>podman is like docker CLI</li>
+  <li>docker and podman can co-exist on the same host</li>
+  <li><em>CRI-O 1.13 shipping with OpenShift 4.1 as the only supported engine</em></li>
+</ul>
+
+<h2 id="containerd">
+<a class="anchor" href="#containerd" aria-hidden="true"><span class="octicon octicon-link"></span></a>containerd</h2>
+<ul>
+  <li>container runtime</li>
+  <li>as a daemon</li>
+  <li>responsible for
+    <ul>
+      <li>image transfer</li>
+      <li>container execution</li>
+      <li>network attachment</li>
+    </ul>
+  </li>
+  <li>full OCI support</li>
+  <li>depends on runc</li>
+  <li>stuff are namespaced
+    <ul>
+      <li>within kubernetes, <code class="highlighter-rouge">k8s.io</code> is the default namespace</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://blog.docker.com/2016/12/introducing-containerd/">spun out of docker</a>
+    <ul>
+      <li>into CNCF</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/containerd">github</a></li>
+  <li>
+<a href="https://github.com/containerd/cri">cri plugin </a>
+    <ul>
+      <li><a href="https://github.com/containerd/cri/blob/master/docs/crictl.md">crictl</a></li>
+      <li><a href="https://github.com/kubernetes-sigs/cri-tools/blob/master/docs/crictl.md">sig crictl</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="rurnc">
+<a class="anchor" href="#rurnc" aria-hidden="true"><span class="octicon octicon-link"></span></a>rurnc</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">runc</code> is a CLI tool for spawning and running containers according to the OCI specification.</li>
+</ul>
+
+<h1 id="rancher">
+<a class="anchor" href="#rancher" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rancher</h1>
+<ul>
+  <li>replace SkyDNS with Rancher DNS
+    <ul>
+      <li>allow cluster to expand over different resource pools and clouds</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="helm">
+<a class="anchor" href="#helm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Helm</h1>
+<ul>
+  <li>for managing k8s charts</li>
+  <li>uses <a href="https://golang.org/pkg/text/template/">Go template</a> syntax</li>
+  <li>a <strong>repo</strong> is a place where charts are stored</li>
+  <li>a <strong>chart</strong> is like a <code class="highlighter-rouge">.deb</code> file
+    <ul>
+      <li>includes all related kubernetes resources</li>
+    </ul>
+  </li>
+  <li>
+<strong>release</strong>
+    <ul>
+      <li>a chart instance</li>
+      <li>same chart can be installed more than once</li>
+    </ul>
+  </li>
+  <li>hooks
+    <ul>
+      <li>e.g. post-install, post-upgrade</li>
+      <li>
+<strong>operation</strong> can be any k8s object</li>
+      <li><code class="highlighter-rouge">annotations: { "helm.sh/hook": ...}</code></li>
+    </ul>
+  </li>
+  <li>very much like Rancher catalogue</li>
+  <li>benefits:
+    <ul>
+      <li>parameterisation</li>
+      <li>application lifecycle hook</li>
+      <li>history of releases</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/kubernetes/charts">charts</a>
+    <ul>
+      <li>github repo for charts</li>
+    </ul>
+  </li>
+  <li>installation
+    <ul>
+      <li>download binary from web</li>
+      <li><code class="highlighter-rouge">brew install kubernetes-helm</code></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://sweetcode.io/a-first-look-at-the-helm-3-plan/">sweetcode, firstlook, helm3, lua</a>
+    <ul>
+      <li>a first look at helm3 plan</li>
+      <li>Lua to replace Go template for better readability</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://caylent.com/15-useful-helm-charts-tools/">tools, 15</a>
+    <ul>
+      <li>15 useful helm chart tools</li>
+      <li>helm diff, helmsman</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://codefresh.io/docs/docs/new-helm/helm-best-practices/#helm-vs-k8s-templates">codefresh, template, note</a>
+    <ul>
+      <li>helm is not <strong>only</strong> a template solution</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="arch-3">
+<a class="anchor" href="#arch-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arch</h2>
+<p>&lt;img src=”http://borlandc.pek3b.qingstor.com/container/helm-application-deployment-management-for-kubernetes-13-638.jpg” width=75%&gt;</p>
+
+<h2 id="cli-2">
+<a class="anchor" href="#cli-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">helm init</code>:
+    <ul>
+      <li>creats and populate <code class="highlighter-rouge">$HOME/.helm</code>
+</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">helm repo update</code></li>
+  <li>
+<code class="highlighter-rouge">helm repo add &lt;name&gt; &lt;url&gt;</code>
+    <ul>
+      <li><code class="highlighter-rouge">helm repo add bitnami https://charts.bitnami.com/bitnami</code></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">helm search</code></li>
+  <li>
+<code class="highlighter-rouge">helm install</code>
+    <ul>
+      <li><code class="highlighter-rouge">helm install --name kubeapps --namespace kubeapps bitnami/kubeapps</code></li>
+      <li>normally the chart will prints out some information on how to use it
+afterwards
+        <ul>
+          <li>
+<code class="highlighter-rouge">helm status</code> has same effect</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">helm rollback</code></li>
+  <li>
+<code class="highlighter-rouge">helm list</code>
+    <ul>
+      <li>list all releases</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">helm delete &lt;release&gt;</code>
+    <ul>
+      <li>after deletion, <code class="highlighter-rouge">helm status &lt;release&gt;</code> still works, <code class="highlighter-rouge">ns</code> is still there</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">helm create</code>
+    <ul>
+      <li>creates skeleton for a new chart</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">helm reset</code>
+    <ul>
+      <li>uninstall helm</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">helm serve</code>
+    <ul>
+      <li>run a local helm repo server</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="chart">
+<a class="anchor" href="#chart" aria-hidden="true"><span class="octicon octicon-link"></span></a>Chart</h2>
+<ul>
+  <li>organized as a collection of files inside a directory
+    <ul>
+      <li>
+<code class="highlighter-rouge">Chart.yaml</code> - metadata
+        <ul>
+          <li>name, version, appVersion, keywords, etc</li>
+        </ul>
+      </li>
+      <li>
+<code class="highlighter-rouge">values.yaml</code> - variable referenced in templates</li>
+      <li>
+<code class="highlighter-rouge">charts/</code> - dependency chart</li>
+      <li>
+<code class="highlighter-rouge">templates/</code> - your own template files</li>
+      <li>
+<code class="highlighter-rouge">templates/_helpers.yaml</code> stores utility macros</li>
+    </ul>
+  </li>
+  <li>chart can have dependencies</li>
+  <li>default templating is done with Go template
+    <ul>
+      <li>
+<code class="highlighter-rouge">values.yaml</code> includes default value</li>
+      <li>
+<code class="highlighter-rouge">.Values</code> - stuff in <code class="highlighter-rouge">values.yaml</code>
+</li>
+      <li>looks like variable name that starts with <code class="highlighter-rouge">.</code> is built-in</li>
+    </ul>
+  </li>
+  <li>a chart can have subcharts</li>
+  <li>private char repo:
+    <ul>
+      <li>
+<code class="highlighter-rouge">helm package .</code> from where <code class="highlighter-rouge">Chart.yaml</code> is</li>
+      <li><code class="highlighter-rouge">helm repo index .</code></li>
+      <li><code class="highlighter-rouge">devd .</code></li>
+      <li><code class="highlighter-rouge">helm repo add local http://127.0.0.1:8000</code></li>
+      <li>it generates <code class="highlighter-rouge">index.yaml</code> and <code class="highlighter-rouge">hello-1.0.0.tar.gz</code>
+        <ul>
+          <li>tarball has all the chart files</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>functions
+    <ul>
+      <li><code class="highlighter-rouge">Files.Get()</code></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://jfrog.com/blog/enterprise-grade-helm-chart-repository-jfrog-artifactory/">jfrog</a>
+    <ul>
+      <li>jfrog 5.8 supports private helm chart</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://engineering.bitnami.com/articles/what-the-helm-is-monocular.html">monocular</a>
+    <ul>
+      <li>search and discovery front-end for helm chart repo</li>
+      <li>has REST API and UI</li>
+      <li>can be used in wisecloud</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/kubeapps/kubeapps">kubeapps</a>
+    <ul>
+      <li>UI for helm</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://hackernoon.com/using-a-private-github-repo-as-helm-chart-repo-https-access-95629b2af27c">hackernoon</a>
+    <ul>
+      <li>using private github repo</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="helm-3">
+<a class="anchor" href="#helm-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Helm 3</h2>
+<ul>
+  <li>removal of tiller</li>
+  <li>release name are namespaced</li>
+  <li>push chart into OCI registry</li>
+</ul>
+
+<h1 id="high-availability">
+<a class="anchor" href="#high-availability" aria-hidden="true"><span class="octicon octicon-link"></span></a>High Availability</h1>
+<ul>
+  <li>
+<a href="http://www.fawwheel.com/keithtt/p/6649995.html">keith</a>
+    <ul>
+      <li>external etcd</li>
+      <li>master each has a keep alived</li>
+      <li>use kubeadm for installation</li>
+      <li>pull images from a pre-defined HTTP server</li>
+      <li>single BASH script for master and node</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://kubernetes.io/docs/admin/high-availability/">official</a>
+    <ul>
+      <li>mentioned <code class="highlighter-rouge">monit</code> for monitoring k8s and docker daemon</li>
+      <li>talked about etcd</li>
+      <li>api is replicated and load-balanced</li>
+      <li>scheduler and controller-manager which actually modifies the cluster state
+uses the <code class="highlighter-rouge">--leader-elect</code> flag to make sure only one is doing the work 
+at a time</li>
+      <li>see <strong>ha with ansible</strong> in the link section</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/kubernetes-incubator/kargo">kargo</a></li>
+  <li><a href="https://github.com/Capgemini/kubeform">kubeform</a></li>
+  <li>
+<a href="https://sumitkgaur.wordpress.com/2016/07/30/kubernetes-truely-ha-cluster/">sumit/podmaster</a>
+    <ul>
+      <li>works together with etcd</li>
+      <li>make sure that only the leader runs scheduler</li>
+      <li>generic solution but mostly works with kubernetes</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="kompose">
+<a class="anchor" href="#kompose" aria-hidden="true"><span class="octicon octicon-link"></span></a>kompose</h1>
+<ul>
+  <li>convert <code class="highlighter-rouge">docker-compose</code> file to Kubernetes files</li>
+  <li>by default, generateds deployments, service, etc in YAML
+    <ul>
+      <li>can also generates replication controller, daemon set, or helm charts
+        <ul>
+          <li><code class="highlighter-rouge">-rc</code></li>
+        </ul>
+      </li>
+      <li>also possible to export in JSON format
+        <ul>
+          <li><code class="highlighter-rouge">-j</code></li>
+        </ul>
+      </li>
+      <li>helm is possible to
+        <ul>
+          <li><code class="highlighter-rouge">-c</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>written in Go</li>
+  <li>kompose specific labels
+    <ul>
+      <li>inside <code class="highlighter-rouge">docker-compose</code> file</li>
+      <li>
+<code class="highlighter-rouge">kompose.service.type</code>: nodeport, clusterip, loadbalancer</li>
+      <li>
+<code class="highlighter-rouge">kompose.service.expose</code>: true/hostname</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="unsupported-syntax">
+<a class="anchor" href="#unsupported-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unsupported syntax</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">build</code> command
+    <ul>
+      <li><code class="highlighter-rouge">dockerfile</code></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">cap_add</code></li>
+</ul>
+
+<h2 id="links-6">
+<a class="anchor" href="#links-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+<ul>
+  <li>
+<a href="http://blog.kubernetes.io/2016/11/kompose-tool-go-from-docker-compose-to-kubernetes.html">k8s blog</a>
+    <ul>
+      <li>introduction article</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://kompose.io/">io</a>
+    <ul>
+      <li>official website</li>
+      <li>includes an architecture explanation that looks like the translator</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://kompose.io/conversion/">conversion</a>
+    <ul>
+      <li>list of compose definitions and how it gets converted</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="internal-2">
+<a class="anchor" href="#internal-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Internal</h1>
+<ul>
+  <li>etcd is used for data storage and implementation of <strong>watch</strong> mechanism</li>
+  <li>only the API server access the etcd directly</li>
+</ul>
+
+<h2 id="kubelet">
+<a class="anchor" href="#kubelet" aria-hidden="true"><span class="octicon octicon-link"></span></a>kubelet</h2>
+<ul>
+  <li>it finds pods to run from the API server</li>
+  <li>it runs an internal HTTP server on port 10255
+    <ul>
+      <li><a href="http://kamalmarhubi.com/blog/2015/08/27/what-even-is-a-kubelet/">what is</a></li>
+      <li>provides health check <code class="highlighter-rouge">/healtz</code>
+</li>
+      <li>
+<code class="highlighter-rouge">/pods</code> for pods running on the node</li>
+      <li>
+<code class="highlighter-rouge">/spec</code> for the spec of the node</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">./kubelet --api-servers=http://master:8080</code></li>
+  <li>
+<code class="highlighter-rouge">kubelet --cluster-dns</code>
+    <ul>
+      <li>specify cluster DNS server</li>
+      <li>it gets inserted into <code class="highlighter-rouge">/etc/resolv.conf</code> when DNS policy is <code class="highlighter-rouge">clusterFirst</code>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="scheduler">
+<a class="anchor" href="#scheduler" aria-hidden="true"><span class="octicon octicon-link"></span></a>scheduler</h2>
+<ul>
+  <li>runs on master</li>
+  <li>watches API server for unbound pod and assign it to a node</li>
+  <li><code class="highlighter-rouge">./kube-scheduler --master=http://localhost:8080</code></li>
+  <li>it is possible to run customized scheduler
+    <ul>
+      <li><a href="https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/">howto</a></li>
+      <li><a href="https://sysdig.com/blog/kubernetes-scheduler/">ibm</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="controller-manager">
+<a class="anchor" href="#controller-manager" aria-hidden="true"><span class="octicon octicon-link"></span></a>controller manager</h2>
+<ul>
+  <li>watches the shared state of the cluster through the apiserver and makes
+changes attempting to move the current state towards the desired state</li>
+</ul>
+
+<h2 id="pod-creation-sequence">
+<a class="anchor" href="#pod-creation-sequence" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pod creation sequence</h2>
+<p>&lt;img src=”https://cdn-images-1.medium.com/max/1600/1*WDJmiyarVfcsDp6X1-lLFQ.png” width=75%&gt;</p>
+
+<h2 id="links-7">
+<a class="anchor" href="#links-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+<ul>
+  <li><a href="http://kamalmarhubi.com/blog/2015/08/27/what-even-is-a-kubelet/">what even is a kubelet</a></li>
+</ul>
+
+<h1 id="troubleshooting-1">
+<a class="anchor" href="#troubleshooting-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Troubleshooting</h1>
+<ul>
+  <li><code class="highlighter-rouge">journalctl -r -u kubelet</code></li>
+  <li>
+<code class="highlighter-rouge">kubectl get events -w</code>
+    <ul>
+      <li>
+<code class="highlighter-rouge">-w</code> for watch</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="extending">
+<a class="anchor" href="#extending" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extending</h1>
+<ul>
+  <li>
+<a href="https://itnext.io/comparing-kubernetes-api-extension-mechanisms-of-custom-resource-definition-and-aggregated-api-64f4ca6d0966">itnext</a>
+    <ul>
+      <li>patterns api extension mechanism</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">kubectl get apiservice</code>
+    <ul>
+      <li>list current API names</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="crdtpr">
+<a class="anchor" href="#crdtpr" aria-hidden="true"><span class="octicon octicon-link"></span></a>CRD/TPR</h2>
+<ul>
+  <li><a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/">task</a></li>
+  <li>
+<strong>primary</strong> API extension mechanism</li>
+  <li>looks like it doesn’t support versioning <a href="https://github.com/kubernetes/features/issues/544">yet</a>
+</li>
+</ul>
+
+<h2 id="api-aggregation">
+<a class="anchor" href="#api-aggregation" aria-hidden="true"><span class="octicon octicon-link"></span></a>API Aggregation</h2>
+<ul>
+  <li><a href="https://github.com/kubernetes-incubator/apiserver-builder/blob/master/docs/concepts/aggregation.md">incubator doc</a></li>
+  <li>full power of customization</li>
+  <li>require etc storage</li>
+</ul>
+
+<h2 id="custom-sub-resource">
+<a class="anchor" href="#custom-sub-resource" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Sub resource</h2>
+<ul>
+  <li>a sub resource can be on a native or custom Kind
+    <ul>
+      <li>An example of a custom sub-resource can be http_requests_total defined on a Pod will allow you to find out the number of HTTP requests received by that Pod.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="admission-webhook-1">
+<a class="anchor" href="#admission-webhook-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Admission Webhook</h2>
+<ul>
+  <li><a href="https://github.com/kubernetes/features/issues/492">admission webhook</a></li>
+</ul>
+
+<h1 id="operator">
+<a class="anchor" href="#operator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Operator</h1>
+<ul>
+  <li>k8s native way to run stateful application</li>
+  <li>basic work flow is:
+    <ul>
+      <li>observe if the cluster has the right size</li>
+      <li>reconcile</li>
+      <li>rebalance data</li>
+    </ul>
+  </li>
+  <li>in a nutshell
+    <ul>
+      <li>reponsed to events
+        <ul>
+          <li>created</li>
+          <li>updated</li>
+          <li>deleted</li>
+        </ul>
+      </li>
+      <li>try to reconcile</li>
+    </ul>
+  </li>
+  <li>operator SDK
+    <ul>
+      <li>has CLI: <code class="highlighter-rouge">operator-sdk</code>
+</li>
+      <li><code class="highlighter-rouge">$ operator-sdk new &lt;operator-project-name&gt; --api-version=&lt;your-api-group&gt;/&lt;version&gt; --kind=&lt;custom-resource-kind&gt;</code></li>
+      <li><code class="highlighter-rouge">operator-sdk generate k8s</code></li>
+      <li><code class="highlighter-rouge">operator-sdk build &lt;docker-image&gt;</code></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://banzaicloud.com/blog/operator-sdk/">banzaicloud</a>
+    <ul>
+      <li>a complete guide to kubernetes operator SDK</li>
+      <li>how to use the operator SDK
+        <ol>
+          <li>Create a new operator project</li>
+          <li>Define the Kubernetes resources to watch</li>
+          <li>Define the operator logic in a designated handler</li>
+          <li>Update and generate code for custom resources</li>
+          <li>Build and generate the operator deployment manifests</li>
+          <li>Deploy the operator</li>
+          <li>Create custom resources</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="arch-4">
+<a class="anchor" href="#arch-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arch</h2>
+<p><img src="https://blog.couchbase.com/wp-content/uploads/2018/03/Picture1-768x480.png"></p>
+
+<h2 id="links-8">
+<a class="anchor" href="#links-8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+<ul>
+  <li>
+<a href="https://github.com/zalando-incubator/kopf">python, operator</a>
+    <ul>
+      <li>kopf, from zalando</li>
+      <li>A Python framework to write Kubernetes operators in just few lines of code. https://kopf.readthedocs.io</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.youtube.com/watch?v=wMqzAOp15wo">youtube, hard</a>
+    <ul>
+      <li><strong>Writing a Kubernetes Operator: the Hard Parts - Sebastien Guilloux, Elastic</strong></li>
+      <li><a href="https://kccncna19.sched.com/event/UaeV">schedule, pdf</a></li>
+      <li>operator lives into past (api server client uses a cached reader)</li>
+      <li>optimistic concurrency:
+        <ul>
+          <li>resource name</li>
+          <li>resource version</li>
+          <li>uid: on deletion</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="windows">
+<a class="anchor" href="#windows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Windows</h1>
+<ul>
+  <li>see dotnet.md</li>
+</ul>
+
+<h1 id="vm-virtualised-hardware">
+<a class="anchor" href="#vm-virtualised-hardware" aria-hidden="true"><span class="octicon octicon-link"></span></a>VM, Virtualised Hardware</h1>
+
+<h2 id="frakti">
+<a class="anchor" href="#frakti" aria-hidden="true"><span class="octicon octicon-link"></span></a>Frakti</h2>
+<ul>
+  <li>based on Hyper</li>
+  <li>requires</li>
+  <li>
+<a href="https://www.youtube.com/watch?v=mBJ0tfLPyXg">youtube</a>
+    <ul>
+      <li>
+<a href="https://drive.google.com/file/d/0B6uGv-NC7DxDSmREaUhEdXl4NGM/view">google drive</a>
+        <ul>
+          <li>companion slides</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="kubevirt">
+<a class="anchor" href="#kubevirt" aria-hidden="true"><span class="octicon octicon-link"></span></a>kubevirt</h2>
+<ul>
+  <li>implemented as a entirely new <code class="highlighter-rouge">kind</code> CRD</li>
+  <li>still needs PVC</li>
+  <li>
+<a href="https://kubernetes.io/blog/2018/05/22/getting-to-know-kubevirt/">blog</a>
+    <ul>
+      <li>getting to know kubevirt</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="virtlet">
+<a class="anchor" href="#virtlet" aria-hidden="true"><span class="octicon octicon-link"></span></a>virtlet</h2>
+<ul>
+  <li>from Mirantis</li>
+  <li>implemented as CRI
+    <ul>
+      <li>daemonset is run on host where VM can be scheduled onto and handled separately from normal pods</li>
+    </ul>
+  </li>
+  <li>runs arbitary QCOW2 images
+    <ul>
+      <li>image names are translated from <code class="highlighter-rouge">virtlet.cloud/</code> to a real image address</li>
+      <li>so probably it still needs PVs</li>
+    </ul>
+  </li>
+  <li><a href="https://www.mirantis.com/blog/virtlet-vms-containers-opencontrail-network-kubernetes-nfv/">mirantis, introduction</a></li>
+  <li>
+<a href="https://www.mirantis.com/blog/kubevirt-vs-virtlet-comparison-better/">kubevirt vs virtlet</a>
+    <ul>
+      <li>kubevirt vs virtlet</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://hub.docker.com/r/mirantis/virtlet/">dockerhub</a>
+    <ul>
+      <li>docker hub page has some nice info</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://docs.virtlet.cloud/reference/volumes/#persistent-root-filesystem">persistent</a>
+    <ul>
+      <li>persistent root filesystem</li>
+      <li><a href="https://github.com/Mirantis/virtlet/tree/master/examples#using-the-persistent-root-filesystem">example</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="arch-5">
+<a class="anchor" href="#arch-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arch</h3>
+<p>&lt;img src=”http://borlandc.pek3b.qingstor.com/k8s/virtletarchitecture.png” width=75%&gt;</p>
+
+<h2 id="kata-container">
+<a class="anchor" href="#kata-container" aria-hidden="true"><span class="octicon octicon-link"></span></a>kata container</h2>
+<p>…</p>
+
+<h1 id="distributions">
+<a class="anchor" href="#distributions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Distributions</h1>
+<ul>
+  <li>
+<a href="https://github.com/poseidon/typhoon">typhoon</a>
+    <ul>
+      <li>minimal and free</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="release-history">
+<a class="anchor" href="#release-history" aria-hidden="true"><span class="octicon octicon-link"></span></a>Release History</h1>
+<h2 id="18">
+<a class="anchor" href="#18" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.8</h2>
+<ul>
+  <li><a href="http://blog.kubernetes.io/2017/09/kubernetes-18-security-workloads-and.html">blog</a></li>
+  <li>core workloads promoted to beta2</li>
+  <li>RBAC out of beta</li>
+  <li>affinity moves out of annotation</li>
+</ul>
+
+<h2 id="19">
+<a class="anchor" href="#19" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.9</h2>
+<ul>
+  <li>workloads AP GA
+    <ul>
+      <li>deployment, daemonset, rs, and statefulset</li>
+      <li>
+<code class="highlighter-rouge">apps/v1</code> is the new version</li>
+      <li>
+<code class="highlighter-rouge">apps/v1beta2</code> deprecated</li>
+    </ul>
+  </li>
+  <li>windows container support (beta)</li>
+  <li>ipv6 support (alpha)</li>
+  <li>coredns (alpha)</li>
+  <li>CRD (beta)</li>
+  <li>CSI (alpha)
+    <ul>
+      <li>container storage interface</li>
+    </ul>
+  </li>
+  <li>deprecation
+    <ul>
+      <li>etcd2 support</li>
+      <li>default selectors. E.g. <code class="highlighter-rouge">deployment.spec.selectors</code>
+</li>
+      <li>
+<code class="highlighter-rouge">volume.beta.kubernetes.io/storage-class</code> annotation</li>
+    </ul>
+  </li>
+  <li>supports IPv6 only cluster</li>
+  <li><a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/raw-block-pv.md">raw block support</a></li>
+  <li><a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.9.md">changelog</a></li>
+  <li><a href="https://kubernetes.io/docs/reference/workloads-18-19/">workloads</a></li>
+  <li>
+<a href="https://github.com/kubernetes/features/issues/492">admission webhook</a>
+    <ul>
+      <li>beta</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="110">
+<a class="anchor" href="#110" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.10</h2>
+<ul>
+  <li><a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.10.md#downloads-for-v1100">changelog</a></li>
+  <li>
+<a href="https://coreos.com/blog/kubernetes-110-released">coreos</a>
+    <ul>
+      <li>better, more organized changelog</li>
+    </ul>
+  </li>
+  <li>local persistent storage
+    <ul>
+      <li>diff from hostPath: configured through PVC, so no need to specify path on host in the spec</li>
+      <li>PV added <code class="highlighter-rouge">PersistentVolume.Spec.NodeAffinity</code> field</li>
+      <li>storage class added <code class="highlighter-rouge">StorageClass.volumeBindingMode: WaitForFirstConsumer</code> mode</li>
+      <li><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#local">spec</a></li>
+      <li><a href="https://github.com/vishh/community/blob/ba62a3f6cb9a301e95c4b64b9052455bdac9a3fe/contributors/design-proposals/local-storage-overview.md">design</a></li>
+      <li>
+<a href="https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner">provisioner</a>
+        <ul>
+          <li>does NOT support dynamic provisioning</li>
+        </ul>
+      </li>
+      <li>
+<a href="https://kubernetes.io/blog/2018/04/13/local-persistent-volumes-beta/">blog</a>
+        <ul>
+          <li>show manual way of declaring storage class, PV and PVC</li>
+        </ul>
+      </li>
+      <li>
+<a href="https://banzaicloud.com/blog/kafka-on-kubernetes/">banzaicloud</a>
+        <ul>
+          <li>using local PVC with kafka</li>
+          <li>configure where (mount point) local PV will be created</li>
+          <li>deploy daemonset for dynamic provisioning</li>
+          <li>create storage class</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/kubernetes/features/issues/504">pod configurable resolv conf</a></li>
+  <li><a href="https://github.com/kubernetes/features/issues/495">pod process namespace sharing</a></li>
+  <li>API aggregation is stable</li>
+  <li>CSI becomes beta</li>
+  <li>TokenRequestAPI - identify pods</li>
+  <li>
+<a href="https://blog.jetstack.io/blog/hidden-gems-1.10/">jetstack</a>
+    <ul>
+      <li>hidden gems</li>
+      <li>device plugin, like nVidia
+        <ul>
+          <li>[Setting up a GPU Enabled Kubernetes for Deep Learning](https://itnext.io/setting-up-a-gpu-enabled-kubernetes-for-deep-learning-aef8e198931b
+            <ul>
+              <li>enable GPU feature gate</li>
+              <li>on node: CUDA driver, install nvidia-docker2</li>
+              <li>k8s: run nvidia/k8s-device-plugin:1.9 daemonset. <a href="https://github.com/NVIDIA/k8s-device-plugin">github</a>
+</li>
+              <li>resource limit: <code class="highlighter-rouge">nvidia.com/gpu: 3</code>
+</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>core DNS beta</li>
+      <li>pids per pod (alpha)</li>
+      <li>shared PID namespace</li>
+      <li>CRD sub resource</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="111">
+<a class="anchor" href="#111" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.11</h2>
+<ul>
+  <li><a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.11.md#v1110">changelog</a></li>
+  <li><a href="https://kubernetes.io/blog/2018/06/27/kubernetes-1.11-release-announcement/">blog</a></li>
+  <li><a href="https://coreos.com/blog/kubernetes-111-crds-pod-priority-and-more?utm_source=twitter&amp;utm_medium=social&amp;utm_campaign=organic">coreos</a></li>
+  <li>coredns as default DNS provider</li>
+  <li>RH OpenShift 3.11 ships with this</li>
+  <li>IPVS GA
+    <ul>
+      <li><a href="https://kubernetes.io/blog/2018/07/09/ipvs-based-in-cluster-load-balancing-deep-dive/">cluster ip deep dive</a></li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">cri-tools</code> GA</li>
+  <li>pod priority and preemption
+    <ul>
+      <li>control scheduling policy for pod when it shares node with k8s control
+plane</li>
+    </ul>
+  </li>
+  <li>heapster deprecated
+    <ul>
+      <li>can be replaced by <a href="https://github.com/kubernetes-incubator/metrics-server">metrics server</a>
+</li>
+    </ul>
+  </li>
+  <li>etcd2 deprecated</li>
+  <li>external cloud provider BETA</li>
+</ul>
+
+<h2 id="112">
+<a class="anchor" href="#112" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.12</h2>
+<ul>
+  <li>a lot of security related updates
+    <ul>
+      <li>certificate rotation</li>
+      <li>CIDR for network policy</li>
+      <li>mount space propogation</li>
+    </ul>
+  </li>
+  <li>server side kubectl printing</li>
+  <li>egress support for network policy</li>
+  <li>beta:
+    <ul>
+      <li>quota priority by namespace</li>
+      <li>custom metrics in HPA</li>
+      <li>update plugin mechanism for kubectl</li>
+      <li>pod vertical scaling</li>
+    </ul>
+  </li>
+  <li>alpha
+    <ul>
+      <li>runtimeClass: use different runtime</li>
+      <li>APIServer dry-run</li>
+      <li>volume snapshot</li>
+    </ul>
+  </li>
+  <li><a href="https://www.mirantis.com/blog/whats-new-in-kubernetes-1-12-28-things-to-look-for/">mirantis</a></li>
+  <li><a href="https://rancher.com/blog/2018/2018-09-24-whats-new-in-kubernetes-1.12/?utm_campaign=Blog%202018&amp;utm_content=77705466&amp;utm_medium=social&amp;utm_source=twitter">rancher</a></li>
+  <li>
+<a href="https://itnext.io/horizontal-pod-autoscale-with-custom-metrics-8cb13e9d475">itnext.io, hpa, metrics, prometheus</a>
+    <ul>
+      <li>HPA with custom metrics</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="113">
+<a class="anchor" href="#113" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.13</h2>
+<ul>
+  <li>CSI PV support GA
+    <ul>
+      <li><a href="https://kubernetes.io/blog/2019/01/15/container-storage-interface-ga/">link</a></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">kubectl diff</code></li>
+  <li>kubectl plugin moves into beta</li>
+  <li>CRD supports multi version schema</li>
+  <li>dry run mode and enabled by default</li>
+  <li>heapster retired</li>
+  <li>uses IPv6 friendly coredns</li>
+  <li><a href="https://kubernetes.io/blog/2018/12/03/kubernetes-1-13-release-announcement/">official blog</a></li>
+</ul>
+
+<h2 id="114">
+<a class="anchor" href="#114" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.14</h2>
+<ul>
+  <li>Windows server container support
+    <ul>
+      <li><a href="https://cloudblogs.microsoft.com/opensource/2019/03/25/windows-server-containers-now-supported-kubernetes">microsoft</a></li>
+      <li>graduated from beta to stable</li>
+    </ul>
+  </li>
+  <li>kubectl
+    <ul>
+      <li>kustomize integrated</li>
+      <li>plugin mechanism updated</li>
+      <li>server side apply</li>
+    </ul>
+  </li>
+  <li>runtime class beta</li>
+  <li>pod priority and preemption (GA, was beta in 1.11)
+    <ul>
+      <li>preemptive <code class="highlighter-rouge">NonPreemptingPriority</code> will be available in 1.15</li>
+      <li><a href="https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/">doc</a></li>
+      <li>create <code class="highlighter-rouge">kind: PriorityClass</code>, add <code class="highlighter-rouge">priorityClassName</code> to pod spec</li>
+      <li><a href="https://grafana.com/blog/2019/07/24/how-a-production-outage-was-caused-using-kubernetes-pod-priorities/">grafana incident</a></li>
+    </ul>
+  </li>
+  <li>configurable resolv.conf in pod
+    <ul>
+      <li><a href="https://github.com/kubernetes/enhancements/issues/504">github issue</a></li>
+    </ul>
+  </li>
+  <li>ALPHA: provide environment variables expansion in sub path mount</li>
+  <li>ALPHA: In-tree storage plugin to CSI driver migration</li>
+  <li><a href="https://github.com/kubernetes/enhancements/blob/master/keps/sig-storage/20190124-local-persistent-volumes.md#local-volume-initial-configuration">something about local pv</a></li>
+  <li><a href="https://sysdig.com/blog/whats-new-kubernetes-1-14/">sysdig</a></li>
+  <li>
+<a href="https://blog.kontena.io/kontena-pharos-2-4-released/">kontena</a>
+    <ul>
+      <li>part of their 2.4 release note</li>
+      <li>Support for HugePages</li>
+      <li>RuntimeClass (in beta), ability to select specific container runtimes for certain workloads</li>
+      <li>RunAsGroup to specify primary groups for the processes running inside the pod containers</li>
+      <li>Pod priority and preemption are graduating to stable</li>
+      <li>Pod ready++ to enhance pod readiness checks with possibly external view</li>
+      <li>Pid limiting</li>
+      <li>Configurable resolv.conf</li>
+      <li>Durable local storage management</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="115">
+<a class="anchor" href="#115" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.15</h2>
+<ul>
+  <li>CRD pruning: removing fileds that are not in the validation schema</li>
+  <li>CRD defaulting: providing default value for missing fields</li>
+  <li>kubeadm now seamlessly rotating all your certificates (on upgrades) before they expire</li>
+  <li>go mod</li>
+  <li>preparing for removal of cloud-provider</li>
+  <li>Nodes now support third party monitoring plugins.</li>
+  <li>Pod Disruption Budget (PDB) into beta</li>
+  <li>node local DNS cache (Beta)</li>
+  <li>redisgn of event API (Alpha)</li>
+  <li>Add non-preempting option to PriorityClasses (Alpha)</li>
+  <li>Execution hooks</li>
+  <li>CSI: volume cloning (Alpha)
+    <ul>
+      <li>This new feature allows users to use another Persistent Volume Claim (PVC) as a “DataSource” when provisioning a new volume.</li>
+    </ul>
+  </li>
+  <li><a href="https://relnotes.k8s.io/?releaseVersions=1.15.0">new interactive release note format</a></li>
+  <li><a href="https://docs.google.com/spreadsheets/d/1Vc949C4iC2f8GTmjfJkX04VUNcbimhg8ujp1bUAjGK4/edit#gid=0">google sheet for enhancement tracking</a></li>
+  <li><a href="https://blogs.vmware.com/cloudnative/2019/06/19/performance-bootstrapping-and-crds-in-kubernetes-1-15/">vmware</a></li>
+  <li>
+<a href="https://sysdig.com/blog/whats-new-kubernetes-1-15">sysdig</a>
+    <ul>
+      <li>quite a long list of interesting details</li>
+    </ul>
+  </li>
+  <li>[—]
+    <ul>
+      <li>DaemonSet, Deployment, and ReplicaSet resources will no longer be served from extensions/v1beta1, apps/v1beta1, or apps/v1beta2 in v1.16. Migrate to the apps/v1 API, available since v1.9. Existing persisted data can be retrieved via the apps/v1 API.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cves">
+<a class="anchor" href="#cves" aria-hidden="true"><span class="octicon octicon-link"></span></a>CVEs</h3>
+<ul>
+  <li>1.15.5: CVE-2019-11253</li>
+</ul>
+
+<h2 id="116">
+<a class="anchor" href="#116" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.16</h2>
+<ul>
+  <li>GA: CRD, more strict
+    <ul>
+      <li>structural schemas</li>
+      <li>pruning unknown fields</li>
+      <li>validation</li>
+      <li>and protecting the *.k8s.io</li>
+      <li>CRD: <code class="highlighter-rouge">apiextensions.k8s.io/v1</code>
+</li>
+    </ul>
+  </li>
+  <li>GA: admission hook</li>
+  <li>CSI, beta: volume resizing</li>
+  <li>CSI: feature parity with in-tree driver</li>
+  <li>API, beta: server side apply
+    <ul>
+      <li>moving <code class="highlighter-rouge">kubectl apply</code> to server side</li>
+    </ul>
+  </li>
+  <li>NET, Alpha: ipv4, ipv6 dual stack</li>
+  <li>STORE, Beta: volume cloning</li>
+  <li>metrics overhaul
+    <ul>
+      <li>seems might cause problems</li>
+      <li><a href="https://github.com/kubernetes/enhancements/blob/master/keps/sig-instrumentation/20181106-kubernetes-metrics-overhaul.md">keg</a></li>
+    </ul>
+  </li>
+  <li>+, Alpha: Endpoint slice
+    <ul>
+      <li>alternative to Endpoint resources</li>
+      <li>seems to apply to a service with <strong>large amount</strong> of pods</li>
+    </ul>
+  </li>
+  <li>+, Alpha: Ephemeral containers
+    <ul>
+      <li>you can add regular containers to a pod after creation</li>
+      <li>no ports allowed</li>
+      <li>no health check</li>
+      <li>no resource</li>
+      <li><a href="https://kubernetes.io/docs/concepts/workloads/pods/ephemeral-containers/">official doc</a></li>
+    </ul>
+  </li>
+  <li>API depractions (only beta version)
+    <ul>
+      <li>
+<code class="highlighter-rouge">extensions/v1beta1</code>, <code class="highlighter-rouge">extensions/v1beta2</code>, <code class="highlighter-rouge">apps/v1beta2</code> -&gt; <code class="highlighter-rouge">apps/v1</code>
+</li>
+      <li>NetworkPolicy</li>
+      <li>PodSecurityPolicy</li>
+      <li>DaemonSet, Deployment, StatefulSet, and ReplicaSet</li>
+      <li>
+<code class="highlighter-rouge">SelfLink</code> removed from all objects</li>
+      <li><a href="https://kubernetes.io/blog/2019/07/18/api-deprecations-in-1-16/">more detail</a></li>
+    </ul>
+  </li>
+  <li><a href="https://kubernetes.io/blog/2019/09/18/kubernetes-1-16-release-announcement/">k8s.io</a></li>
+  <li><a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.16.md#v1160">release note</a></li>
+  <li><a href="https://sysdig.com/blog/whats-new-kubernetes-1-16/">sysdig</a></li>
+</ul>
+
+<h2 id="117">
+<a class="anchor" href="#117" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.17</h2>
+<ul>
+  <li>topology aware routing of service</li>
+  <li>kubeadm machine/structured output</li>
+  <li>IPv4/IPv6 support</li>
+  <li>taint node by condition</li>
+  <li>ALPHA: topology aware service routing
+    <ul>
+      <li><code class="highlighter-rouge">--feature-gates="ServiceTopology=true"</code></li>
+    </ul>
+  </li>
+  <li>BETA: EndpointSlice API</li>
+  <li>DEPRECATED:
+    <ul>
+      <li>default service cidr, added <code class="highlighter-rouge">--service-cluster-ip-range</code> for api server</li>
+      <li>RBAC: alpha, beta moved to <code class="highlighter-rouge">rbac.authorization.k8s.io/v1</code>
+</li>
+    </ul>
+  </li>
+  <li><a href="https://sysdig.com/blog/whats-new-kubernetes-1-17/">sysdig</a></li>
+  <li><a href="https://kubernetes.io/blog/2019/12/09/kubernetes-1-17-release-announcement/">k8s.io</a></li>
+  <li><a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.17.md#v1170">changelog on github</a></li>
+  <li><a href="https://relnotes.k8s.io/?releaseVersions=1.17.0">relnote.k8s.io</a></li>
+  <li><a href="https://docs.google.com/spreadsheets/d/1ebKGsYB1TmMnkx86bR2ZDOibm5KWWCs_UjV3Ys71WIs/edit#gid=0">enhancement tracking</a></li>
+</ul>
+
+<h2 id="118">
+<a class="anchor" href="#118" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.18</h2>
+<ul>
+  <li><a href="https://docs.google.com/spreadsheets/d/1RtCvByYdcqWc6I_A1cKgeXT2tBS7SyHGvSt_DWXz270/edit#gid=936265414">enhancement tracking</a></li>
+  <li>
+<a href="https://sysdig.com/blog/whats-new-kubernetes-1-18/">sysdig</a>
+    <ul>
+      <li>OIDC discovery</li>
+      <li>kubectl debug</li>
+      <li>kubectl diff</li>
+      <li>runtimeclass on Windows
+        <ul>
+          <li>with multiple Windows build support</li>
+        </ul>
+      </li>
+      <li>ContainerD on Windows</li>
+      <li>runAsUser on Windows</li>
+      <li>kubeadm join on Windows</li>
+      <li>endpoint slice</li>
+      <li>IPv6 to beta</li>
+      <li>Ingress to beta</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.magalix.com/blog/kubernetes-1.18-what-you-should-know">magalix</a>
+    <ul>
+      <li>HPA velocity</li>
+      <li>Even Pod Scheduling (based on AZ)</li>
+      <li>kubectl debug</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cves-1">
+<a class="anchor" href="#cves-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>CVEs</h3>
+<ul>
+  <li>1.16.2: CVE-2019-11253</li>
+</ul>
+
+<h1 id="questions">
+<a class="anchor" href="#questions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questions</h1>
+<ul>
+  <li>With a <code class="highlighter-rouge">hostPath</code> volume, will it be removed when the POD dies?
+    <ul>
+      <li>no. looks like the stuff is retained</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="links-9">
+<a class="anchor" href="#links-9" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h1>
+<ul>
+  <li><a href="https://github.com/rosskukulinski/docker-philly">intro</a></li>
+  <li>
+<a href="https://github.com/kubernetes/minikube">minikube</a>
+    <ul>
+      <li>run k8s cluster on a single host</li>
+    </ul>
+  </li>
+  <li><a href="http://www.infoworld.com/article/3118345/cloud-computing/why-kubernetes-is-winning-the-container-war.html">why kubernetes has won</a></li>
+  <li>
+<a href="http://www.slideshare.net/sttts/an-introduction-to-the-kubernetes-api-56804279?utm_source=slideshow&amp;utm_medium=ssemail&amp;utm_campaign=download_notification">kubernetes api</a>
+    <ul>
+      <li>explaine pods as docker commands, ipc, net, etc</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://kubernetes.io/docs/api-reference/v1/definitions/">V1 API</a>
+    <ul>
+      <li>official API doc for V1</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://blog.risingstack.com/moving-node-js-from-paas-to-kubernetes-tutorial/">ringstack</a>
+    <ul>
+      <li>moving node js to k8s</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://kubernetes.io/docs/user-guide/walkthrough/">walkthrough</a>
+    <ul>
+      <li>official tutorial</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.gitbook.com/book/ramitsurana/awesome-kubernetes/details">awesome</a>
+    <ul>
+      <li>git book</li>
+    </ul>
+  </li>
+  <li><a href="http://k8s.info/cs.html">cheatsheet</a></li>
+  <li>
+<a href="https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/">official cheatsheet</a>
+    <ul>
+      <li>from <code class="highlighter-rouge">kubernetes.io</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.mirantis.com/blog/introduction-to-yaml-creating-a-kubernetes-deployment/">marantis</a>
+    <ul>
+      <li>introduction</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://5pi.de/2016/11/20/15-producation-grade-kubernetes-cluster/">5pi</a>
+    <ul>
+      <li>lengthy article on setting up production ready cluster</li>
+    </ul>
+  </li>
+  <li><a href="https://kubernetes.io/docs/getting-started-guides/scratch/">from scratch</a></li>
+  <li><a href="https://medium.com/@zwischenzugs/learn-kubernetes-the-hard-way-the-easy-and-cheap-way-6f82b665ccd9">cheap way</a></li>
+  <li><a href="http://kube.news/">kube news</a></li>
+  <li>
+<a href="http://kompose.io/">kompose</a>
+    <ul>
+      <li>convert, deploy docker compose stacks into k8s</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://rootsongjc.github.io/projects/kubernetes-installation-document/?from=timeline&amp;isappinstalled=0">rootsong</a>
+    <ul>
+      <li>这可能是目前为止最详细的kubernetes安装文档了。</li>
+      <li><a href="https://github.com/opsnull/follow-me-install-kubernetes-cluster">markdown</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.ubuntu.com/containers/kubernetes">ubuntu</a>
+    <ul>
+      <li>Ubuntu Kubernetes distribution</li>
+      <li>supports local and remote cloud</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/pawankkamboj/HA-kubernetes-ansible">HA with ansible</a>
+    <ul>
+      <li>HA k8s with Ansible</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/kubernetes-incubator/client-python">python API</a></li>
+  <li>
+<a href="https://www.mirantis.com/blog/kubernetes-replication-controller-replica-set-and-deployments-understanding-replication-options/">marantis</a>
+    <ul>
+      <li>RC, RS and Deployments</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.slideshare.net/WorksApplications/demystifying-kubernetes">demystify</a>
+    <ul>
+      <li>demystify kubernetes from slideshare</li>
+      <li>pretty detailed, ground-up explanation of kubernetes</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://addops.cn/post/kubernetes-deployment-fileds.html">qihu360</a>
+    <ul>
+      <li>what can goes into deployment object</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://tryk8s.com">tryk8s</a>
+    <ul>
+      <li>free k8s cluster to play with</li>
+      <li>login with github account</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/kubernetes/contrib/tree/master/service-loadbalancer">service lb</a>
+    <ul>
+      <li>provide loadbalancer service for bare metal</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://blog.heptio.com/core-kubernetes-jazz-improv-over-orchestration-a7903ea92ca">jazz improve</a>
+    <ul>
+      <li>depth first article from CEO of heptio</li>
+    </ul>
+  </li>
+  <li><a href="https://coreos.com/kubernetes/docs/latest/deploy-master.html">coreos deploy master</a></li>
+  <li>
+<a href="http://www.opcito.com/secure-kubernetes-clusters-rbac/">rbac</a>
+    <ul>
+      <li>securing kubernetes cluter with RBAC</li>
+      <li>compares to ABAC</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/Mirantis/k8s-AppController">app-controller</a>
+    <ul>
+      <li>manages dependency</li>
+      <li>seems to create new kubernetes objects somehow <code class="highlighter-rouge">appcontroller.k8s/v1alpha1</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://kubernetes.feisky.xyz/">feisky</a>
+    <ul>
+      <li>Chinese book on 1.6</li>
+    </ul>
+  </li>
+  <li><a href="http://blog.kubernetes.io/2016/08/security-best-practices-kubernetes-deployment.html">security best practice</a></li>
+  <li>
+<a href="https://github.com/mantl">mantl.io</a>
+    <ul>
+      <li>integrated platform including a lot of stuff such as kubernetes, mesos</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://cloudnativelabs.github.io/post/2017-05-1-kube-network-policies/">cloudnativelabs</a>
+    <ul>
+      <li>enforcing kubernetes network with iptables</li>
+      <li>pseudo code for network policy operation, like adding to ipset</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/kylemcc/kube-gen">kube-gen</a>
+    <ul>
+      <li>generate file based on k8s event and metadata</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/skippbox/kubewatch">kubewatch</a>
+    <ul>
+      <li>watch k8s resource and send notification to Slack channel</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://blog.christianposta.com/kubernetes/3-day-docker-and-kubernetes-training/">posta training</a>
+    <ul>
+      <li>docker and kubernetes 4 day training by Christian Posta</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/azure/draft">draft</a>
+    <ul>
+      <li>a tool that scans source code and generate k8s objects</li>
+      <li>help geneartes Dockerfile, k8s YAML files, etc</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/azure/brigade">brigade, microsoft, javascript, event</a>
+    <ul>
+      <li>k8s event driven scripting using Javascript</li>
+      <li>builds container pipelines</li>
+      <li>k8s native</li>
+      <li>requires helm</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.youtube.com/watch?v=0Omvgd7Hg1I">life of a packet</a>
+    <ul>
+      <li>k8s networking video</li>
+      <li>
+<a href="https://speakerdeck.com/thockin/the-ins-and-outs-of-networking-in-google-container-engine">speakerdeck</a>
+        <ul>
+          <li>by the same guy and Tim Hockin</li>
+          <li>not actually for kubernetes but still useful</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+<a href="https://chrislovecnm.com/kubernetes/cni/choosing-a-cni-provider/">which cni</a>
+    <ul>
+      <li>comments on various CNI</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://jolestar.com/kubernetes-complete-course/">jolestar training</a>
+    <ul>
+      <li>video traingin given by a guy from Qingcloud</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://mp.weixin.qq.com/s/vyUi1V4pmYQr5_9T2Qqygg">JDOS</a>
+    <ul>
+      <li>JD custmization of kuberntes</li>
+      <li>a lot of high level information but still readable</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.youtube.com/watch?v=0W49z8hVn0k">borg to kubernetes</a>
+    <ul>
+      <li>Youtube video</li>
+      <li>The key point of kubernetes and Borg is: resource scheduling optimisation</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://docs.google.com/spreadsheets/d/1LxSqBzjOxfGx3cmtZ4EbB_BGCxT_wlxW_xgHVVa23es/edit#gid=0">distro</a>
+    <ul>
+      <li>spreadsheet of k8s distributions</li>
+      <li>wise2c included</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://docs.google.com/spreadsheets/d/1FCgqz1Ci7_VCz_wdh8vBitZ3giBtac_H8SBw4uxnrsE/edit#gid=0">configuration management tools</a>
+    <ul>
+      <li>like helm</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://blog.heptio.com/introducing-heptio-kubernetes-subscription-5415052ef374">heptio kubernetes subscription</a>
+    <ul>
+      <li>integrated PaaS from heptio</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://gravitational.com/blog/kubernetes-release-cycle/#">gravitational</a>
+    <ul>
+      <li>kubernetes release cycle</li>
+      <li>LTS?</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.slideshare.net/PhilEstes/whose-job-is-it-anyway-kubernetes-cri-container-runtimes/?mkt_tok=eyJpIjoiTWpabFpHWTVaRGc1WmpGaSIsInQiOiJjOVJqaHBiYTVDU3g0RkJjVjdnK3FvbHAxWGtVWmQ5RXB2MnJsUHZtMDJtdW9Oc0lTcmd4NUZ5c21qd3l4UnRpZ1wvZzZVRURtYkwwQjExeG85RkVHN244Q1lKM1d3OFlsUkNKQlNBNFhwZFZKeWd1UFRDeHBMV2tNNjBGMkp6b1MifQ%3D%3D">container runtimes</a>
+    <ul>
+      <li>Whose Job is it anywa, CRI-O</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://resources.codeship.com/hubfs/Codeship_A-Roundup-of-Managed-Kubernetes-Platforms.pdf?t=1519673453469">codeship</a>
+    <ul>
+      <li>roundup of managed kubernetes platforms</li>
+      <li>PDF</li>
+      <li>GKE, openshift, Ubuntu, etc</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://schd.ws/hosted_files/lc3china2017/d1/Scale%20Kubernetes%20to%20Support%2050000%20Services%20-%202017%20China.pdf">50000</a>
+    <ul>
+      <li>scale kubernetes to 50000 services</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://schd.ws/hosted_files/lc3china2017/62/Fully%20Automated%20Kubernetes%20Deployment%20and%20Management.pdf">rancher</a>
+    <ul>
+      <li>PDF</li>
+      <li>talk by Jiang Peng</li>
+      <li>kubernetes upgrade</li>
+      <li>etc backup</li>
+      <li>health check</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://techbeacon.com/one-year-using-kubernetes-production-lessons-learned">techbeacon</a>
+    <ul>
+      <li>one year using kubernetes</li>
+      <li>run data service like MySQL and Mongo outside of kubernetes</li>
+      <li>cost: extra requirement of etcd, master nodes</li>
+      <li>logs sent directly from container themselves</li>
+      <li>published in 2016</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://medium.com/@ryandotclair/an-interrogation-of-metaparticle-and-abstraction-layers-44ba2fe07b62">ryan</a>
+    <ul>
+      <li>an interrogation of metaparticle</li>
+      <li>metaparticle: a leaky abstraction, breaks the law of sepration of concerns</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://resources.codeship.com/hubfs/TheNewStack_Book101_KubernetesSolutionsDirectory.pdf">newstack codeship</a>
+    <ul>
+      <li>kubernetes solution directory</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://coreos.com/blog/introducing-operators.html">coreos operator</a>
+    <ul>
+      <li>operator introduction</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://venturebeat.com/2018/05/05/everything-announced-at-kubecon-cloudnativecon-europe-2018/">venturebeat</a>
+    <ul>
+      <li>kubecon EU 2018 summary</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.objectif-libre.com/en/blog/2018/03/19/kubernetes-ipvs/">objectif</a>
+    <ul>
+      <li>ipvs and kubernetes</li>
+      <li>with a lot of pods on a host, ipvs performance much better than iptables: <code class="highlighter-rouge">O(1)</code>
+</li>
+      <li><a href="https://schd.ws/hosted_files/cloudnativeeu2017/ce/Scale%20Kubernetes%20to%20Support%2050000%20Services.pdf">also see this pdf</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/">containerd</a>
+    <ul>
+      <li>kubernetes containerd integration goes GA</li>
+      <li>kubernetes 1.10 + containerd 1.1</li>
+      <li>performance gain</li>
+      <li>docker engine will use containerd in the future</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://blog.openai.com/scaling-kubernetes-to-2500-nodes/">openai</a>
+    <ul>
+      <li><em>scaling kubernetes to 2500 nodes</em></li>
+      <li>etcd: move from networked storage to local SSD</li>
+      <li>etcd: increase hard storage limit</li>
+      <li>scheduler: schedule pods to a single node as much as it can</li>
+      <li>kubelet: <code class="highlighter-rouge">--serialize-image-pulls=false</code> to allow parallel image pull</li>
+      <li>docker: switch to overlay2</li>
+      <li>docker: move docker root to SSD</li>
+      <li>docker: max-concurrent-downloads option to 10</li>
+      <li>networking: <code class="highlighter-rouge">hostNetwork: true</code> and <code class="highlighter-rouge">dnsPolicy: ClusterFirstWithHostNet.</code>
+</li>
+      <li>networking: increased ARP cache size</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://aws.amazon.com/blogs/aws/amazon-eks-now-generally-available/">eks</a>
+    <ul>
+      <li>AWS EKS GA announcement</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://www.infoq.com/cn/presentations/different-ways-of-kubernetes-in-micro-service">infoq</a>
+    <ul>
+      <li>宁辉</li>
+      <li>mentions SR-IOV</li>
+      <li>kubernetes + IaaS</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://cloud.google.com/gke-on-prem/">gke-on-perm</a>
+    <ul>
+      <li>private GKE</li>
+      <li>announced July 2018</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://kubeiql.io">kubeiql</a>
+    <ul>
+      <li>GraphQL interface for kubernetes</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/BrandonPotter/kubergui">kubergui</a>
+    <ul>
+      <li>GitHub - BrandonPotter/kubergui: Kubernetes GUI YAML generators for simple but typo-prone tasks</li>
+      <li>HTML yaml generator</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://blog.freshtracks.io/a-deep-dive-into-kubernetes-metrics-b190cc97f0f6">freshtracks</a>
+    <ul>
+      <li>a deep dive into kubernetes metrics (6 parts)</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/txn2/kubefwd">kubefwd</a>
+    <ul>
+      <li>GitHub - txn2/kubefwd: Bulk port forwarding Kubernetes services for local development.</li>
+      <li>developer tool to forward all remote service from a namespace
+transparently</li>
+      <li>access <code class="highlighter-rouge">/etc/hosts</code> to make sure local dev can access remote service with
+same name</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://itnext.io/benchmark-results-of-kubernetes-network-plugins-cni-over-10gbit-s-network-36475925a560">itnext</a>
+    <ul>
+      <li>CNI benchmark over 10G</li>
+      <li>calico, flannel, cilium, weave, canal</li>
+      <li>calico is good, cilium is confusingly bad</li>
+      <li>jumbo frame activated (MTU 9000) - MTU matters</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.cloudatomiclab.com/rustyk8s/">rust, api</a>
+    <ul>
+      <li>somebody is starting to write a k8s API with Rust</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://medium.com/tinder-engineering/tinders-move-to-kubernetes-cda2a6372f44">tinder, production, scale</a>
+    <ul>
+      <li>report from Tinder on moving to kubernetes</li>
+      <li>cluster size, flannel optimisation, dns problem, using envoy to fix HTTP Keepalive</li>
+      <li>200 services, 1,000 nodes, 15,000 pods, and 48,000 running containers.</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://docs.google.com/presentation/d/13EQKZSQDounPC1I6EC4PmqaRmdCrpT3qswQJz9KRCyE/mobilepresent?slide=id.gd9c453428_0_16">google docs, cka</a>
+    <ul>
+      <li>lengthy google spreadsheet with training material</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/openkruise/kruise">alibaba, open source, kruise</a>
+    <ul>
+      <li>Advanced StatefulSet, BroadcastJob, and SidecarSet open sourced by Alibaba</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/release/versioning.md">release, support</a>
+    <ul>
+      <li>Kubernetes Release Versioning</li>
+      <li><em>Furthermore, we expect to “support” three minor releases at a time.</em></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://discuss.kubernetes.io">discuss</a>
+    <ul>
+      <li>discuss</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://docs.google.com/drawings/d/1MtWL8qRTs6PlnJrW4dh8135_S9e2SaawT410bJuoBPk/edit">tim hockin, kube-proxy, diagram</a>
+    <ul>
+      <li>kube-proxy NAT iptable flow</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/arashkaffamanesh/kubeadm-multipass">github, multipass, install</a>
+    <ul>
+      <li>Multi-Node Kubernetes 1.17 with kubeadm on local multipass cloud with Docker, Containerd or CRI-O and Rancher Server on top</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://docs.google.com/spreadsheets/d/1WPHt0gsb7adVzY3eviMK2W8LejV0I5m_Zpc8tMzl_2w/edit#gid=0">golden, tools, google</a>
+    <ul>
+      <li>The Golden Kubernetes Tooling and Helpers list</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://docs.google.com/spreadsheets/d/1LxSqBzjOxfGx3cmtZ4EbB_BGCxT_wlxW_xgHVVa23es/edit#gid=0">sheet, google, wise2c</a>
+    <ul>
+      <li>Google sheet with all distributions, including two from wise2c</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/ewohltman/kubecon2019">kubecon 2019</a>
+    <ul>
+      <li>Notes from KubeCon and EnvoyCon 2019.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="poc">
+<a class="anchor" href="#poc" aria-hidden="true"><span class="octicon octicon-link"></span></a>POC</h2>
+<ul>
+  <li><a href="http://5pi.de/2016/11/20/15-producation-grade-kubernetes-cluster/">5pi</a></li>
+  <li><a href="https://chenjian158978.github.io/chenjian.github.io/2017/12/08/Deploy-K8s-by-Kebeadm-on-Linux/">jimmy</a></li>
+  <li>
+<a href="http://blog.csdn.net/u013127762/article/details/54340485">csdn</a>
+    <ul>
+      <li>image mismatch problem</li>
+    </ul>
+  </li>
+</ul>
+
+
+  </div><a class="u-url" href="/myfastpage/markdown/2020/03/23/kubernetes-notes.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/myfastpage/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/myfastpage/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/myfastpage/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/myfastpage/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/myfastpage/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
