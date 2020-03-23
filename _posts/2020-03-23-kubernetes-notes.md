@@ -174,7 +174,7 @@ title: On Kubernetes
 <img alt="arch" src="http://k8s.info/resources/cheatsheet/k8s-cheatsheet-physical-layout.png" width="75%">
 
 ### 2
-<img alt="another arch" src="http://cythumb.cyworld.com/810x0/c2down.cyworld.co.kr/download?fid=64224fe7c9ab420678b250019c2ac900&name=2015_09_25_kubernetes_architecture_with_flannel.png" width=75%>
+<img alt="another arch" src="http://cythumb.cyworld.com/810x0/c2down.cyworld.co.kr/download?fid=64224fe7c9ab420678b250019c2ac900&name=2015_09_25_kubernetes_architecture_with_flannel.png" width="75%">
 
 ### 3
 <img alt="black and white" src="http://blog.octo.com/wp-content/uploads/2017/01/architecturenormal-1024x843.png" width="75%">
@@ -552,7 +552,7 @@ title: On Kubernetes
 * `kc delete mutatingWebhookConfiguration`
 
 ## Flow (from Banzai Cloud)
-<img src="http://borlandc.pek3b.qingstor.com/k8s/k8s-webhooks.png" width=75%>
+<img src="http://borlandc.pek3b.qingstor.com/k8s/k8s-webhooks.png" width="75%">
 
 ## Initialiser
 * can't be used for `DELETE`
@@ -924,7 +924,7 @@ title: On Kubernetes
     * https://github.com/kubernetes-csi/drivers
 
 ### Arch
-<img src="http://borlandc.pek3b.qingstor.com/k8s/csi-arch-1.png" width=75%>
+<img src="http://borlandc.pek3b.qingstor.com/k8s/csi-arch-1.png" width="75%">
 
 ### API
 * gRPC
@@ -1608,7 +1608,7 @@ title: On Kubernetes
     * helm is not **only** a template solution
 
 ## Arch
-<img src="http://borlandc.pek3b.qingstor.com/container/helm-application-deployment-management-for-kubernetes-13-638.jpg" width=75%>
+<img src="http://borlandc.pek3b.qingstor.com/container/helm-application-deployment-management-for-kubernetes-13-638.jpg" width="75%">
 
 ## CLI
 * `helm init`:
@@ -1756,7 +1756,7 @@ title: On Kubernetes
   changes attempting to move the current state towards the desired state 
 
 ## Pod creation sequence
-<img src="https://cdn-images-1.medium.com/max/1600/1*WDJmiyarVfcsDp6X1-lLFQ.png" width=75%>
+<img src="https://cdn-images-1.medium.com/max/1600/1*WDJmiyarVfcsDp6X1-lLFQ.png" width="75%">
 
 ## Links
 * [what even is a kubelet](http://kamalmarhubi.com/blog/2015/08/27/what-even-is-a-kubelet/)
@@ -1873,7 +1873,7 @@ title: On Kubernetes
     * [example](https://github.com/Mirantis/virtlet/tree/master/examples#using-the-persistent-root-filesystem)
 
 ### Arch
-<img src="http://borlandc.pek3b.qingstor.com/k8s/virtletarchitecture.png" width=75%>
+<img src="http://borlandc.pek3b.qingstor.com/k8s/virtletarchitecture.png" width="75%">
 
 ## kata container
 ...
