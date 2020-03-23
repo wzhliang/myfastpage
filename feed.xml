@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wzhliang.github.io/myfastpage/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wzhliang.github.io/myfastpage/" rel="alternate" type="text/html" /><updated>2020-03-22T23:00:57-05:00</updated><id>https://wzhliang.github.io/myfastpage/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">On Kubernetes</title><link href="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html" rel="alternate" type="text/html" title="On Kubernetes" /><published>2020-03-23T00:00:00-05:00</published><updated>2020-03-23T00:00:00-05:00</updated><id>https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html">&lt;h1 id=&quot;general&quot;&gt;General&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wzhliang.github.io/myfastpage/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wzhliang.github.io/myfastpage/" rel="alternate" type="text/html" /><updated>2020-03-23T08:30:56-05:00</updated><id>https://wzhliang.github.io/myfastpage/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">On Kubernetes</title><link href="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html" rel="alternate" type="text/html" title="On Kubernetes" /><published>2020-03-23T00:00:00-05:00</published><updated>2020-03-23T00:00:00-05:00</updated><id>https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html">&lt;h1 id=&quot;general&quot;&gt;General&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;backed by google and has a long history (in container’s term)&lt;/li&gt;
   &lt;li&gt;currently managed by Linux foundation&lt;/li&gt;
@@ -275,7 +275,7 @@ managed outside of Kubernetes.
 &lt;p&gt;&lt;img alt=&quot;arch&quot; src=&quot;http://k8s.info/resources/cheatsheet/k8s-cheatsheet-physical-layout.png&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;2&quot;&gt;2&lt;/h3&gt;
-&lt;p&gt;&amp;lt;img alt=”another arch” src=”http://cythumb.cyworld.com/810x0/c2down.cyworld.co.kr/download?fid=64224fe7c9ab420678b250019c2ac900&amp;amp;name=2015_09_25_kubernetes_architecture_with_flannel.png” width=75%&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;another arch&quot; src=&quot;http://cythumb.cyworld.com/810x0/c2down.cyworld.co.kr/download?fid=64224fe7c9ab420678b250019c2ac900&amp;amp;name=2015_09_25_kubernetes_architecture_with_flannel.png&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;3&quot;&gt;3&lt;/h3&gt;
 &lt;p&gt;&lt;img alt=&quot;black and white&quot; src=&quot;http://blog.octo.com/wp-content/uploads/2017/01/architecturenormal-1024x843.png&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
@@ -943,7 +943,7 @@ scaled up again, they’ll be reused, retaining the data&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;flow-from-banzai-cloud&quot;&gt;Flow (from Banzai Cloud)&lt;/h2&gt;
-&lt;p&gt;&amp;lt;img src=”http://borlandc.pek3b.qingstor.com/k8s/k8s-webhooks.png” width=75%&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://borlandc.pek3b.qingstor.com/k8s/k8s-webhooks.png&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;initialiser&quot;&gt;Initialiser&lt;/h2&gt;
 &lt;ul&gt;
@@ -1622,7 +1622,7 @@ work&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;arch-1&quot;&gt;Arch&lt;/h3&gt;
-&lt;p&gt;&amp;lt;img src=”http://borlandc.pek3b.qingstor.com/k8s/csi-arch-1.png” width=75%&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://borlandc.pek3b.qingstor.com/k8s/csi-arch-1.png&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;api&quot;&gt;API&lt;/h3&gt;
 &lt;ul&gt;
@@ -2781,7 +2781,7 @@ landscape, etc&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;arch-3&quot;&gt;Arch&lt;/h2&gt;
-&lt;p&gt;&amp;lt;img src=”http://borlandc.pek3b.qingstor.com/container/helm-application-deployment-management-for-kubernetes-13-638.jpg” width=75%&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://borlandc.pek3b.qingstor.com/container/helm-application-deployment-management-for-kubernetes-13-638.jpg&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;cli-2&quot;&gt;CLI&lt;/h2&gt;
 &lt;ul&gt;
@@ -3050,7 +3050,7 @@ changes attempting to move the current state towards the desired state&lt;/li&gt
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;pod-creation-sequence&quot;&gt;Pod creation sequence&lt;/h2&gt;
-&lt;p&gt;&amp;lt;img src=”https://cdn-images-1.medium.com/max/1600/1*WDJmiyarVfcsDp6X1-lLFQ.png” width=75%&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/1600/1*WDJmiyarVfcsDp6X1-lLFQ.png&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;links-7&quot;&gt;Links&lt;/h2&gt;
 &lt;ul&gt;
@@ -3251,7 +3251,7 @@ changes attempting to move the current state towards the desired state&lt;/li&gt
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;arch-5&quot;&gt;Arch&lt;/h3&gt;
-&lt;p&gt;&amp;lt;img src=”http://borlandc.pek3b.qingstor.com/k8s/virtletarchitecture.png” width=75%&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://borlandc.pek3b.qingstor.com/k8s/virtletarchitecture.png&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;kata-container&quot;&gt;kata container&lt;/h2&gt;
 &lt;p&gt;…&lt;/p&gt;
