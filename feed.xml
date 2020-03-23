@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wzhliang.github.io/myfastpage/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wzhliang.github.io/myfastpage/" rel="alternate" type="text/html" /><updated>2020-03-22T22:01:40-05:00</updated><id>https://wzhliang.github.io/myfastpage/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">On Kubernetes</title><link href="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html" rel="alternate" type="text/html" title="On Kubernetes" /><published>2020-03-23T00:00:00-05:00</published><updated>2020-03-23T00:00:00-05:00</updated><id>https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html">&lt;h1 id=&quot;general&quot;&gt;General&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wzhliang.github.io/myfastpage/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wzhliang.github.io/myfastpage/" rel="alternate" type="text/html" /><updated>2020-03-22T22:05:44-05:00</updated><id>https://wzhliang.github.io/myfastpage/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">On Kubernetes</title><link href="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html" rel="alternate" type="text/html" title="On Kubernetes" /><published>2020-03-23T00:00:00-05:00</published><updated>2020-03-23T00:00:00-05:00</updated><id>https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html">&lt;h1 id=&quot;general&quot;&gt;General&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;backed by google and has a long history (in container’s term)&lt;/li&gt;
   &lt;li&gt;currently managed by Linux foundation&lt;/li&gt;
@@ -286,7 +286,7 @@ managed outside of Kubernetes.
 &lt;h1 id=&quot;functionality&quot;&gt;Functionality&lt;/h1&gt;
 
 &lt;h2 id=&quot;ring-graph&quot;&gt;Ring Graph&lt;/h2&gt;
-&lt;p&gt;&amp;lt;img src=”http://borlandc.pek3b.qingstor.com/k8s/k8s-rings.png” width=65%&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://borlandc.pek3b.qingstor.com/k8s/k8s-rings.png&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;health-check&quot;&gt;Health check&lt;/h2&gt;
 &lt;ul&gt;
