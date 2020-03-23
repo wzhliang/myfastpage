@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wzhliang.github.io/myfastpage/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wzhliang.github.io/myfastpage/" rel="alternate" type="text/html" /><updated>2020-03-22T22:58:40-05:00</updated><id>https://wzhliang.github.io/myfastpage/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">On Kubernetes</title><link href="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html" rel="alternate" type="text/html" title="On Kubernetes" /><published>2020-03-23T00:00:00-05:00</published><updated>2020-03-23T00:00:00-05:00</updated><id>https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html">&lt;h1 id=&quot;general&quot;&gt;General&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wzhliang.github.io/myfastpage/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wzhliang.github.io/myfastpage/" rel="alternate" type="text/html" /><updated>2020-03-22T23:00:57-05:00</updated><id>https://wzhliang.github.io/myfastpage/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">On Kubernetes</title><link href="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html" rel="alternate" type="text/html" title="On Kubernetes" /><published>2020-03-23T00:00:00-05:00</published><updated>2020-03-23T00:00:00-05:00</updated><id>https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/markdown/2020/03/23/kubernetes-notes.html">&lt;h1 id=&quot;general&quot;&gt;General&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;backed by google and has a long history (in container’s term)&lt;/li&gt;
   &lt;li&gt;currently managed by Linux foundation&lt;/li&gt;
@@ -272,16 +272,16 @@ managed outside of Kubernetes.
 
 &lt;h2 id=&quot;arch&quot;&gt;Arch&lt;/h2&gt;
 &lt;h3 id=&quot;high-level-architecture&quot;&gt;High Level Architecture&lt;/h3&gt;
-&lt;p&gt;&amp;lt;img alt=”arch” src=”http://k8s.info/resources/cheatsheet/k8s-cheatsheet-physical-layout.png” width=75%&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;arch&quot; src=&quot;http://k8s.info/resources/cheatsheet/k8s-cheatsheet-physical-layout.png&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;2&quot;&gt;2&lt;/h3&gt;
 &lt;p&gt;&amp;lt;img alt=”another arch” src=”http://cythumb.cyworld.com/810x0/c2down.cyworld.co.kr/download?fid=64224fe7c9ab420678b250019c2ac900&amp;amp;name=2015_09_25_kubernetes_architecture_with_flannel.png” width=75%&amp;gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;3&quot;&gt;3&lt;/h3&gt;
-&lt;p&gt;&amp;lt;img alt=”black and white” src=”http://blog.octo.com/wp-content/uploads/2017/01/architecturenormal-1024x843.png” width=75%&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;black and white&quot; src=&quot;http://blog.octo.com/wp-content/uploads/2017/01/architecturenormal-1024x843.png&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;with-edge-router&quot;&gt;with edge router&lt;/h3&gt;
-&lt;p&gt;&amp;lt;img src=”https://cdn-images-1.medium.com/max/1600/1*_ArjfIk34Op6qQWoYCPhOA.png” width=75%&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/1600/1*_ArjfIk34Op6qQWoYCPhOA.png&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;functionality&quot;&gt;Functionality&lt;/h1&gt;
 
@@ -1697,7 +1697,7 @@ by kubernetes, normal user is not&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;nice-picture&quot;&gt;Nice Picture&lt;/h3&gt;
-&lt;p&gt;&amp;lt;img src=”http://borlandc.pek3b.qingstor.com/k8s/k8s-service-account.png” width=75%&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://borlandc.pek3b.qingstor.com/k8s/k8s-service-account.png&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;rbac&quot;&gt;RBAC&lt;/h2&gt;
 &lt;ul&gt;
