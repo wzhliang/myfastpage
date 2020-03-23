@@ -474,7 +474,7 @@ title: On Kubernetes
     * customizable from annotation
 
 # Philosophy
-<img src="https://pbs.twimg.com/media/DZVaE83U8AAMyqh.jpg" width=75%>
+<img src="https://pbs.twimg.com/media/DZVaE83U8AAMyqh.jpg" width="75%">
 
 ### Links
 * [traffik](https://docs.traefik.io/user-guide/kubernetes/)
