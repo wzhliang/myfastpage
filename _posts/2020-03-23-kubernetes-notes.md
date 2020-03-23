@@ -849,7 +849,7 @@ title: On Kubernetes
     * `ReadOnlyMany` many nodes, `R`
 
 ### Chapter 6
-<img src="http://borlandc.pek3b.qingstor.com/k8s/pvc-provisoner-chapter6.png" width=75%>
+<img src="http://borlandc.pek3b.qingstor.com/k8s/pvc-provisoner-chapter6.png" width=300>
 
 ## Spec
 * `spec.volumes`
