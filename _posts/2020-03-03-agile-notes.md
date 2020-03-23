@@ -1,3 +1,10 @@
+---
+toc: true
+layout: post
+description: My Precious Notes on Agile Software Development
+categories: [markdown]
+title: On Agile
+---
 # General
 * a lot of people think Agile is mainly about project management, but the
   creators of Agile put equal if not greater emphasis on engineering as well.
