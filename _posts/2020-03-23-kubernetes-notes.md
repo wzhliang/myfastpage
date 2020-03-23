@@ -171,16 +171,16 @@ title: On Kubernetes
 
 ## Arch
 ### High Level Architecture
-<img alt="arch" src="http://k8s.info/resources/cheatsheet/k8s-cheatsheet-physical-layout.png" width=75%>
+<img alt="arch" src="http://k8s.info/resources/cheatsheet/k8s-cheatsheet-physical-layout.png" width="75%">
 
 ### 2
 <img alt="another arch" src="http://cythumb.cyworld.com/810x0/c2down.cyworld.co.kr/download?fid=64224fe7c9ab420678b250019c2ac900&name=2015_09_25_kubernetes_architecture_with_flannel.png" width=75%>
 
 ### 3
-<img alt="black and white" src="http://blog.octo.com/wp-content/uploads/2017/01/architecturenormal-1024x843.png" width=75%>
+<img alt="black and white" src="http://blog.octo.com/wp-content/uploads/2017/01/architecturenormal-1024x843.png" width="75%">
 
 ### with edge router
-<img src="https://cdn-images-1.medium.com/max/1600/1*_ArjfIk34Op6qQWoYCPhOA.png" width=75%>
+<img src="https://cdn-images-1.medium.com/max/1600/1*_ArjfIk34Op6qQWoYCPhOA.png" width="75%">
 
 
 # Functionality
@@ -976,7 +976,7 @@ title: On Kubernetes
     * token, says who you are and what you can do
 
 ### Nice Picture
-<img src="http://borlandc.pek3b.qingstor.com/k8s/k8s-service-account.png" width=75%>
+<img src="http://borlandc.pek3b.qingstor.com/k8s/k8s-service-account.png" width="75%">
 
 ## RBAC
 * role based access control
