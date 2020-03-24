@@ -1,4 +1,626 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wzhliang.github.io/myfastpage/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wzhliang.github.io/myfastpage/" rel="alternate" type="text/html" /><updated>2020-03-24T00:07:36-05:00</updated><id>https://wzhliang.github.io/myfastpage/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">On DevOps</title><link href="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops.html" rel="alternate" type="text/html" title="On DevOps" /><published>2020-03-24T00:00:00-05:00</published><updated>2020-03-24T00:00:00-05:00</updated><id>https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops.html">&lt;h1 id=&quot;general&quot;&gt;General&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wzhliang.github.io/myfastpage/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wzhliang.github.io/myfastpage/" rel="alternate" type="text/html" /><updated>2020-03-24T07:24:20-05:00</updated><id>https://wzhliang.github.io/myfastpage/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">On Security</title><link href="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html" rel="alternate" type="text/html" title="On Security" /><published>2020-03-24T00:00:00-05:00</published><updated>2020-03-24T00:00:00-05:00</updated><id>https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html">&lt;h1 id=&quot;cryptology&quot;&gt;Cryptology&lt;/h1&gt;
+&lt;h2 id=&quot;symetric-encryption&quot;&gt;Symetric encryption&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Alice and Bob have to have the same secrete key&lt;/li&gt;
+  &lt;li&gt;also called secrete key cryptography&lt;/li&gt;
+  &lt;li&gt;cipher can be either block type or stream type&lt;/li&gt;
+  &lt;li&gt;ciphers
+    &lt;ul&gt;
+      &lt;li&gt;DES, 3DES,&lt;/li&gt;
+      &lt;li&gt;RC2, RC4&lt;/li&gt;
+      &lt;li&gt;…&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;AES (Advanced Encryption Standard)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;public-key-encryption-asymetric&quot;&gt;Public Key Encryption (Asymetric)&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Bob has a pair of keys, a private one and a public one.&lt;/li&gt;
+  &lt;li&gt;The pubic one can be shared to the whole world.&lt;/li&gt;
+  &lt;li&gt;Any message that’s encrypted with the public key can &lt;em&gt;only&lt;/em&gt; be decrypted
+with the matching private key.&lt;/li&gt;
+  &lt;li&gt;the two keys are mathematically linked&lt;/li&gt;
+  &lt;li&gt;so: public key is for encryption, private key is for decryption&lt;/li&gt;
+  &lt;li&gt;frequently (but not necessarily), the keys are interchangeable, in the sense
+that if key A encrypts a message, then B can decrypt it, and if key B encrypts
+a message, then key A can decrypt it. While common, this property is not
+essential to asymmetric encryption.&lt;/li&gt;
+  &lt;li&gt;ciphers
+    &lt;ul&gt;
+      &lt;li&gt;RSA&lt;/li&gt;
+      &lt;li&gt;Diffie Hellman&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;mathematical
+    &lt;ul&gt;
+      &lt;li&gt;based on drapdoor one-way-function&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://cs.stfx.ca/~ltyang/csci-467/lecture-slides/ch-10.pp&quot;&gt;csci-467&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;OWF is a function that’s very hard to reverse&lt;/li&gt;
+      &lt;li&gt;with a trapdoor, it becomes easy&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;解决了两个关键的问题：证明我是谁，信息加密&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;message-digest-algorithm&quot;&gt;Message digest algorithm&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;a message digest is computed by a hash function, which is a transformation that meets two criteria:
+    &lt;ol&gt;
+      &lt;li&gt;The hash function must be one way. It must not be possible to reverse the
+function to find the message corresponding to a particular message digest,
+other than by testing all possible messages.&lt;/li&gt;
+      &lt;li&gt;It must be computationally infeasible to find two messages that hash to the
+same digest.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;encrypting-vs-signing&quot;&gt;Encrypting vs Signing&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;when encrypting, you use their public key to write message and they use their private key to read it.&lt;/li&gt;
+  &lt;li&gt;when signing, you use your &lt;strong&gt;private key&lt;/strong&gt; to write message’s signature, and they
+use your public key to check if it’s really yours.
+    &lt;ul&gt;
+      &lt;li&gt;often the signing is done on a message digest(hash) rather than the message
+itself&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;signing&quot;&gt;Signing&lt;/h3&gt;
+&lt;p&gt;&lt;img alt=&quot;ibm&quot; src=&quot;https://www.ibm.com/support/knowledgecenter/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10520a.gif&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;cipher&quot;&gt;Cipher&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;or cypher is the encrypting/decrypting algorithm&lt;/li&gt;
+  &lt;li&gt;currently AES is considered a strong cipher.&lt;/li&gt;
+  &lt;li&gt;triple DES or RC4 are weak.&lt;/li&gt;
+  &lt;li&gt;elliptic curve cryptography
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Elliptic_curve_cryptography&quot;&gt;wikipedia&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;a cipher suit includes algorithms for:
+    &lt;ul&gt;
+      &lt;li&gt;authentication&lt;/li&gt;
+      &lt;li&gt;encryption&lt;/li&gt;
+      &lt;li&gt;MAC (message authentication code)&lt;/li&gt;
+      &lt;li&gt;key exchange&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.jscape.com/blog/cipher-suites&quot;&gt;cipher suit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;xor&quot;&gt;XOR&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;XOR is used quite often in encryption algorithms&lt;/li&gt;
+  &lt;li&gt;XOR cipher
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(message) XOR key -&amp;gt; (encrypted message)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(encrypted message) XOR key -&amp;gt; (message)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;known as &lt;em&gt;one time pad&lt;/em&gt; or (OTP) for short&lt;/li&gt;
+      &lt;li&gt;impossible to crack&lt;/li&gt;
+      &lt;li&gt;impractical to use keys that are the same length as the message body&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.to/wagslane/why-is-exclusive-or-xor-important-in-cryptography-e7b&quot;&gt;dev.to&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Why is Exclusive Or (XOR) Important in Cryptography?&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;xor-truth-table&quot;&gt;XOR Truth table&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;http://borlandc.pek3b.qingstor.com/security/xor-binary-operation.png&quot; width=&quot;35%&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;tls&quot;&gt;TLS&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;build on top of TCP to make the upper layer security transparent&lt;/li&gt;
+  &lt;li&gt;two goals: confidentiality and authentication.&lt;/li&gt;
+  &lt;li&gt;for confidentiality, a shared key is established.&lt;/li&gt;
+  &lt;li&gt;for authentication, public key technology is used for proving ownership of certificates.&lt;/li&gt;
+  &lt;li&gt;provides
+    &lt;ul&gt;
+      &lt;li&gt;authentication, when I’m connecting to google.com, am I actually
+connecting to google.com?&lt;/li&gt;
+      &lt;li&gt;encryption&lt;/li&gt;
+      &lt;li&gt;integrity, message is not tempered with during transition&lt;/li&gt;
+      &lt;li&gt;key exchange&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;versions&quot;&gt;Versions&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;TLS 1.0 is SSL 3.1&lt;/li&gt;
+  &lt;li&gt;TLS 1.2&lt;/li&gt;
+  &lt;li&gt;TLS 1.3. working draft
+    &lt;ul&gt;
+      &lt;li&gt;one less handshake, client sends its key with the first HELLO message&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://twitter.com/colmmacc/status/978430840198742016&quot;&gt;twitter&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;concepts&quot;&gt;Concepts&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;session key: end result of the handshake. A key for symmetric cipher.&lt;/li&gt;
+  &lt;li&gt;client random: 32 bytes sequence choosed by the client. Also call nonce.&lt;/li&gt;
+  &lt;li&gt;server random: same as above but generated by the server.&lt;/li&gt;
+  &lt;li&gt;pre-master secreted: 48 bytes blob of data. Simply put:
+    &lt;ul&gt;
+      &lt;li&gt;client random + server random + pre-master secrete = session key&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;cipher suit: combination of algorithms making up the TLS connection
+    &lt;ul&gt;
+      &lt;li&gt;key establishment&lt;/li&gt;
+      &lt;li&gt;authentication (certificate type)&lt;/li&gt;
+      &lt;li&gt;confidentiality (symmetric cipher)&lt;/li&gt;
+      &lt;li&gt;integrity (hash)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;AES128-SHA as a cipher suit example
+    &lt;ul&gt;
+      &lt;li&gt;key establishment (RSA)&lt;/li&gt;
+      &lt;li&gt;authentication (RSA)&lt;/li&gt;
+      &lt;li&gt;confidentiality (128 bit AES)&lt;/li&gt;
+      &lt;li&gt;integrity (160 bit SHA1)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;certificates&quot;&gt;Certificates&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;purpose is to assuring the identity of websites.&lt;/li&gt;
+  &lt;li&gt;binds domain names to server names, and company names to locations.&lt;/li&gt;
+  &lt;li&gt;a TLS certificate is a kind of X.509 certificate&lt;/li&gt;
+  &lt;li&gt;a certificate file include public key of the owner.&lt;/li&gt;
+  &lt;li&gt;a certificate has a corresponding private key&lt;/li&gt;
+  &lt;li&gt;Certificates are provided by CA (certification authority), which is some
+well known certificate issuer
+    &lt;ul&gt;
+      &lt;li&gt;certs can also be generated easily with the &lt;code class=&quot;highlighter-rouge&quot;&gt;openssl&lt;/code&gt; suit, this is called
+self-signing&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;when a web server (say google) sends you its certificate, it also tell you who
+signed it (GeoTrust). On the system where openssl is installed, there is
+already a list of CAs installed, and GeoTrust is one of them. Using GeoTrust’s
+public key, we can verify that google’s certificate is valid.
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.archlinux.org/packages/core/any/ca-certificates/&quot;&gt;prove&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;a root certificate identifies the root CA
+    &lt;ul&gt;
+      &lt;li&gt;it’s self-signed&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;any certificate that sits between the SSL Certificate and the Root Certificate
+is called a chain or Intermediate Certificate.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;x509-naming-schema&quot;&gt;X509 naming schema&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;same standard as LDAP&lt;/li&gt;
+  &lt;li&gt;CN: common name&lt;/li&gt;
+  &lt;li&gt;names:
+    &lt;ul&gt;
+      &lt;li&gt;C: contry&lt;/li&gt;
+      &lt;li&gt;L: location&lt;/li&gt;
+      &lt;li&gt;O: organization&lt;/li&gt;
+      &lt;li&gt;OU: organization unit&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;file-format&quot;&gt;File Format&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;normally (or most of the world) uses PEM format, which is a textual file.&lt;/li&gt;
+  &lt;li&gt;DER is a binary format that’s used by M$&lt;/li&gt;
+  &lt;li&gt;convertion can be done with &lt;code class=&quot;highlighter-rouge&quot;&gt;openssl x509 -in cacert.pem -out cacert.cer -outform DER&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;csr&quot;&gt;CSR&lt;/h3&gt;
+&lt;p&gt;&lt;img alt=&quot;CSR&quot; src=&quot;http://pki-tutorial.readthedocs.io/en/latest/_images/PKIProcess.png&quot; width=&quot;55%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;whats-inside&quot;&gt;What’s Inside&lt;/h3&gt;
+&lt;p&gt;&lt;img alt=&quot;content&quot; src=&quot;images/certificate.png&quot; width=&quot;55%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;chain-of-trust&quot;&gt;Chain Of Trust&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;http://borlandc.pek3b.qingstor.com/security/pki-chain.jpg&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;tls-handshake&quot;&gt;TLS Handshake&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;client hello&lt;/strong&gt;. client sends:
+    &lt;ul&gt;
+      &lt;li&gt;client random&lt;/li&gt;
+      &lt;li&gt;cipher suit supported&lt;/li&gt;
+      &lt;li&gt;version of SSL/TLS it’s using&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;server hello&lt;/strong&gt;. server sends:
+    &lt;ul&gt;
+      &lt;li&gt;server random&lt;/li&gt;
+      &lt;li&gt;the decided cipher suit&lt;/li&gt;
+      &lt;li&gt;server’s certificate&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;client key exchange
+    &lt;ul&gt;
+      &lt;li&gt;Client:
+        &lt;ul&gt;
+          &lt;li&gt;verify server’s certificate (e.g. checking signature - decrypting with root cert)&lt;/li&gt;
+          &lt;li&gt;generate random pre-master secrete&lt;/li&gt;
+          &lt;li&gt;encrypt secrete with server’s public key&lt;/li&gt;
+          &lt;li&gt;send encrypted data to server&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Server:
+        &lt;ul&gt;
+          &lt;li&gt;decrypt message with its own private key&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Both: having client random, server random and pre-master secrete, a session key
+(same on both side) can be calculated.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;session start with symmetric cipher&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;flow&quot;&gt;Flow&lt;/h3&gt;
+&lt;p&gt;&lt;img alt=&quot;IBM&quot; src=&quot;https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660a.gif&quot; width=&quot;55%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;flow-with-more-detail&quot;&gt;Flow with More Detail&lt;/h3&gt;
+&lt;p&gt;&amp;lt;img alg=better-flow src=”https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/SSL_handshake_with_two_way_authentication_with_certificates.svg/1430px-SSL_handshake_with_two_way_authentication_with_certificates.svg.png” width=”75%”&amp;gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;self-signed&quot;&gt;Self Signed&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl req \
+ -newkey rsa:2048 -nodes -keyout domain.key \
+ -x509 -days 365 -out domain.crt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-keyout&lt;/code&gt; specifies private key&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-out&lt;/code&gt; specifies TLS certificate&lt;/li&gt;
+  &lt;li&gt;will be asked about FQDN or IP address&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.android.com/training/articles/security-ssl.html#SelfSigned&quot;&gt;android documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain site.crt&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;adding self signed certificate on MacOS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;sni&quot;&gt;SNI&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;service name indication&lt;/li&gt;
+  &lt;li&gt;allows multiple certs to be issued to a single IP port pair
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://support.comodo.com/index.php?/Knowledgebase/Article/View/1120/38/what-is-sni-and-how-it-works&quot;&gt;comodo&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;rest-api&quot;&gt;REST API&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;use API keys instead of user/password pair.
+    &lt;ul&gt;
+      &lt;li&gt;keys are much longer so securer&lt;/li&gt;
+      &lt;li&gt;password reset can cause trouble if user/password pair is used&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;use opaque ids instead of increasing numbers like ‘1234’&lt;/li&gt;
+  &lt;li&gt;avoid sessions in REST API for better performance and scalability&lt;/li&gt;
+  &lt;li&gt;one way of implementing this is to use http server’s TLS ability and leave application
+server out of it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;options-for-securing-rest-api&quot;&gt;Options for Securing REST API&lt;/h1&gt;
+&lt;h2 id=&quot;basic-authentication--tls&quot;&gt;Basic Authentication + TLS&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;easy to implement but not as secure as other options&lt;/li&gt;
+  &lt;li&gt;has to be enforced by client and server. If client can choose to use inscecure channel
+and server allows it, it’s broken.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;oauth-10a&quot;&gt;OAuth 1.0a&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Widely used so a lot of libraries supports it.&lt;/li&gt;
+  &lt;li&gt;Very secure.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;oauth-2&quot;&gt;OAuth 2&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Not as many library supports this.&lt;/li&gt;
+  &lt;li&gt;Less secure than OAuth 1.0a but supposedly simpler.&lt;/li&gt;
+  &lt;li&gt;TLS required.&lt;/li&gt;
+  &lt;li&gt;Roles
+    &lt;ul&gt;
+      &lt;li&gt;Resource Owner/User&lt;/li&gt;
+      &lt;li&gt;Client&lt;/li&gt;
+      &lt;li&gt;Resource Server&lt;/li&gt;
+      &lt;li&gt;Authorization server&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/@darutk/the-simplest-guide-to-oauth-2-0-8c71bd9a15bb&quot;&gt;medium&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2&quot;&gt;do&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;oauth-2-sequence-diagram&quot;&gt;OAuth 2 Sequence Diagram&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://borlandc.pek3b.qingstor.com/security/oauth2flow.png&quot; width=&quot;55%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;oauth-2-flow&quot;&gt;OAuth 2 Flow&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://borlandc.pek3b.qingstor.com/security/oauthflow.png&quot; width=&quot;85%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;normal-oauth-workflow-simplified&quot;&gt;Normal OAuth Workflow (Simplified)&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;The user first initiates a request on the Client website.&lt;/li&gt;
+  &lt;li&gt;The Client will then send an Access Token to an API Gateway.&lt;/li&gt;
+  &lt;li&gt;The API Gateway will then pass the Access Token to the Authorization Server (the OAuth server).&lt;/li&gt;
+  &lt;li&gt;The Authorization Server verifies that the Access Token is correct, and sends an JWT Access Token to the API Gateway.&lt;/li&gt;
+  &lt;li&gt;The API Gateway then passes the JWT Access Token to a microservice which will need to act as a trigger each month for a continuous job. We’ll call this Trigger Savings API.&lt;/li&gt;
+  &lt;li&gt;The job is then inserted into a Queue, which triggers a second microservice that moves money into the account. We’ll call this the Do Savings API.&lt;/li&gt;
+  &lt;li&gt;The Queue is reset, and Step 6 is repeated when the correct time has elapsed.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;from &lt;a href=&quot;https://nordicapis.com/how-to-handle-batch-processing-with-oauth-2-0/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;openid-connect&quot;&gt;OpenID Connect&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;based on OAuth 2.0
+    &lt;ul&gt;
+      &lt;li&gt;NOT OpenID!!!&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;REST-based&lt;/li&gt;
+  &lt;li&gt;SAML??&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;commercial-company&quot;&gt;Commercial Company&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stormpath.com&quot;&gt;stormpath&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;cfssl&quot;&gt;cfssl&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cfssl print-defaults &amp;lt;csr|config&amp;gt;&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;handy command to create templates for CSR and signing config file&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;terms&quot;&gt;Terms&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;PKI - Public Key Infrastructure&lt;/li&gt;
+  &lt;li&gt;CSR - Certificate Signing Request
+    &lt;ul&gt;
+      &lt;li&gt;a request to CA for issuing a certificate&lt;/li&gt;
+      &lt;li&gt;content include:
+        &lt;ul&gt;
+          &lt;li&gt;host names, IP addresses&lt;/li&gt;
+          &lt;li&gt;CN &lt;code class=&quot;highlighter-rouge&quot;&gt;foo.bar.whatever&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;key: algorithm and size&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;HTTPS - HTTP Over SSL&lt;/li&gt;
+  &lt;li&gt;PKCS #12 - private key format, also named &lt;code class=&quot;highlighter-rouge&quot;&gt;.p12&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;alternative to PEM format private key&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;CN - Common Name
+    &lt;ul&gt;
+      &lt;li&gt;for web server, this is the FQDN&lt;/li&gt;
+      &lt;li&gt;CN is only evaluated if subjectAltName is not present and only for compatibility with old, non-compliant software.
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;CN is only evaluated if subjectAltName is not present and only for compatibility with old, non-compliant software.&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;CA - certificate authority
+    &lt;ul&gt;
+      &lt;li&gt;Root CA&lt;/li&gt;
+      &lt;li&gt;Intermediate CA - below root CA but do not issue user certs&lt;/li&gt;
+      &lt;li&gt;Signing CA - issuer of user certs&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;RA - registration authority&lt;/li&gt;
+  &lt;li&gt;TLS - transport layer security
+    &lt;ul&gt;
+      &lt;li&gt;accepts request&lt;/li&gt;
+      &lt;li&gt;authenticate the entity that makes the request&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;X.509 - a standard definition of public key certificate
+    &lt;ul&gt;
+      &lt;li&gt;defined in RFC 5280&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ACME - Automatic Certificate Management Environment
+    &lt;ul&gt;
+      &lt;li&gt;designed for and used by Let’s encrypt&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;PEM - Privacy Enhanced Mail
+    &lt;ul&gt;
+      &lt;li&gt;basically a base64 method for representing binary DES data&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;cli&quot;&gt;CLI&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;openssl x509 -text -noout -in apiserver.crt&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;print information on certificate, like CN, IP&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;openssl s_client -showcerts -connect google.com:443 &amp;lt;/dev/null&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;show certification&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;openssl x509 -in google_com.crt -noout -text&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;decode a crt?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;man x509&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;man openssl-x509&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;man s_client&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;man openssl-s_client&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;openssl genrsa ...&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;generate RSA private key&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;openssl req ...&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;geneate certificate request&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;openssl genrsa -out private.pem 1024&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;This creates a key file called private.pem that uses 1024 bits. This file actually have &lt;strong&gt;both&lt;/strong&gt; the private and public keys&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;openssl rsa -in private.pem -outform PEM -pubout -out public.pem&lt;/code&gt; extracts public key&lt;/li&gt;
+      &lt;li&gt;The NIST recommends 2048-bit keys for RSA (wikipedia)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://rietta.com/blog/openssl-generating-rsa-key-from-command/&quot;&gt;rieta&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;openssl commands&lt;/li&gt;
+      &lt;li&gt;what private key and public key look like&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;links&quot;&gt;Links&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.slideshare.net/stormpath/secure-your-rest-api-the-right-way&quot;&gt;slideshare&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;secure your REST API the right way&lt;/li&gt;
+      &lt;li&gt;lot of jargons, not easy to understand&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://stormpath.com/blog/secure-your-rest-api-right-way/&quot;&gt;companion article&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/25218903/how-are-people-managing-authentication-in-go/27470944#27470944&quot;&gt;so solution&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;managing auth in Go&lt;/li&gt;
+      &lt;li&gt;somebody posted rather detailed solution&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://security.stackexchange.com/questions/20803/how-does-ssl-tls-work&quot;&gt;stackexchange&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;how does TLS work&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://noxxi.de/research/ssl-debugging.html&quot;&gt;debug&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs&quot;&gt;do&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;working with certificate, etc&lt;/li&gt;
+      &lt;li&gt;what is CSR, how to generate it&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-16-04&quot;&gt;do&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;how to create a self-signed certifcate&lt;/li&gt;
+      &lt;li&gt;generate SSL certificate&lt;/li&gt;
+      &lt;li&gt;format conversion&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/15051712/how-to-do-authentication-with-a-rest-api-right-browser-native-clients&quot;&gt;so huge question&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.oreilly.com/learning/https-is-coming-are-you-prepared?imm_mid=0f114b&amp;amp;cmp=em-webops-na-na-newsltr_20170421&quot;&gt;oreily&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;video&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/michaelklishin/tls-gen&quot;&gt;tls-gen&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Python based tool for generating self-signed CA certification and keys&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.rabbitmq.com/ssl.html&quot;&gt;rabbitmq&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;enable TLS for rabbimq&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html&quot;&gt;gfi&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;adding trusted root on various OSes&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.ssl.com/Knowledgebase/Article/View/19/0/der-vs-crt-vs-cer-vs-pem-certificates-and-how-to-convert-them&quot;&gt;confusion&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;DER, CRT, CER, PEM&lt;/li&gt;
+      &lt;li&gt;PEM and DER are encoding format&lt;/li&gt;
+      &lt;li&gt;PEM can be used for a lot of different types: certificate, key, CSR, etc&lt;/li&gt;
+      &lt;li&gt;CRT, CER are file extensions indicating the nature of the file&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pki-tutorial.readthedocs.io/en/latest/index.html&quot;&gt;readthedock&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;OpenSSL PKI tutorial&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.infoq.com/cn/articles/jingdong-financial-private-cloud-https-practices#&quot;&gt;jd&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;JD https optimization&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.slideshare.net/smaret/introduction-to-pki-technology&quot;&gt;slidesshare&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;192 pages of slides introducing PKI&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.cloudflare.com/introducing-cfssl/&quot;&gt;cfssl&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;intro to cfssl&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://technedigitale.com/archives/639&quot;&gt;technedigitale&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;on cfssl&lt;/li&gt;
+      &lt;li&gt;creates root CA, intemediate CA and end device certs&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://kubernetes.io/docs/concepts/cluster-administration/certificates/&quot;&gt;k8s&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;various way to setup a self-signed PKI&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://my.oschina.net/kimver/blog/1634575#comment-list&quot;&gt;oschina&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;let’s encrypt 泛域名&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://tls.ulfheim.net&quot;&gt;ulfheim&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;wonderfully illustrated TLS process&lt;/li&gt;
+      &lt;li&gt;a lot of detail&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linuxjournal.com/content/understanding-public-key-infrastructure-and-x509-certificates&quot;&gt;lj, x509, pki&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Understanding Public Key Infrastructure and X.509 Certificates&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://onezero.medium.com/the-untold-story-of-the-man-that-made-mainstream-encryption-possible-231c749d5005&quot;&gt;history, one&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;The Untold Story of the Man That Made Mainstream Encryption Possible&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;White Diffie&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://8gwifi.org/sshfunctions.jsp&quot;&gt;ssh, online, tool&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Generate SSH Keys Online&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Cryptology Symetric encryption Alice and Bob have to have the same secrete key also called secrete key cryptography cipher can be either block type or stream type ciphers DES, 3DES, RC2, RC4 … AES (Advanced Encryption Standard)</summary></entry><entry><title type="html">On DevOps</title><link href="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops.html" rel="alternate" type="text/html" title="On DevOps" /><published>2020-03-24T00:00:00-05:00</published><updated>2020-03-24T00:00:00-05:00</updated><id>https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops.html">&lt;h1 id=&quot;general&quot;&gt;General&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;technical practice &lt;strong&gt;PLUS&lt;/strong&gt; culture value&lt;/li&gt;
   &lt;li&gt;term coined in 2008

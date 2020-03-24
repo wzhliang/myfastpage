@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>On Security | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="On Security" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My Precious Notes on Security" />
+<meta property="og:description" content="My Precious Notes on Security" />
+<link rel="canonical" href="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html" />
+<meta property="og:url" content="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-24T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-03-24T00:00:00-05:00","dateModified":"2020-03-24T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html"},"description":"My Precious Notes on Security","@type":"BlogPosting","url":"https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html","headline":"On Security","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/myfastpage/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://wzhliang.github.io/myfastpage/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/myfastpage/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>On Security | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="On Security" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My Precious Notes on Security" />
+<meta property="og:description" content="My Precious Notes on Security" />
+<link rel="canonical" href="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html" />
+<meta property="og:url" content="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-24T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-03-24T00:00:00-05:00","dateModified":"2020-03-24T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html"},"description":"My Precious Notes on Security","@type":"BlogPosting","url":"https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html","headline":"On Security","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://wzhliang.github.io/myfastpage/feed.xml" title="fastpages" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/myfastpage/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/myfastpage/about/">About Me</a><a class="page-link" href="/myfastpage/search/">Search</a><a class="page-link" href="/myfastpage/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">On Security</h1><p class="page-description">My Precious Notes on Security</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-03-24T00:00:00-05:00" itemprop="datePublished">
+        Mar 24, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      9 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/myfastpage/categories/#markdown">markdown</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#cryptology">Cryptology</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#symetric-encryption">Symetric encryption</a></li>
+<li class="toc-entry toc-h2"><a href="#public-key-encryption-asymetric">Public Key Encryption (Asymetric)</a></li>
+<li class="toc-entry toc-h2"><a href="#message-digest-algorithm">Message digest algorithm</a></li>
+<li class="toc-entry toc-h2"><a href="#encrypting-vs-signing">Encrypting vs Signing</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#signing">Signing</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#cipher">Cipher</a></li>
+<li class="toc-entry toc-h2"><a href="#xor">XOR</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#xor-truth-table">XOR Truth table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#tls">TLS</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#versions">Versions</a></li>
+<li class="toc-entry toc-h2"><a href="#concepts">Concepts</a></li>
+<li class="toc-entry toc-h2"><a href="#certificates">Certificates</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#x509-naming-schema">X509 naming schema</a></li>
+<li class="toc-entry toc-h3"><a href="#file-format">File Format</a></li>
+<li class="toc-entry toc-h3"><a href="#csr">CSR</a></li>
+<li class="toc-entry toc-h3"><a href="#whats-inside">What’s Inside</a></li>
+<li class="toc-entry toc-h3"><a href="#chain-of-trust">Chain Of Trust</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#tls-handshake">TLS Handshake</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#flow">Flow</a></li>
+<li class="toc-entry toc-h3"><a href="#flow-with-more-detail">Flow with More Detail</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#self-signed">Self Signed</a></li>
+<li class="toc-entry toc-h2"><a href="#sni">SNI</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#rest-api">REST API</a></li>
+<li class="toc-entry toc-h1"><a href="#options-for-securing-rest-api">Options for Securing REST API</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#basic-authentication--tls">Basic Authentication + TLS</a></li>
+<li class="toc-entry toc-h2"><a href="#oauth-10a">OAuth 1.0a</a></li>
+<li class="toc-entry toc-h2"><a href="#oauth-2">OAuth 2</a></li>
+<li class="toc-entry toc-h2"><a href="#oauth-2-sequence-diagram">OAuth 2 Sequence Diagram</a></li>
+<li class="toc-entry toc-h2"><a href="#oauth-2-flow">OAuth 2 Flow</a></li>
+<li class="toc-entry toc-h2"><a href="#normal-oauth-workflow-simplified">Normal OAuth Workflow (Simplified)</a></li>
+<li class="toc-entry toc-h2"><a href="#openid-connect">OpenID Connect</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#commercial-company">Commercial Company</a></li>
+<li class="toc-entry toc-h1"><a href="#cfssl">cfssl</a></li>
+<li class="toc-entry toc-h1"><a href="#terms">Terms</a></li>
+<li class="toc-entry toc-h1"><a href="#cli">CLI</a></li>
+<li class="toc-entry toc-h1"><a href="#links">Links</a></li>
+</ul><h1 id="cryptology">
+<a class="anchor" href="#cryptology" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cryptology</h1>
+<h2 id="symetric-encryption">
+<a class="anchor" href="#symetric-encryption" aria-hidden="true"><span class="octicon octicon-link"></span></a>Symetric encryption</h2>
+<ul>
+  <li>Alice and Bob have to have the same secrete key</li>
+  <li>also called secrete key cryptography</li>
+  <li>cipher can be either block type or stream type</li>
+  <li>ciphers
+    <ul>
+      <li>DES, 3DES,</li>
+      <li>RC2, RC4</li>
+      <li>…</li>
+    </ul>
+  </li>
+  <li>AES (Advanced Encryption Standard)</li>
+</ul>
+
+<h2 id="public-key-encryption-asymetric">
+<a class="anchor" href="#public-key-encryption-asymetric" aria-hidden="true"><span class="octicon octicon-link"></span></a>Public Key Encryption (Asymetric)</h2>
+<ul>
+  <li>Bob has a pair of keys, a private one and a public one.</li>
+  <li>The pubic one can be shared to the whole world.</li>
+  <li>Any message that’s encrypted with the public key can <em>only</em> be decrypted
+with the matching private key.</li>
+  <li>the two keys are mathematically linked</li>
+  <li>so: public key is for encryption, private key is for decryption</li>
+  <li>frequently (but not necessarily), the keys are interchangeable, in the sense
+that if key A encrypts a message, then B can decrypt it, and if key B encrypts
+a message, then key A can decrypt it. While common, this property is not
+essential to asymmetric encryption.</li>
+  <li>ciphers
+    <ul>
+      <li>RSA</li>
+      <li>Diffie Hellman</li>
+    </ul>
+  </li>
+  <li>mathematical
+    <ul>
+      <li>based on drapdoor one-way-function</li>
+      <li><a href="http://cs.stfx.ca/~ltyang/csci-467/lecture-slides/ch-10.pp">csci-467</a></li>
+      <li>OWF is a function that’s very hard to reverse</li>
+      <li>with a trapdoor, it becomes easy</li>
+    </ul>
+  </li>
+  <li>解决了两个关键的问题：证明我是谁，信息加密</li>
+</ul>
+
+<h2 id="message-digest-algorithm">
+<a class="anchor" href="#message-digest-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Message digest algorithm</h2>
+<ul>
+  <li>a message digest is computed by a hash function, which is a transformation that meets two criteria:
+    <ol>
+      <li>The hash function must be one way. It must not be possible to reverse the
+function to find the message corresponding to a particular message digest,
+other than by testing all possible messages.</li>
+      <li>It must be computationally infeasible to find two messages that hash to the
+same digest.</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="encrypting-vs-signing">
+<a class="anchor" href="#encrypting-vs-signing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Encrypting vs Signing</h2>
+<ul>
+  <li>when encrypting, you use their public key to write message and they use their private key to read it.</li>
+  <li>when signing, you use your <strong>private key</strong> to write message’s signature, and they
+use your public key to check if it’s really yours.
+    <ul>
+      <li>often the signing is done on a message digest(hash) rather than the message
+itself</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="signing">
+<a class="anchor" href="#signing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Signing</h3>
+<p><img alt="ibm" src="https://www.ibm.com/support/knowledgecenter/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10520a.gif" width="75%"></p>
+
+<h2 id="cipher">
+<a class="anchor" href="#cipher" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cipher</h2>
+<ul>
+  <li>or cypher is the encrypting/decrypting algorithm</li>
+  <li>currently AES is considered a strong cipher.</li>
+  <li>triple DES or RC4 are weak.</li>
+  <li>elliptic curve cryptography
+    <ul>
+      <li><a href="https://en.wikipedia.org/wiki/Elliptic_curve_cryptography">wikipedia</a></li>
+    </ul>
+  </li>
+  <li>a cipher suit includes algorithms for:
+    <ul>
+      <li>authentication</li>
+      <li>encryption</li>
+      <li>MAC (message authentication code)</li>
+      <li>key exchange</li>
+    </ul>
+  </li>
+  <li><a href="http://www.jscape.com/blog/cipher-suites">cipher suit</a></li>
+</ul>
+
+<h2 id="xor">
+<a class="anchor" href="#xor" aria-hidden="true"><span class="octicon octicon-link"></span></a>XOR</h2>
+<ul>
+  <li>XOR is used quite often in encryption algorithms</li>
+  <li>XOR cipher
+    <ul>
+      <li><code class="highlighter-rouge">(message) XOR key -&gt; (encrypted message)</code></li>
+      <li><code class="highlighter-rouge">(encrypted message) XOR key -&gt; (message)</code></li>
+      <li>known as <em>one time pad</em> or (OTP) for short</li>
+      <li>impossible to crack</li>
+      <li>impractical to use keys that are the same length as the message body</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://dev.to/wagslane/why-is-exclusive-or-xor-important-in-cryptography-e7b">dev.to</a>
+    <ul>
+      <li><strong>Why is Exclusive Or (XOR) Important in Cryptography?</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="xor-truth-table">
+<a class="anchor" href="#xor-truth-table" aria-hidden="true"><span class="octicon octicon-link"></span></a>XOR Truth table</h3>
+<p><img src="http://borlandc.pek3b.qingstor.com/security/xor-binary-operation.png" width="35%"></p>
+
+<h1 id="tls">
+<a class="anchor" href="#tls" aria-hidden="true"><span class="octicon octicon-link"></span></a>TLS</h1>
+<ul>
+  <li>build on top of TCP to make the upper layer security transparent</li>
+  <li>two goals: confidentiality and authentication.</li>
+  <li>for confidentiality, a shared key is established.</li>
+  <li>for authentication, public key technology is used for proving ownership of certificates.</li>
+  <li>provides
+    <ul>
+      <li>authentication, when I’m connecting to google.com, am I actually
+connecting to google.com?</li>
+      <li>encryption</li>
+      <li>integrity, message is not tempered with during transition</li>
+      <li>key exchange</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="versions">
+<a class="anchor" href="#versions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Versions</h2>
+<ul>
+  <li>TLS 1.0 is SSL 3.1</li>
+  <li>TLS 1.2</li>
+  <li>TLS 1.3. working draft
+    <ul>
+      <li>one less handshake, client sends its key with the first HELLO message</li>
+      <li><a href="https://twitter.com/colmmacc/status/978430840198742016">twitter</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="concepts">
+<a class="anchor" href="#concepts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concepts</h2>
+<ul>
+  <li>session key: end result of the handshake. A key for symmetric cipher.</li>
+  <li>client random: 32 bytes sequence choosed by the client. Also call nonce.</li>
+  <li>server random: same as above but generated by the server.</li>
+  <li>pre-master secreted: 48 bytes blob of data. Simply put:
+    <ul>
+      <li>client random + server random + pre-master secrete = session key</li>
+    </ul>
+  </li>
+  <li>cipher suit: combination of algorithms making up the TLS connection
+    <ul>
+      <li>key establishment</li>
+      <li>authentication (certificate type)</li>
+      <li>confidentiality (symmetric cipher)</li>
+      <li>integrity (hash)</li>
+    </ul>
+  </li>
+  <li>AES128-SHA as a cipher suit example
+    <ul>
+      <li>key establishment (RSA)</li>
+      <li>authentication (RSA)</li>
+      <li>confidentiality (128 bit AES)</li>
+      <li>integrity (160 bit SHA1)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="certificates">
+<a class="anchor" href="#certificates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Certificates</h2>
+<ul>
+  <li>purpose is to assuring the identity of websites.</li>
+  <li>binds domain names to server names, and company names to locations.</li>
+  <li>a TLS certificate is a kind of X.509 certificate</li>
+  <li>a certificate file include public key of the owner.</li>
+  <li>a certificate has a corresponding private key</li>
+  <li>Certificates are provided by CA (certification authority), which is some
+well known certificate issuer
+    <ul>
+      <li>certs can also be generated easily with the <code class="highlighter-rouge">openssl</code> suit, this is called
+self-signing</li>
+    </ul>
+  </li>
+  <li>when a web server (say google) sends you its certificate, it also tell you who
+signed it (GeoTrust). On the system where openssl is installed, there is
+already a list of CAs installed, and GeoTrust is one of them. Using GeoTrust’s
+public key, we can verify that google’s certificate is valid.
+    <ul>
+      <li><a href="https://www.archlinux.org/packages/core/any/ca-certificates/">prove</a></li>
+    </ul>
+  </li>
+  <li>a root certificate identifies the root CA
+    <ul>
+      <li>it’s self-signed</li>
+    </ul>
+  </li>
+  <li>any certificate that sits between the SSL Certificate and the Root Certificate
+is called a chain or Intermediate Certificate.</li>
+</ul>
+
+<h3 id="x509-naming-schema">
+<a class="anchor" href="#x509-naming-schema" aria-hidden="true"><span class="octicon octicon-link"></span></a>X509 naming schema</h3>
+<ul>
+  <li>same standard as LDAP</li>
+  <li>CN: common name</li>
+  <li>names:
+    <ul>
+      <li>C: contry</li>
+      <li>L: location</li>
+      <li>O: organization</li>
+      <li>OU: organization unit</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="file-format">
+<a class="anchor" href="#file-format" aria-hidden="true"><span class="octicon octicon-link"></span></a>File Format</h3>
+<ul>
+  <li>normally (or most of the world) uses PEM format, which is a textual file.</li>
+  <li>DER is a binary format that’s used by M$</li>
+  <li>convertion can be done with <code class="highlighter-rouge">openssl x509 -in cacert.pem -out cacert.cer -outform DER</code>
+</li>
+</ul>
+
+<h3 id="csr">
+<a class="anchor" href="#csr" aria-hidden="true"><span class="octicon octicon-link"></span></a>CSR</h3>
+<p><img alt="CSR" src="http://pki-tutorial.readthedocs.io/en/latest/_images/PKIProcess.png" width="55%"></p>
+
+<h3 id="whats-inside">
+<a class="anchor" href="#whats-inside" aria-hidden="true"><span class="octicon octicon-link"></span></a>What’s Inside</h3>
+<p><img alt="content" src="images/certificate.png" width="55%"></p>
+
+<h3 id="chain-of-trust">
+<a class="anchor" href="#chain-of-trust" aria-hidden="true"><span class="octicon octicon-link"></span></a>Chain Of Trust</h3>
+<p><img src="http://borlandc.pek3b.qingstor.com/security/pki-chain.jpg" width="75%"></p>
+
+<h2 id="tls-handshake">
+<a class="anchor" href="#tls-handshake" aria-hidden="true"><span class="octicon octicon-link"></span></a>TLS Handshake</h2>
+<ul>
+  <li>
+<strong>client hello</strong>. client sends:
+    <ul>
+      <li>client random</li>
+      <li>cipher suit supported</li>
+      <li>version of SSL/TLS it’s using</li>
+    </ul>
+  </li>
+  <li>
+<strong>server hello</strong>. server sends:
+    <ul>
+      <li>server random</li>
+      <li>the decided cipher suit</li>
+      <li>server’s certificate</li>
+    </ul>
+  </li>
+  <li>client key exchange
+    <ul>
+      <li>Client:
+        <ul>
+          <li>verify server’s certificate (e.g. checking signature - decrypting with root cert)</li>
+          <li>generate random pre-master secrete</li>
+          <li>encrypt secrete with server’s public key</li>
+          <li>send encrypted data to server</li>
+        </ul>
+      </li>
+      <li>Server:
+        <ul>
+          <li>decrypt message with its own private key</li>
+        </ul>
+      </li>
+      <li>Both: having client random, server random and pre-master secrete, a session key
+(same on both side) can be calculated.</li>
+    </ul>
+  </li>
+  <li>session start with symmetric cipher</li>
+</ul>
+
+<h3 id="flow">
+<a class="anchor" href="#flow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flow</h3>
+<p><img alt="IBM" src="https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660a.gif" width="55%"></p>
+
+<h3 id="flow-with-more-detail">
+<a class="anchor" href="#flow-with-more-detail" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flow with More Detail</h3>
+<p>&lt;img alg=better-flow src=”https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/SSL_handshake_with_two_way_authentication_with_certificates.svg/1430px-SSL_handshake_with_two_way_authentication_with_certificates.svg.png” width=”75%”&gt;</p>
+
+<h2 id="self-signed">
+<a class="anchor" href="#self-signed" aria-hidden="true"><span class="octicon octicon-link"></span></a>Self Signed</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req \
+ -newkey rsa:2048 -nodes -keyout domain.key \
+ -x509 -days 365 -out domain.crt
+</code></pre></div></div>
+
+<ul>
+  <li>
+<code class="highlighter-rouge">-keyout</code> specifies private key</li>
+  <li>
+<code class="highlighter-rouge">-out</code> specifies TLS certificate</li>
+  <li>will be asked about FQDN or IP address</li>
+  <li><a href="https://developer.android.com/training/articles/security-ssl.html#SelfSigned">android documentation</a></li>
+  <li>
+<code class="highlighter-rouge">sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain site.crt</code>
+    <ul>
+      <li>adding self signed certificate on MacOS</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="sni">
+<a class="anchor" href="#sni" aria-hidden="true"><span class="octicon octicon-link"></span></a>SNI</h2>
+<ul>
+  <li>service name indication</li>
+  <li>allows multiple certs to be issued to a single IP port pair
+    <ul>
+      <li><a href="https://support.comodo.com/index.php?/Knowledgebase/Article/View/1120/38/what-is-sni-and-how-it-works">comodo</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="rest-api">
+<a class="anchor" href="#rest-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>REST API</h1>
+<ul>
+  <li>use API keys instead of user/password pair.
+    <ul>
+      <li>keys are much longer so securer</li>
+      <li>password reset can cause trouble if user/password pair is used</li>
+    </ul>
+  </li>
+  <li>use opaque ids instead of increasing numbers like ‘1234’</li>
+  <li>avoid sessions in REST API for better performance and scalability</li>
+  <li>one way of implementing this is to use http server’s TLS ability and leave application
+server out of it.</li>
+</ul>
+
+<h1 id="options-for-securing-rest-api">
+<a class="anchor" href="#options-for-securing-rest-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options for Securing REST API</h1>
+<h2 id="basic-authentication--tls">
+<a class="anchor" href="#basic-authentication--tls" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Authentication + TLS</h2>
+<ul>
+  <li>easy to implement but not as secure as other options</li>
+  <li>has to be enforced by client and server. If client can choose to use inscecure channel
+and server allows it, it’s broken.</li>
+</ul>
+
+<h2 id="oauth-10a">
+<a class="anchor" href="#oauth-10a" aria-hidden="true"><span class="octicon octicon-link"></span></a>OAuth 1.0a</h2>
+<ul>
+  <li>Widely used so a lot of libraries supports it.</li>
+  <li>Very secure.</li>
+</ul>
+
+<h2 id="oauth-2">
+<a class="anchor" href="#oauth-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>OAuth 2</h2>
+<ul>
+  <li>Not as many library supports this.</li>
+  <li>Less secure than OAuth 1.0a but supposedly simpler.</li>
+  <li>TLS required.</li>
+  <li>Roles
+    <ul>
+      <li>Resource Owner/User</li>
+      <li>Client</li>
+      <li>Resource Server</li>
+      <li>Authorization server</li>
+    </ul>
+  </li>
+  <li><a href="https://medium.com/@darutk/the-simplest-guide-to-oauth-2-0-8c71bd9a15bb">medium</a></li>
+  <li><a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2">do</a></li>
+</ul>
+
+<h2 id="oauth-2-sequence-diagram">
+<a class="anchor" href="#oauth-2-sequence-diagram" aria-hidden="true"><span class="octicon octicon-link"></span></a>OAuth 2 Sequence Diagram</h2>
+<p><img src="http://borlandc.pek3b.qingstor.com/security/oauth2flow.png" width="55%"></p>
+
+<h2 id="oauth-2-flow">
+<a class="anchor" href="#oauth-2-flow" aria-hidden="true"><span class="octicon octicon-link"></span></a>OAuth 2 Flow</h2>
+<p><img src="http://borlandc.pek3b.qingstor.com/security/oauthflow.png" width="85%"></p>
+
+<h2 id="normal-oauth-workflow-simplified">
+<a class="anchor" href="#normal-oauth-workflow-simplified" aria-hidden="true"><span class="octicon octicon-link"></span></a>Normal OAuth Workflow (Simplified)</h2>
+<ol>
+  <li>The user first initiates a request on the Client website.</li>
+  <li>The Client will then send an Access Token to an API Gateway.</li>
+  <li>The API Gateway will then pass the Access Token to the Authorization Server (the OAuth server).</li>
+  <li>The Authorization Server verifies that the Access Token is correct, and sends an JWT Access Token to the API Gateway.</li>
+  <li>The API Gateway then passes the JWT Access Token to a microservice which will need to act as a trigger each month for a continuous job. We’ll call this Trigger Savings API.</li>
+  <li>The job is then inserted into a Queue, which triggers a second microservice that moves money into the account. We’ll call this the Do Savings API.</li>
+  <li>The Queue is reset, and Step 6 is repeated when the correct time has elapsed.</li>
+</ol>
+
+<p>from <a href="https://nordicapis.com/how-to-handle-batch-processing-with-oauth-2-0/">here</a></p>
+
+<h2 id="openid-connect">
+<a class="anchor" href="#openid-connect" aria-hidden="true"><span class="octicon octicon-link"></span></a>OpenID Connect</h2>
+<ul>
+  <li>based on OAuth 2.0
+    <ul>
+      <li>NOT OpenID!!!</li>
+    </ul>
+  </li>
+  <li>REST-based</li>
+  <li>SAML??</li>
+</ul>
+
+<h1 id="commercial-company">
+<a class="anchor" href="#commercial-company" aria-hidden="true"><span class="octicon octicon-link"></span></a>Commercial Company</h1>
+<ul>
+  <li><a href="https://stormpath.com">stormpath</a></li>
+</ul>
+
+<h1 id="cfssl">
+<a class="anchor" href="#cfssl" aria-hidden="true"><span class="octicon octicon-link"></span></a>cfssl</h1>
+<ul>
+  <li>
+<code class="highlighter-rouge">cfssl print-defaults &lt;csr|config&gt;</code>
+    <ul>
+      <li>handy command to create templates for CSR and signing config file</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="terms">
+<a class="anchor" href="#terms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Terms</h1>
+<ul>
+  <li>PKI - Public Key Infrastructure</li>
+  <li>CSR - Certificate Signing Request
+    <ul>
+      <li>a request to CA for issuing a certificate</li>
+      <li>content include:
+        <ul>
+          <li>host names, IP addresses</li>
+          <li>CN <code class="highlighter-rouge">foo.bar.whatever</code>
+</li>
+          <li>key: algorithm and size</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>HTTPS - HTTP Over SSL</li>
+  <li>PKCS #12 - private key format, also named <code class="highlighter-rouge">.p12</code>
+    <ul>
+      <li>alternative to PEM format private key</li>
+    </ul>
+  </li>
+  <li>CN - Common Name
+    <ul>
+      <li>for web server, this is the FQDN</li>
+      <li>CN is only evaluated if subjectAltName is not present and only for compatibility with old, non-compliant software.
+        <ul>
+          <li><a href="CN%20is%20only%20evaluated%20if%20subjectAltName%20is%20not%20present%20and%20only%20for%20compatibility%20with%20old,%20non-compliant%20software.">here</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>CA - certificate authority
+    <ul>
+      <li>Root CA</li>
+      <li>Intermediate CA - below root CA but do not issue user certs</li>
+      <li>Signing CA - issuer of user certs</li>
+    </ul>
+  </li>
+  <li>RA - registration authority</li>
+  <li>TLS - transport layer security
+    <ul>
+      <li>accepts request</li>
+      <li>authenticate the entity that makes the request</li>
+    </ul>
+  </li>
+  <li>X.509 - a standard definition of public key certificate
+    <ul>
+      <li>defined in RFC 5280</li>
+    </ul>
+  </li>
+  <li>ACME - Automatic Certificate Management Environment
+    <ul>
+      <li>designed for and used by Let’s encrypt</li>
+    </ul>
+  </li>
+  <li>PEM - Privacy Enhanced Mail
+    <ul>
+      <li>basically a base64 method for representing binary DES data</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="cli">
+<a class="anchor" href="#cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h1>
+<ul>
+  <li>
+<code class="highlighter-rouge">openssl x509 -text -noout -in apiserver.crt</code>
+    <ul>
+      <li>print information on certificate, like CN, IP</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">openssl s_client -showcerts -connect google.com:443 &lt;/dev/null</code>
+    <ul>
+      <li>show certification</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">openssl x509 -in google_com.crt -noout -text</code>
+    <ul>
+      <li>decode a crt?</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">man x509</code> or <code class="highlighter-rouge">man openssl-x509</code>
+</li>
+  <li>
+<code class="highlighter-rouge">man s_client</code> or <code class="highlighter-rouge">man openssl-s_client</code>
+</li>
+  <li>
+<code class="highlighter-rouge">openssl genrsa ...</code>
+    <ul>
+      <li>generate RSA private key</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">openssl req ...</code>
+    <ul>
+      <li>geneate certificate request</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">openssl genrsa -out private.pem 1024</code>
+    <ul>
+      <li>This creates a key file called private.pem that uses 1024 bits. This file actually have <strong>both</strong> the private and public keys</li>
+      <li>
+<code class="highlighter-rouge">openssl rsa -in private.pem -outform PEM -pubout -out public.pem</code> extracts public key</li>
+      <li>The NIST recommends 2048-bit keys for RSA (wikipedia)</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://rietta.com/blog/openssl-generating-rsa-key-from-command/">rieta</a>
+    <ul>
+      <li>openssl commands</li>
+      <li>what private key and public key look like</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="links">
+<a class="anchor" href="#links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h1>
+<ul>
+  <li>
+<a href="http://www.slideshare.net/stormpath/secure-your-rest-api-the-right-way">slideshare</a>
+    <ul>
+      <li>secure your REST API the right way</li>
+      <li>lot of jargons, not easy to understand</li>
+      <li><a href="https://stormpath.com/blog/secure-your-rest-api-right-way/">companion article</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="http://stackoverflow.com/questions/25218903/how-are-people-managing-authentication-in-go/27470944#27470944">so solution</a>
+    <ul>
+      <li>managing auth in Go</li>
+      <li>somebody posted rather detailed solution</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://security.stackexchange.com/questions/20803/how-does-ssl-tls-work">stackexchange</a>
+    <ul>
+      <li>how does TLS work</li>
+    </ul>
+  </li>
+  <li><a href="http://noxxi.de/research/ssl-debugging.html">debug</a></li>
+  <li>
+<a href="https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs">do</a>
+    <ul>
+      <li>working with certificate, etc</li>
+      <li>what is CSR, how to generate it</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-16-04">do</a>
+    <ul>
+      <li>how to create a self-signed certifcate</li>
+      <li>generate SSL certificate</li>
+      <li>format conversion</li>
+    </ul>
+  </li>
+  <li><a href="http://stackoverflow.com/questions/15051712/how-to-do-authentication-with-a-rest-api-right-browser-native-clients">so huge question</a></li>
+  <li>
+<a href="https://www.oreilly.com/learning/https-is-coming-are-you-prepared?imm_mid=0f114b&amp;cmp=em-webops-na-na-newsltr_20170421">oreily</a>
+    <ul>
+      <li>video</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/michaelklishin/tls-gen">tls-gen</a>
+    <ul>
+      <li>Python based tool for generating self-signed CA certification and keys</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.rabbitmq.com/ssl.html">rabbitmq</a>
+    <ul>
+      <li>enable TLS for rabbimq</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html">gfi</a>
+    <ul>
+      <li>adding trusted root on various OSes</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://support.ssl.com/Knowledgebase/Article/View/19/0/der-vs-crt-vs-cer-vs-pem-certificates-and-how-to-convert-them">confusion</a>
+    <ul>
+      <li>DER, CRT, CER, PEM</li>
+      <li>PEM and DER are encoding format</li>
+      <li>PEM can be used for a lot of different types: certificate, key, CSR, etc</li>
+      <li>CRT, CER are file extensions indicating the nature of the file</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://pki-tutorial.readthedocs.io/en/latest/index.html">readthedock</a>
+    <ul>
+      <li>OpenSSL PKI tutorial</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://www.infoq.com/cn/articles/jingdong-financial-private-cloud-https-practices#">jd</a>
+    <ul>
+      <li>JD https optimization</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.slideshare.net/smaret/introduction-to-pki-technology">slidesshare</a>
+    <ul>
+      <li>192 pages of slides introducing PKI</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://blog.cloudflare.com/introducing-cfssl/">cfssl</a>
+    <ul>
+      <li>intro to cfssl</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://technedigitale.com/archives/639">technedigitale</a>
+    <ul>
+      <li>on cfssl</li>
+      <li>creates root CA, intemediate CA and end device certs</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://kubernetes.io/docs/concepts/cluster-administration/certificates/">k8s</a>
+    <ul>
+      <li>various way to setup a self-signed PKI</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://my.oschina.net/kimver/blog/1634575#comment-list">oschina</a>
+    <ul>
+      <li>let’s encrypt 泛域名</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://tls.ulfheim.net">ulfheim</a>
+    <ul>
+      <li>wonderfully illustrated TLS process</li>
+      <li>a lot of detail</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.linuxjournal.com/content/understanding-public-key-infrastructure-and-x509-certificates">lj, x509, pki</a>
+    <ul>
+      <li>Understanding Public Key Infrastructure and X.509 Certificates</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://onezero.medium.com/the-untold-story-of-the-man-that-made-mainstream-encryption-possible-231c749d5005">history, one</a>
+    <ul>
+      <li><strong>The Untold Story of the Man That Made Mainstream Encryption Possible</strong></li>
+      <li>White Diffie</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://8gwifi.org/sshfunctions.jsp">ssh, online, tool</a>
+    <ul>
+      <li><strong>Generate SSH Keys Online</strong></li>
+    </ul>
+  </li>
+</ul>
+
+  </div><a class="u-url" href="/myfastpage/markdown/2020/03/24/security.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/myfastpage/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/myfastpage/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/myfastpage/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/myfastpage/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/myfastpage/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
