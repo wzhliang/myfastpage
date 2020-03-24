@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>On DevOps | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="On DevOps" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My Precious Notes on DevOps" />
+<meta property="og:description" content="My Precious Notes on DevOps" />
+<link rel="canonical" href="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops.html" />
+<meta property="og:url" content="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-24T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-03-24T00:00:00-05:00","dateModified":"2020-03-24T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops.html"},"description":"My Precious Notes on DevOps","@type":"BlogPosting","url":"https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops.html","headline":"On DevOps","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/myfastpage/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://wzhliang.github.io/myfastpage/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/myfastpage/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>On DevOps | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="On DevOps" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My Precious Notes on DevOps" />
+<meta property="og:description" content="My Precious Notes on DevOps" />
+<link rel="canonical" href="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops.html" />
+<meta property="og:url" content="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-24T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-03-24T00:00:00-05:00","dateModified":"2020-03-24T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops.html"},"description":"My Precious Notes on DevOps","@type":"BlogPosting","url":"https://wzhliang.github.io/myfastpage/markdown/2020/03/24/devops.html","headline":"On DevOps","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://wzhliang.github.io/myfastpage/feed.xml" title="fastpages" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/myfastpage/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/myfastpage/about/">About Me</a><a class="page-link" href="/myfastpage/search/">Search</a><a class="page-link" href="/myfastpage/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">On DevOps</h1><p class="page-description">My Precious Notes on DevOps</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-03-24T00:00:00-05:00" itemprop="datePublished">
+        Mar 24, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      19 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/myfastpage/categories/#markdown">markdown</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#general">General</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#three-way-of-devops">Three Way of DevOps</a></li>
+<li class="toc-entry toc-h2"><a href="#four-capabilities">Four Capabilities</a></li>
+<li class="toc-entry toc-h2"><a href="#dev-vs-ops">Dev Vs Ops</a></li>
+<li class="toc-entry toc-h2"><a href="#history">History</a></li>
+<li class="toc-entry toc-h2"><a href="#typical-lifecycle">Typical Lifecycle</a></li>
+<li class="toc-entry toc-h2"><a href="#summary-slides-of-the-famous-flickr-deck-2009">Summary slides of the Famous Flickr deck, 2009</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#tool-chain">Tool Chain</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#create-tools">Create Tools</a></li>
+<li class="toc-entry toc-h2"><a href="#binary-repository">Binary Repository</a></li>
+<li class="toc-entry toc-h2"><a href="#planning-tools">Planning Tools</a></li>
+<li class="toc-entry toc-h2"><a href="#configure-management-tools">Configure Management Tools</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#configuration-drift">Configuration drift</a></li>
+<li class="toc-entry toc-h3"><a href="#confd">confd</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#orchestration-tools">Orchestration Tools</a></li>
+<li class="toc-entry toc-h2"><a href="#monitor-and-metrics-tools">Monitor And Metrics Tools</a></li>
+<li class="toc-entry toc-h2"><a href="#collaboration-tools">Collaboration Tools</a></li>
+<li class="toc-entry toc-h2"><a href="#issue-tracking-tools">Issue Tracking Tools</a></li>
+<li class="toc-entry toc-h2"><a href="#cicd-tools">CI/CD Tools</a></li>
+<li class="toc-entry toc-h2"><a href="#db-migration-tools">DB Migration Tools</a></li>
+<li class="toc-entry toc-h2"><a href="#testing-and-quality-tools">Testing and Quality Tools</a></li>
+<li class="toc-entry toc-h2"><a href="#infra-integration-testing-tools">Infra Integration Testing Tools</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#architecture">Architecture</a></li>
+<li class="toc-entry toc-h1"><a href="#methodologies">Methodologies</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#automation">Automation</a></li>
+<li class="toc-entry toc-h2"><a href="#金丝雀发布--canary-release">金丝雀发布 / Canary Release</a></li>
+<li class="toc-entry toc-h2"><a href="#feature-toggle-feature-flag">Feature Toggle, Feature Flag</a></li>
+<li class="toc-entry toc-h2"><a href="#trunk-based-development">Trunk Based Development</a></li>
+<li class="toc-entry toc-h2"><a href="#cicd">CI/CD</a></li>
+<li class="toc-entry toc-h2"><a href="#cd-vs-cd">CD vs CD</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#different-kind-of-ci">Different Kind of CI</a></li>
+<li class="toc-entry toc-h3"><a href="#example-cicd-pipeline">Example CI/CD Pipeline</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#security">Security</a></li>
+<li class="toc-entry toc-h2"><a href="#xxx-as-code">XXX as Code</a></li>
+<li class="toc-entry toc-h2"><a href="#lean-product-management">Lean Product Management</a></li>
+<li class="toc-entry toc-h2"><a href="#self-service-environment">Self Service Environment</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#culture-and-organization">Culture and Organization</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#tribes-squads-chapters-and-guilds">Tribes, Squads, Chapters and Guilds</a></li>
+<li class="toc-entry toc-h2"><a href="#transformational-leader">Transformational Leader</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#for-fintech">For FinTech</a></li>
+<li class="toc-entry toc-h1"><a href="#tools--ansible">Tools / Ansible</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#terms">Terms</a></li>
+<li class="toc-entry toc-h2"><a href="#arch">Arch</a></li>
+<li class="toc-entry toc-h2"><a href="#syntax">Syntax</a></li>
+<li class="toc-entry toc-h2"><a href="#cli">CLI</a></li>
+<li class="toc-entry toc-h2"><a href="#links">Links</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#tools--argo">Tools / Argo</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#features">Features</a></li>
+<li class="toc-entry toc-h2"><a href="#cli-1">CLI</a></li>
+<li class="toc-entry toc-h2"><a href="#spec">Spec</a></li>
+<li class="toc-entry toc-h2"><a href="#q">Q</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#tools--brigade">Tools / Brigade</a></li>
+<li class="toc-entry toc-h1"><a href="#tools--jenkins-x">Tools / Jenkins X</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#components">Components</a></li>
+<li class="toc-entry toc-h2"><a href="#cli-2">CLI</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#tools--spinnaker">Tools / Spinnaker</a></li>
+<li class="toc-entry toc-h1"><a href="#tools--flagger">Tools / Flagger</a></li>
+<li class="toc-entry toc-h1"><a href="#tools--tekton">Tools / Tekton</a></li>
+<li class="toc-entry toc-h1"><a href="#tools--gerrit">Tools / Gerrit</a></li>
+<li class="toc-entry toc-h1"><a href="#sre">SRE</a></li>
+<li class="toc-entry toc-h1"><a href="#gitops">GitOps</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#gitops-tools">GitOps Tools</a></li>
+<li class="toc-entry toc-h2"><a href="#weave">Weave</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#devops-metrics">DevOps Metrics</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#code-churn">Code Churn</a></li>
+<li class="toc-entry toc-h2"><a href="#test-hygiene">Test Hygiene</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#aiops">AIOps</a></li>
+<li class="toc-entry toc-h1"><a href="#itil">ITIL</a></li>
+<li class="toc-entry toc-h1"><a href="#questions">Questions</a></li>
+<li class="toc-entry toc-h1"><a href="#terms-1">Terms</a></li>
+<li class="toc-entry toc-h1"><a href="#links-1">Links</a></li>
+</ul><h1 id="general">
+<a class="anchor" href="#general" aria-hidden="true"><span class="octicon octicon-link"></span></a>General</h1>
+<ul>
+  <li>technical practice <strong>PLUS</strong> culture value</li>
+  <li>term coined in 2008
+    <ul>
+      <li>after SRE is coined, which happend in 2003</li>
+      <li>Patrick Debois, who’s often called “the father of DevOps”, coined the word “DevOps” in 2009</li>
+    </ul>
+  </li>
+  <li>IT performance metrics
+    <ul>
+      <li>
+<strong>MTTR</strong>: mean time to recover (total maintenance time / total number of repairs)
+        <ul>
+          <li>actually <strong>when</strong> the failure happens can be important too</li>
+        </ul>
+      </li>
+      <li>
+<strong>lead time</strong> to change: time from code commit to production deployment</li>
+      <li>
+<strong>deployment frequency</strong>
+        <ul>
+          <li>NOTE: deploy doesn’t necessarily mean new feature for customer, which
+can be a business decision</li>
+        </ul>
+      </li>
+      <li><strong>change failure rate</strong></li>
+      <li>
+<strong>MTTD</strong>: mean time to detect failure</li>
+      <li>
+<strong>MTBF</strong>: mean time between failures</li>
+      <li>
+<a href="https://www.thoughtworks.com/radar/techniques/four-key-metrics">four key metrics</a>
+        <ul>
+          <li>lead time, deploy frequency, MTTR, change failure rate</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>deliver stuff faster and more reliably, <strong>AT THE SAME TIME</strong>
+</li>
+  <li>same (similar) process for dev and ops team</li>
+  <li>take failure for granted</li>
+  <li>open source first
+    <ul>
+      <li>write software and first choice is to open source it</li>
+    </ul>
+  </li>
+  <li>Melvin Conway
+    <ul>
+      <li><em>organizations which design systems … are constrained to produce designs which are copies of the communication structures of these organizations</em></li>
+    </ul>
+  </li>
+  <li>Catchpoint
+    <ul>
+      <li><em>Continuous Delivery is about provisioning and configuring test environments to match production as closely as possible, automatically</em></li>
+    </ul>
+  </li>
+  <li>
+<em>“DevOps is a cultural shift whereby developers are aware of how their applications are run in a production environment and the operations folks are aware and empowered to know how the application works so that they can actively play a part in making the application more reliable.”</em>
+    <ul>
+      <li>from <a href="https://www.madrona.com/the-remaking-of-enterprise-infrastructure-investment-themes-for-next-generation-cloud/">joe beda</a>
+</li>
+    </ul>
+  </li>
+  <li>
+<em>“The nature of a large, complex organization is to fall out of alignment without deliberate effort”</em>
+    <ul>
+      <li>Damon Edwards</li>
+    </ul>
+  </li>
+  <li><em>“The goal of any process improvements is to shorten and amplify feedback loops”</em></li>
+  <li>
+<em>“DevOps is the application of Agile methodology to system administration”</em>
+    <ul>
+      <li>Tom Limoncelli</li>
+    </ul>
+  </li>
+  <li>
+<em>“DevOps is a software development approach where development and operations are working together to deliver software to end users in a fast and reliable way.”</em>
+    <ul>
+      <li><a href="https://sellegi.se/glossary/devops/">from here</a></li>
+      <li>also mentions 5 pillars</li>
+    </ul>
+  </li>
+  <li>
+<em>“Whatever definition you might have, you are not wrong because there is no official definition of DevOps.”</em>
+    <ul>
+      <li>agile has manifesto, no such thing for DevOps</li>
+      <li>Rodriguez Pardo</li>
+      <li>[newstack](https://thenewstack.io/want-devops-automation-its-people-before-pipelines/</li>
+      <li><em>“DevOps is not a tool or a process, but a practice that values continuous <strong>communication</strong>, <strong>collaboration</strong>, <strong>integration</strong>, and <strong>automation</strong> across an organization.”</em></li>
+    </ul>
+  </li>
+  <li>
+<em>DevOps is continous improvement towards the same goal across an organization</em>
+    <ul>
+      <li>yours truely</li>
+    </ul>
+  </li>
+  <li><em>DevOps is about taking a business idea and helping the business realize that idea ASAP</em></li>
+  <li>VSM - Value Stream Mapping
+    <ul>
+      <li>a flowchart method used to illustrate, analyze, and improve the steps required to deliver a product or service to customers</li>
+      <li><a href="https://www.lucidchart.com/blog/value-stream-mapping-for-devops">from here</a></li>
+    </ul>
+  </li>
+  <li>ARA - Application Release Automation</li>
+  <li>CAB - change approval board
+    <ul>
+      <li>bad, heavy</li>
+    </ul>
+  </li>
+  <li>SDET - Software Developer Engineer in Test</li>
+  <li>release orchestration???</li>
+  <li>CALMS model, or CAMS model
+    <ul>
+      <li>culture - people &gt; process &gt; tools</li>
+      <li>automation</li>
+      <li>lean</li>
+      <li>metrics</li>
+      <li>sharing - collaboration/feedback
+        <ul>
+          <li>open source</li>
+          <li>share responsibility!!!</li>
+        </ul>
+      </li>
+      <li>In 2010, John Willis and Damon Edwards coined the term CAMS:</li>
+    </ul>
+  </li>
+  <li>7C of DevOps
+    <ul>
+      <li>communication</li>
+      <li>collaboration</li>
+      <li>controlled process</li>
+      <li>CI</li>
+      <li>CD</li>
+      <li>continous testing</li>
+      <li>continous monitoring</li>
+    </ul>
+  </li>
+  <li>SDO performance
+    <ul>
+      <li>software delivery and operation performance</li>
+      <li>used to be called IT performance</li>
+    </ul>
+  </li>
+  <li>Westrum organizational culture
+    <ul>
+      <li>Ron Westrum was a sociologist who found that organizational culture was predictive of safety and performance outcomes in the healthcare industry.</li>
+      <li><a href="https://continuousdelivery.com/implementing/culture/">nice table</a></li>
+    </ul>
+  </li>
+  <li>wall of confusion
+    <ul>
+      <li>wall between dev and ops</li>
+    </ul>
+  </li>
+  <li>TAM - total addressable market</li>
+  <li>DevOps Assembly Lines
+    <ul>
+      <li>replaces CI pipeline</li>
+      <li><em>DevOps Assembly Lines are focused on automating and connecting activities performed by several teams, such as CI for devs, infrastructure provisioning and config mgmt for Ops, test automation for Test, security patching for SecOps, semantic versioning and approval gates for Release Managers, deployments for multiple environments, and so on.</em></li>
+      <li><a href="http://blog.shippable.com/the-difference-between-ci-pipelines-and-devops-assembly-lines-0">shippable</a></li>
+    </ul>
+  </li>
+  <li>Immutable Infrastructure
+    <ul>
+      <li>An immutable infrastructure is another infrastructure paradigm in which servers are never modified after they’re deployed. If something needs to be updated, fixed, or modified in any way, new servers built from a common image with the appropriate changes are provisioned to replace the old ones.</li>
+    </ul>
+  </li>
+  <li>
+<em>shift left</em>
+    <ul>
+      <li>operations concerns move earlier in the software delivery life cycle, toward development</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="three-way-of-devops">
+<a class="anchor" href="#three-way-of-devops" aria-hidden="true"><span class="octicon octicon-link"></span></a>Three Way of DevOps</h2>
+<ul>
+  <li>essentially:
+    <ul>
+      <li>Maximize flow</li>
+      <li>Minimize feedback loop time</li>
+      <li>Share learnings</li>
+    </ul>
+  </li>
+  <li>three ways
+    <ol>
+      <li>entire system performance - work flowing from left to right as fast possible
+        <ul>
+          <li>lower WIP as much as possible
+            <ul>
+              <li>deliver value piece meal</li>
+              <li>allow faster feedback</li>
+            </ul>
+          </li>
+          <li>identify bottle neck</li>
+        </ul>
+      </li>
+      <li>creating feedback loop - increasing the feedback loops from right to left.</li>
+      <li>continual experiment - culture where constant experimentation and learning is encouraged</li>
+    </ol>
+  </li>
+  <li><a href="https://www.accenture.com/us-en/blogs/blogs-three-ways-devops">accenture</a></li>
+</ul>
+
+<p><img src="http://borlandc.pek3b.qingstor.com/devops/Three-Ways-DevOps.jpg" width="75%"></p>
+
+<p>from Harrington Stars</p>
+
+<h2 id="four-capabilities">
+<a class="anchor" href="#four-capabilities" aria-hidden="true"><span class="octicon octicon-link"></span></a>Four Capabilities</h2>
+<p><img src="http://borlandc.pek3b.qingstor.com/devops/four-capabilities.png" width="75%"></p>
+
+<h2 id="dev-vs-ops">
+<a class="anchor" href="#dev-vs-ops" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dev Vs Ops</h2>
+<p>Developers always want to deliver changes as soon as possible. Operations want reliability and stability.</p>
+
+<h2 id="history">
+<a class="anchor" href="#history" aria-hidden="true"><span class="octicon octicon-link"></span></a>History</h2>
+<ul>
+  <li><a href="https://devops.com/the-origins-of-devops-whats-in-a-name/">a decade old</a></li>
+</ul>
+
+<h2 id="typical-lifecycle">
+<a class="anchor" href="#typical-lifecycle" aria-hidden="true"><span class="octicon octicon-link"></span></a>Typical Lifecycle</h2>
+<p><img src="http://borlandc.pek3b.qingstor.com/devops/life-cycle.png" width="55%"></p>
+
+<h2 id="summary-slides-of-the-famous-flickr-deck-2009">
+<a class="anchor" href="#summary-slides-of-the-famous-flickr-deck-2009" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary slides of the Famous Flickr deck, 2009</h2>
+<p><img src="http://borlandc.pek3b.qingstor.com/devops/flickr-2009-summary.png" width="75%"></p>
+
+<h1 id="tool-chain">
+<a class="anchor" href="#tool-chain" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tool Chain</h1>
+<p><img src="https://cdn2.hubspot.net/hubfs/208250/Blog_Images/DevOps-Infographic-v1.4%20690x690.png"></p>
+
+<h2 id="create-tools">
+<a class="anchor" href="#create-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create Tools</h2>
+<ul>
+  <li><a href="">CFENGINE</a></li>
+</ul>
+
+<h2 id="binary-repository">
+<a class="anchor" href="#binary-repository" aria-hidden="true"><span class="octicon octicon-link"></span></a>Binary Repository</h2>
+<ul>
+  <li><a href="">jfrog Artifactory</a></li>
+  <li><a href="">SonaType Nexus</a></li>
+</ul>
+
+<h2 id="planning-tools">
+<a class="anchor" href="#planning-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Planning Tools</h2>
+<ul>
+  <li>asana</li>
+</ul>
+
+<h2 id="configure-management-tools">
+<a class="anchor" href="#configure-management-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure Management Tools</h2>
+<ul>
+  <li>install and manage software on existing servers</li>
+  <li>avoid configuration drift</li>
+  <li><a href="">Ansible</a></li>
+  <li><a href="">Chef</a></li>
+  <li><a href="">Puppet</a></li>
+  <li><a href="">Otter</a></li>
+  <li><a href="">SaltStack</a></li>
+</ul>
+
+<h3 id="configuration-drift">
+<a class="anchor" href="#configuration-drift" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration drift</h3>
+<ul>
+  <li>overtime, the configuration on servers slightly differs from the others due to the fact 
+that the configuration management tool are used differently</li>
+</ul>
+
+<h3 id="confd">
+<a class="anchor" href="#confd" aria-hidden="true"><span class="octicon octicon-link"></span></a>confd</h3>
+<ul>
+  <li>lightweight configuration  management tool</li>
+  <li>sync configuration files</li>
+  <li>work together with <code class="highlighter-rouge">etcd</code> or <code class="highlighter-rouge">consul</code>
+</li>
+</ul>
+
+<h2 id="orchestration-tools">
+<a class="anchor" href="#orchestration-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Orchestration Tools</h2>
+<ul>
+  <li>terraform</li>
+  <li>CloudFormation</li>
+</ul>
+
+<h2 id="monitor-and-metrics-tools">
+<a class="anchor" href="#monitor-and-metrics-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Monitor And Metrics Tools</h2>
+<ul>
+  <li>Zabbix</li>
+  <li>Nagios</li>
+  <li>ELK</li>
+  <li>Kibana</li>
+  <li>NewRelic</li>
+  <li>splunk</li>
+</ul>
+
+<h2 id="collaboration-tools">
+<a class="anchor" href="#collaboration-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collaboration Tools</h2>
+<ul>
+  <li>Slack</li>
+  <li>HipChat</li>
+  <li>Campfire</li>
+  <li>wiki
+    <ul>
+      <li>confluence</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="issue-tracking-tools">
+<a class="anchor" href="#issue-tracking-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Issue Tracking Tools</h2>
+<ul>
+  <li>gitlab</li>
+  <li>jira</li>
+</ul>
+
+<h2 id="cicd-tools">
+<a class="anchor" href="#cicd-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>CI/CD Tools</h2>
+<ul>
+  <li>jenkins</li>
+  <li>bamboo</li>
+  <li>circleci</li>
+  <li>teamcity</li>
+  <li>go</li>
+</ul>
+
+<h2 id="db-migration-tools">
+<a class="anchor" href="#db-migration-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>DB Migration Tools</h2>
+<ul>
+  <li>
+<a href="https://flywaydb.org">flyway</a>
+    <ul>
+      <li>adopted by TW in 2015</li>
+    </ul>
+  </li>
+  <li><a href="http://www.liquibase.org">liquibase</a></li>
+  <li>
+<a href="https://www.dbmaestro.com">dbmaestro</a>
+    <ul>
+      <li>devops db</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="testing-and-quality-tools">
+<a class="anchor" href="#testing-and-quality-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing and Quality Tools</h2>
+<ul>
+  <li>Sonarqube
+    <ul>
+      <li>It is possible to write your own rule</li>
+    </ul>
+  </li>
+  <li>selenium</li>
+  <li>cucumber</li>
+  <li>blazemeter</li>
+</ul>
+
+<h2 id="infra-integration-testing-tools">
+<a class="anchor" href="#infra-integration-testing-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Infra Integration Testing Tools</h2>
+<ul>
+  <li>rspec</li>
+  <li>serverspec</li>
+</ul>
+
+<h1 id="architecture">
+<a class="anchor" href="#architecture" aria-hidden="true"><span class="octicon octicon-link"></span></a>Architecture</h1>
+<ul>
+  <li>loosely coupled architecture to allow autonomous team</li>
+</ul>
+
+<h1 id="methodologies">
+<a class="anchor" href="#methodologies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methodologies</h1>
+<h2 id="automation">
+<a class="anchor" href="#automation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Automation</h2>
+<ul>
+  <li>automation is key in devops</li>
+  <li>test automation brings the most value</li>
+  <li>configuration management automation: me think this is taken care of by
+container</li>
+  <li>change approval process can also be automated</li>
+</ul>
+
+<h2 id="金丝雀发布--canary-release">
+<a class="anchor" href="#%E9%87%91%E4%B8%9D%E9%9B%80%E5%8F%91%E5%B8%83--canary-release" aria-hidden="true"><span class="octicon octicon-link"></span></a>金丝雀发布 / Canary Release</h2>
+<ul>
+  <li>canary release</li>
+  <li>similar to blue/green release but serves different purpose</li>
+  <li>meant for testing out new feature on a subset of users</li>
+  <li>also called <em>phased rollout</em> or <em>incremental rollout</em>
+</li>
+  <li>
+<strong>This technique was inspired from the fact that canary birds were once used in coal mines to alert miners when toxic gases reached dangerous levels — the gases would kill the canary before killing the miners, which provides a warning to get out of the mine tunnels immediately.</strong>
+    <ul>
+      <li>
+<a href="https://blog.getambassador.io/cloud-native-patterns-canary-release-1cb8f82d371a">ambassador</a>
+        <ul>
+          <li>A Comprehensive Guide to Canary Releases – Ambassador API Gateway</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://martinfowler.com/bliki/CanaryRelease.html">martin fowler</a></li>
+  <li>
+<a href="https://github.com/Telefonica/nginx-canary">gitub</a>
+    <ul>
+      <li>policies: random, or header_authorization</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://dev.to/cloudbees/canary-deployment-what-it-is-and-how-to-use-it-3gfg">dev.to, cloudbee</a>
+    <ul>
+      <li>term come from old coal mining technique</li>
+      <li>strategies:
+        <ul>
+          <li>by user</li>
+          <li>by instance</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+<a href="https://thenewstack.io/a-primer-continuous-integration-and-continuous-delivery-ci-cd/">newstack, kublr</a>
+    <ul>
+      <li><em>Code and user behavior are continuously monitored. If the error rate or user complaints do not increase, the share of requests routed to the new version is incrementally increased</em></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="feature-toggle-feature-flag">
+<a class="anchor" href="#feature-toggle-feature-flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feature Toggle, Feature Flag</h2>
+<ul>
+  <li>as opposed to feature branch</li>
+  <li>code stays on the main branch but can be configured</li>
+  <li>code can be tested even before it’s complete</li>
+  <li>helps with canary release</li>
+  <li>best practice is to break a largish feature into smaller testable pieces</li>
+  <li>A feature flag is a way to change your software’s functionality without changing and re-deploying your code.</li>
+  <li>drawbacks
+    <ul>
+      <li>add noise into code</li>
+      <li>flag needs to be tested</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="trunk-based-development">
+<a class="anchor" href="#trunk-based-development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Trunk Based Development</h2>
+<ul>
+  <li>small and frequent change commited to <strong>trunk</strong> (main branch)</li>
+  <li>in theory, the main branch can be released at any time safely</li>
+  <li>hard to do right but provides a lot of value when done right</li>
+  <li>closely aligned to continuous integration goal</li>
+  <li>feature toggle instead of feature branch</li>
+  <li>
+<a href="https://paulhammant.com/2013/04/05/what-is-trunk-based-development/">paulhammant</a>
+    <ul>
+      <li>what is TBD</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://stxnext.com/blog/2018/02/28/escape-merge-hell-why-i-prefer-trunk-based-development-over-feature-branching-and-gitflow/">stxnext</a>
+    <ul>
+      <li>escape merge hell</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.thoughtworks.com/insights/blog/enabling-trunk-based-development-deployment-pipelines">tw</a>
+    <ul>
+      <li>enabling TBD</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://trunkbaseddevelopment.com/branch-for-release/">branch for release</a>
+    <ul>
+      <li>shortly before the release</li>
+      <li>fix bugs on trunk</li>
+      <li>cherry-pick to release branch</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.toptal.com/software/trunk-based-development-git-flow">toptal</a>
+    <ul>
+      <li>git flow vs TBD</li>
+      <li>senior vs junior dev crap</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cicd">
+<a class="anchor" href="#cicd" aria-hidden="true"><span class="octicon octicon-link"></span></a>CI/CD</h2>
+<ul>
+  <li>shorten feedback loop</li>
+  <li>reduce lead time</li>
+  <li>automation</li>
+</ul>
+
+<h2 id="cd-vs-cd">
+<a class="anchor" href="#cd-vs-cd" aria-hidden="true"><span class="octicon octicon-link"></span></a>CD vs CD</h2>
+<p><img src="http://borlandc.pek3b.qingstor.com/devops/Accenture-Continuous-Delivery-Vs-Continuous-Deployment.png" width="75%"></p>
+
+<ul>
+  <li>from Accenture</li>
+  <li>somebody actually think the reverse</li>
+</ul>
+
+<h3 id="different-kind-of-ci">
+<a class="anchor" href="#different-kind-of-ci" aria-hidden="true"><span class="octicon octicon-link"></span></a>Different Kind of CI</h3>
+<p><img src="http://borlandc.pek3b.qingstor.com/devops/shippable-different-ci.png" width="75%"></p>
+
+<h3 id="example-cicd-pipeline">
+<a class="anchor" href="#example-cicd-pipeline" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example CI/CD Pipeline</h3>
+<p><img src="http://borlandc.pek3b.qingstor.com/devops/ci-cd-jenkins-helm-k8s.png" width="75%"></p>
+
+<h2 id="security">
+<a class="anchor" href="#security" aria-hidden="true"><span class="octicon octicon-link"></span></a>Security</h2>
+<ul>
+  <li>SecOps</li>
+  <li>DevSecOps</li>
+  <li>bake security into DevOps process</li>
+</ul>
+
+<h2 id="xxx-as-code">
+<a class="anchor" href="#xxx-as-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>XXX as Code</h2>
+<ul>
+  <li>version control everything</li>
+</ul>
+
+<h2 id="lean-product-management">
+<a class="anchor" href="#lean-product-management" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lean Product Management</h2>
+<ul>
+  <li>build MVP all the time</li>
+</ul>
+
+<h2 id="self-service-environment">
+<a class="anchor" href="#self-service-environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Self Service Environment</h2>
+<ul>
+  <li>developer create test env by themselves</li>
+</ul>
+
+<h1 id="culture-and-organization">
+<a class="anchor" href="#culture-and-organization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Culture and Organization</h1>
+<ul>
+  <li>break down silo</li>
+  <li>autonomous team
+    <ul>
+      <li>important decision can be made within the team itself</li>
+    </ul>
+  </li>
+  <li>build quality in</li>
+  <li>tight feedback loop</li>
+</ul>
+
+<h2 id="tribes-squads-chapters-and-guilds">
+<a class="anchor" href="#tribes-squads-chapters-and-guilds" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tribes, Squads, Chapters and Guilds</h2>
+<ul>
+  <li>originated from Spotify</li>
+  <li>chapter
+    <ul>
+      <li>people with similar sill set. e.g. database, front end, tester</li>
+      <li>chapter lead is a line manager</li>
+    </ul>
+  </li>
+  <li>squad
+    <ul>
+      <li>similar to an agile team, includes people from different chapters</li>
+    </ul>
+  </li>
+  <li>tribe
+    <ul>
+      <li>a collection of squad that sits together?</li>
+      <li>for large organizations, with 100+ people</li>
+    </ul>
+  </li>
+  <li>guild
+    <ul>
+      <li>??? how is it different from chapter?</li>
+    </ul>
+  </li>
+  <li><a href="http://www.full-stackagile.com/2016/02/14/team-organisation-squads-chapters-tribes-and-guilds/">full stack agile</a></li>
+  <li>
+<a href="http://blog.honeypot.io/2015-11-13-what's-it-like-to-work-at-Spotify/">nice article</a>
+    <ul>
+      <li>what is like to work at Spotify</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://medium.com/@achardypm/agile-team-organisation-squads-chapters-tribes-and-guilds-80932ace0fdc">medium</a>
+    <ul>
+      <li><em>Agile Team Organisation: Squads, Chapters, Tribes and Guilds</em></li>
+    </ul>
+  </li>
+  <li>nice graphical PDF under <code class="highlighter-rouge">Dropbox/eBook/devops</code>
+</li>
+</ul>
+
+<p><img src="http://blog.honeypot.io/assets/images/spotifygraphic.png" width="75%"></p>
+
+<h2 id="transformational-leader">
+<a class="anchor" href="#transformational-leader" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transformational Leader</h2>
+<ul>
+  <li>…</li>
+</ul>
+
+<h1 id="for-fintech">
+<a class="anchor" href="#for-fintech" aria-hidden="true"><span class="octicon octicon-link"></span></a>For FinTech</h1>
+<ul>
+  <li>more regulated environment, more security concerns
+    <ul>
+      <li>makes stuff like chaos monkey harder to do</li>
+    </ul>
+  </li>
+  <li>deployment triggered directly by developer push is no no in financial
+organisation
+    <ul>
+      <li>actual production deployment should be manual</li>
+    </ul>
+  </li>
+  <li>window of after hour maintainance
+    <ul>
+      <li>for trading companies</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="tools--ansible">
+<a class="anchor" href="#tools--ansible" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools / Ansible</h1>
+<ul>
+  <li>procedural but declarative</li>
+  <li>runs over SSH</li>
+  <li>written in Python, so installable via <code class="highlighter-rouge">pip</code>
+</li>
+  <li>uses template engine for configuration files, etc.
+    <ul>
+      <li>Jinja2</li>
+    </ul>
+  </li>
+  <li>ansible prints out log only <strong>after</strong> the operation is finished!!!</li>
+  <li>package management
+    <ul>
+      <li><code class="highlighter-rouge">ansible-galaxy install -r requirements.yml</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="terms">
+<a class="anchor" href="#terms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Terms</h2>
+<ul>
+  <li>
+<em>inventory</em> file list all relevant hosts
+    <ul>
+      <li>host can be grouped</li>
+      <li>it’s possible to assign variable to a group</li>
+    </ul>
+  </li>
+  <li>
+<em>playbook</em> is a YAML formatted file that lists what to do to a certain server
+    <ul>
+      <li>an execution plan</li>
+      <li><code class="highlighter-rouge">hosts: []</code></li>
+      <li><code class="highlighter-rouge">remote_user: who</code></li>
+      <li><code class="highlighter-rouge">tasks</code></li>
+      <li>
+<code class="highlighter-rouge">roles</code> are a name that’s bind to a list of tasks, etc.</li>
+    </ul>
+  </li>
+  <li>
+<em>modules</em> extends functionality of Ansible
+    <ul>
+      <li>a program (usually python) that executes, does some work and returns proper JSON output</li>
+      <li>ping, shell, command, file, raw, git, atp, etc</li>
+      <li><code class="highlighter-rouge">ansible -m ping localhost</code></li>
+      <li><code class="highlighter-rouge">ansible -m shell -a 'date; whoami' localhost</code></li>
+    </ul>
+  </li>
+  <li>
+<em>task</em> is a module in running
+    <ul>
+      <li>
+<code class="highlighter-rouge">main.yml</code> is the entry point</li>
+      <li>task should be idempotent, see <code class="highlighter-rouge">changed_when, always_run, when</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<em>play</em> is an ordered set of tasks</li>
+  <li>
+<em>role</em> is a structured way to manage your set of tasks, variables, handlers, default settings,</li>
+  <li>
+<em>handlers</em> are lists of tasks that are notified by notifiers to handle event
+    <ul>
+      <li>triggered by <code class="highlighter-rouge">notify:</code> in tasks</li>
+    </ul>
+  </li>
+  <li>
+<em>callback</em>
+    <ul>
+      <li>custom action when a event happens, e.g. when a play starts, or task complete</li>
+    </ul>
+  </li>
+  <li>
+<em>when</em>
+    <ul>
+      <li>express conditional</li>
+    </ul>
+  </li>
+  <li>
+<em>register</em>
+    <ul>
+      <li>dynamically generate variables</li>
+    </ul>
+  </li>
+  <li>
+<em>tag</em>
+    <ul>
+      <li>task, role, etc, can be tagged to form some kinda grouping</li>
+    </ul>
+  </li>
+  <li>
+<em>block</em>
+    <ul>
+      <li>cut down repetitive tasks directives</li>
+      <li>like macro</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="arch">
+<a class="anchor" href="#arch" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arch</h2>
+<p><img src="http://borlandc.pek3b.qingstor.com/devops/ansible-arch.png" width="75%"></p>
+
+<h2 id="syntax">
+<a class="anchor" href="#syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>Syntax</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">vars</code>
+    <ul>
+      <li>define variables using <code class="highlighter-rouge">apache2_log_level: "warn"</code> like K/V</li>
+      <li>21 levels of variable precedence: <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable">1</a>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">regisgter</code> can be used to generate varialbe content from task
+    <ul>
+      <li>E.g. <code class="highlighter-rouge">register: root_size</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">defaults</code>
+    <ul>
+      <li>assumes to define default values</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">when</code>
+    <ul>
+      <li>express conditional</li>
+      <li>E.g <code class="highlighter-rouge">when: some_variable in 'a string'</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">become</code>
+    <ul>
+      <li>set to ‘true’/’yes’ to activate privilege escalation.</li>
+      <li><code class="highlighter-rouge">become: True</code></li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">set_fact</code>
+    <ul>
+      <li>set host fact from task</li>
+      <li>a bit like <code class="highlighter-rouge">vars</code>, can be used in template</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cli">
+<a class="anchor" href="#cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h2>
+<ul>
+  <li><code class="highlighter-rouge">ansible</code></li>
+  <li><code class="highlighter-rouge">ansible-playbook</code></li>
+</ul>
+
+<h2 id="links">
+<a class="anchor" href="#links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+<ul>
+  <li>
+<a href="https://www.linode.com/docs/applications/configuration-management/getting-started-with-ansible">linode</a>
+    <ul>
+      <li>Learn How to Install Ansible and Run Playbooks</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/DasonYang/kubernetes-ansible-playbook">vagrant kubeadm</a>
+    <ul>
+      <li>GitHub - DasonYang/kubernetes-ansible-playbook: Ansible-playbook to deployment kubernetes with kubeadm and vagrant</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://medium.com/@vineetcloudops/ansible-from-scratch-9e466111d47b">medium</a>
+    <ul>
+      <li>Ansible from Scratch – Vineet Sharma – Medium</li>
+      <li><a href="https://cdn-images-1.medium.com/max/1600/0*FX_m5Opn8q5wU6UK.png">arch</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://learnxinyminutes.com/docs/ansible/">learnxiny</a>
+    <ul>
+      <li>Learn X in Y minutes for Ansible</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://devhints.io/ansible-guide">devhints</a>
+    <ul>
+      <li>quick start guide</li>
+      <li>pretty basic but pretty clear also</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/ansible/awx">awx, GUI, REST</a>
+    <ul>
+      <li>AWX</li>
+      <li>web UI, REST API for ansible</li>
+      <li>upstream project for Ansible Tower</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html">best practice</a>
+    <ul>
+      <li>official ansible best practice</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.digitalocean.com/community/tutorials/how-to-use-ansible-roles-to-abstract-your-infrastructure-environment">DO</a>
+    <ul>
+      <li>how to use ansible roles to abstract infra</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://people.redhat.com/mskinner/rhug/q2.2017/Ansible-Hands-on-Introduction.pdf">redhat, pdf</a>
+    <ul>
+      <li>Ansible hands on introduction</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://galaxy.ansible.com">galaxy</a>
+    <ul>
+      <li>Ansible Galaxy</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://medium.com/@auscunningham/write-a-ansible-module-with-python-527f0b292b4d">medium, module</a>
+    <ul>
+      <li>write a module with Python</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://opensource.com/article/19/3/developing-ansible-modules">module, when</a>
+    <ul>
+      <li>What you need to know about Ansible modules</li>
+      <li>nice article about when a module is required</li>
+      <li>mention of Infra as code principles</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/geerlingguy/ansible-vagrant-examples">github, vagrant</a>
+    <ul>
+      <li>collection of ansible examples, using vagrant</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="tools--argo">
+<a class="anchor" href="#tools--argo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools / Argo</h1>
+<ul>
+  <li>argo 2.0 deployed as a CRD in kubernetes</li>
+  <li>pipeline as code: YAML</li>
+  <li>provides web UI for monitoring
+    <ul>
+      <li>displays pipeline in DAG</li>
+    </ul>
+  </li>
+  <li>a bit hard to use
+    <ul>
+      <li>lot of concepts</li>
+      <li>YAML is not the same as what’s displayed by the UI</li>
+    </ul>
+  </li>
+  <li>can’t see it fit large team</li>
+</ul>
+
+<h2 id="features">
+<a class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+<ul>
+  <li>jobs are called workflow</li>
+  <li>each stage is called step</li>
+  <li>input parameter
+    <ul>
+      <li>works with template</li>
+    </ul>
+  </li>
+  <li>artifacts
+    <ul>
+      <li>can be input as well</li>
+    </ul>
+  </li>
+  <li>branching</li>
+  <li>conditional
+    <ul>
+      <li><code class="highlighter-rouge">when</code></li>
+    </ul>
+  </li>
+  <li>variable reference across step</li>
+  <li>
+<code class="highlighter-rouge">for</code> loop like parallelism
+    <ul>
+      <li><code class="highlighter-rouge">withItems</code></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.ibm.com/blogs/bluemix/2019/02/simplify-and-automate-deployments-using-gitops-with-ibm-multicloud-manager-3-1-2/">ibm, gitops</a>
+    <ul>
+      <li>article with a list of nice gitops feature</li>
+      <li>following is meant for Argo :D</li>
+      <li>Multiple Git repositories and cluster destinations</li>
+      <li>Multiple manifests template formats (e.g., Helm, Ksonnet, Kustomize) or plain YAML manifests</li>
+      <li>Git branch tracking or tag/commit pinning</li>
+      <li>Automated or manual synchronization</li>
+      <li>Pruning of deleted resources</li>
+      <li>Rollback/roll-anywhere</li>
+      <li>Declarative management of its own configuration</li>
+      <li>Continuous monitoring of deployed applications</li>
+      <li>Audit trail and history for application events and API calls</li>
+      <li>Health assessment statuses on all components of the application</li>
+      <li>Web console, CLI, and gRPC/REST API</li>
+      <li>SSO Integration (OIDC, LDAP, SAML 2.0, and others)</li>
+      <li>Role-based access control</li>
+      <li>Webhook integration (GitHub, GitLab, BitBucket)</li>
+      <li>PreSync, Sync, PostSync hooks for complex application rollouts (e.g., canary upgrades, blue/green)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cli-1">
+<a class="anchor" href="#cli-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h2>
+<ul>
+  <li><code class="highlighter-rouge">argo list</code></li>
+  <li><code class="highlighter-rouge">argo submit</code></li>
+  <li>
+<code class="highlighter-rouge">argo install</code>
+    <ul>
+      <li>installs argo in a kubernetes environment</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="spec">
+<a class="anchor" href="#spec" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spec</h2>
+<ul>
+  <li>
+<code class="highlighter-rouge">entrypoint</code>
+    <ul>
+      <li>specifies workflow entrypoint template</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="q">
+<a class="anchor" href="#q" aria-hidden="true"><span class="octicon octicon-link"></span></a>Q</h2>
+<ul>
+  <li>how to build docker image?</li>
+  <li>how to deploy a pod?</li>
+  <li>how to use git password, pub key?</li>
+  <li>how does PVC work across hosts?</li>
+</ul>
+
+<h1 id="tools--brigade">
+<a class="anchor" href="#tools--brigade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools / Brigade</h1>
+<p>…</p>
+
+<h1 id="tools--jenkins-x">
+<a class="anchor" href="#tools--jenkins-x" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools / Jenkins X</h1>
+<ul>
+  <li>native/automated CI/CD on kubernetes</li>
+  <li>concepts
+    <ul>
+      <li>Apps</li>
+      <li>Environments</li>
+      <li>Promotion (new versions of Applications between Environments via GitOps)</li>
+    </ul>
+  </li>
+  <li>built-in GitOps</li>
+  <li>automatically comments on your Commits, Issues and Pull Requests</li>
+  <li>works with github</li>
+  <li>
+<a href="https://www.sohu.com/a/274267866_753085">sohu, slides</a>
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>_《Jenkins X：基于Kubernetes的新一代CI/CD平台》PPT下载</td>
+              <td>OSCAR开源先锋日 _</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="components">
+<a class="anchor" href="#components" aria-hidden="true"><span class="octicon octicon-link"></span></a>Components</h2>
+<ul>
+  <li>monocular</li>
+  <li>helm</li>
+  <li>chartmuseum</li>
+  <li>draft</li>
+  <li>skaffold</li>
+  <li>anchor</li>
+</ul>
+
+<h2 id="cli-2">
+<a class="anchor" href="#cli-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h2>
+<ul>
+  <li><code class="highlighter-rouge">jx create spring</code></li>
+  <li><code class="highlighter-rouge">jx get buildlogs</code></li>
+  <li><code class="highlighter-rouge">jx get apps</code></li>
+  <li><code class="highlighter-rouge">jx create issue</code></li>
+</ul>
+
+<h1 id="tools--spinnaker">
+<a class="anchor" href="#tools--spinnaker" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools / Spinnaker</h1>
+<ul>
+  <li>
+<a href="https://kublr.com/blog/canary-releases-on-kubernetes-with-spinnaker-istio-and-prometheus-2/">kublr</a>
+    <ul>
+      <li><em>Canary Releases on Kubernetes with Spinnaker, Istio, and Prometheus</em></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="tools--flagger">
+<a class="anchor" href="#tools--flagger" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools / Flagger</h1>
+<ul>
+  <li>from weavworks</li>
+  <li><em>When you deploy a new version of an app, Flagger gradually shifts traffic to the canary, and at the same time, measures the requests success rate as well as the average response duration. Based on an analysis of these Linkerd provided metrics, a canary deployment is either promoted or rolled back</em></li>
+</ul>
+
+<h1 id="tools--tekton">
+<a class="anchor" href="#tools--tekton" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools / Tekton</h1>
+<ul>
+  <li>A Kubernetes-native pipeline resource</li>
+  <li><a href="https://tekton.dev">official</a></li>
+  <li>Jenkins X uses Tekton</li>
+  <li>uses native CRDs like Argo</li>
+</ul>
+
+<h1 id="tools--gerrit">
+<a class="anchor" href="#tools--gerrit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools / Gerrit</h1>
+<ul>
+  <li>a <strong>git server</strong>
+    <ul>
+      <li>with code review support</li>
+    </ul>
+  </li>
+  <li>written in Java
+    <ul>
+      <li>idea based on Guido’s version based on Subversion</li>
+    </ul>
+  </li>
+  <li><a href="https://www.gerritcodereview.com">www</a></li>
+  <li>
+<a href="https://docs.google.com/presentation/d/1C73UgQdzZDw0gzpaEqIC6SPujZJhqamyqO1XOHjH-uk/edit#slide=id.g4d6c16487b_1_453">google doc, slides</a>
+    <ul>
+      <li>96 pages long slides</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="sre">
+<a class="anchor" href="#sre" aria-hidden="true"><span class="octicon octicon-link"></span></a>SRE</h1>
+<ul>
+  <li>different from DevOps, which has more to do with culture, SRE is an actual role
+    <ul>
+      <li><em>SRE is to DevOps what Scrum is to Agile</em></li>
+    </ul>
+  </li>
+  <li>four golden signals
+    <ul>
+      <li>latency</li>
+      <li>traffic</li>
+      <li>errors</li>
+      <li>saturation</li>
+    </ul>
+  </li>
+  <li><a href="https://landing.google.com/sre/sre-book/chapters/monitoring-distributed-systems/#xref_monitoring_golden-signals">from google SRE book</a></li>
+  <li>
+<a href="https://www.infoq.com/articles/monitoring-SRE-golden-signals">infoq</a>
+    <ul>
+      <li>also mention USE, RED</li>
+      <li>golden signal for various different things like Python, MySQL</li>
+      <li>USE: utilisation, saturation, error</li>
+      <li>RED: rate, error, duration</li>
+      <li>RULES: request rate, utilisation, latency, errors rate, saturation</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://medium.com/hackernoon/sre-vs-devops-the-dilemma-f7054714525c">hn, hacker</a>
+    <ul>
+      <li>pretty good comparison between SRE and DevOps</li>
+      <li>DevOps engineer mostly means sysadmin</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="gitops">
+<a class="anchor" href="#gitops" aria-hidden="true"><span class="octicon octicon-link"></span></a>GitOps</h1>
+<ul>
+  <li>declarative spec for environment version controlled in git
+    <ul>
+      <li>code</li>
+      <li>configuration</li>
+      <li>monitoring rules</li>
+      <li>policies, etc</li>
+    </ul>
+  </li>
+  <li>the canonical desired system state is versioned</li>
+  <li>auditability</li>
+  <li>approved changes to the desired state are automatically applied to the system</li>
+  <li>agents ensure correctness and alert on diverge
+    <ul>
+      <li>agents = gitops operator</li>
+    </ul>
+  </li>
+  <li>provent process like PR, code review etc can be used for ops</li>
+  <li>basically more automation</li>
+  <li>catches
+    <ul>
+      <li>one per cluster</li>
+      <li>database deployment where config is not in git?</li>
+    </ul>
+  </li>
+  <li>
+<em>“Imagine a world where every time you do a deployment, it’s correct. And if it’s not correct, then the deployment fails completely, so you can try again or make other intelligent decisions. … That is just an incredible cost-saver in operational overhead. Moving from an unsafe, semi-reliable system to one that is basically more robust.”</em>
+    <ul>
+      <li>Weaveworks Alexis Richardson, on GitOps</li>
+    </ul>
+  </li>
+  <li>
+<em>Automating Kubernetes with GitOps</em>
+    <ul>
+      <li><code class="highlighter-rouge">dropbox://eBook/devops</code></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.weave.works/blog/gitops-operations-by-pull-request">origin</a>
+    <ul>
+      <li>original blog post from weave works</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://deploy.live/blog/a-year-with-gitops-in-production/">a year with, Dmitri Lerko</a>
+    <ul>
+      <li>a year with gitops in production</li>
+      <li>seems to have some insight</li>
+      <li>with link to slides and deck</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/weaveworks/awesome-gitops">awesome</a>
+    <ul>
+      <li>awesome gitops</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.intuit.com/blog/technology/introducing-argo-flux/">argo flux</a>
+    <ul>
+      <li>joined force</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="gitops-tools">
+<a class="anchor" href="#gitops-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>GitOps Tools</h2>
+<ul>
+  <li>ksonnet</li>
+  <li>gitkube</li>
+  <li>helm</li>
+  <li>draft</li>
+  <li>skaffold</li>
+  <li>metaparticle</li>
+  <li>weave flux</li>
+  <li>argo</li>
+</ul>
+
+<h2 id="weave">
+<a class="anchor" href="#weave" aria-hidden="true"><span class="octicon octicon-link"></span></a>Weave</h2>
+<p><img src="http://borlandc.pek3b.qingstor.com/devops/gitops-flagger.png" width="75%"></p>
+
+<h1 id="devops-metrics">
+<a class="anchor" href="#devops-metrics" aria-hidden="true"><span class="octicon octicon-link"></span></a>DevOps Metrics</h1>
+<ul>
+  <li>see Tricentis-eBook-Forrester-DevOps-Quality-Metrics.pdf in <code class="highlighter-rouge">dropbox://eBook/devops</code>
+</li>
+  <li>measure what matters</li>
+</ul>
+
+<h2 id="code-churn">
+<a class="anchor" href="#code-churn" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code Churn</h2>
+<ul>
+  <li>Code churn is a measure that tells you the rate at which your code evolves.</li>
+</ul>
+
+<h2 id="test-hygiene">
+<a class="anchor" href="#test-hygiene" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test Hygiene</h2>
+<ul>
+  <li>???</li>
+</ul>
+
+<h1 id="aiops">
+<a class="anchor" href="#aiops" aria-hidden="true"><span class="octicon octicon-link"></span></a>AIOps</h1>
+<ul>
+  <li>AIOps is the application of artificial intelligence for IT operations</li>
+  <li><em>The goal is to turn the data generated by IT systems platforms into meaningful insights.</em></li>
+  <li>analyze big data from various IT operation tools</li>
+  <li>optimise test cases, determining which to run and not run on each build.</li>
+  <li>predict hardware failures before they occur.</li>
+  <li><a href="https://thenewstack.io/what-is-aiops-and-why-you-should-care">newstack</a></li>
+  <li>
+<a href="https://www.devopsonline.co.uk/the-top-10-devops-trends-of-2019-the-professionals-prediction/">top 10, trend</a>
+    <ul>
+      <li>** The top 10 DevOps trends of 2019- the professional’s prediction**</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://jobs.netflix.com/jobs/871663">job, netflix</a>
+    <ul>
+      <li>Netflix hiring <em>Operational Intelligence</em> engineer</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="itil">
+<a class="anchor" href="#itil" aria-hidden="true"><span class="octicon octicon-link"></span></a>ITIL</h1>
+<ul>
+  <li>Information Technology Infrastructure Library</li>
+  <li>a set of best practise
+    <ul>
+      <li>strict</li>
+      <li>formal</li>
+    </ul>
+  </li>
+  <li>ITSM - IT service management</li>
+  <li>seems to be owned by a commercial company</li>
+  <li><em>This is where strict DevOps fans cringe because DevOps doesn’t have a definition and definitely isn’t a framework.</em></li>
+  <li>
+<a href="https://www.axelos.com/best-practice-solutions/itil/what-is-itil">whatis</a>
+    <ul>
+      <li><em>What is ITIL® Best Practice?</em></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.atlassian.com/it-unplugged/devops/devops-vs-itsm-its-not-either-or">vs, atlassian, jira</a>
+    <ul>
+      <li><em>DevOps vs. ITSM: Which side are you on?</em></li>
+      <li>atlassian seems to think they should coexist</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="questions">
+<a class="anchor" href="#questions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questions</h1>
+<ul>
+  <li>does wisecloud support automatic rollback?</li>
+  <li>领取驱动设计?</li>
+  <li>兼容性设计？</li>
+  <li>wisecloud仅支持IP段分流</li>
+  <li>fluentd</li>
+</ul>
+
+<h1 id="terms-1">
+<a class="anchor" href="#terms-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Terms</h1>
+<ul>
+  <li>COTS: commercial of the shelf software</li>
+  <li>SEM: structured equation model</li>
+  <li>WIP limit: work in progress limit
+    <ul>
+      <li><a href="https://leankit.com/learn/kanban/benefits-of-wip-limits/">leankit</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="links-1">
+<a class="anchor" href="#links-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h1>
+<ul>
+  <li><a href="https://www.accenture.com/us-en/blogs/blogs-continuous-everything-devops">accenture, CI CD CD</a></li>
+  <li>
+<a href="http://www.infoworld.com/article/3133755/it-management/6-small-steps-to-digital-transformation.html?idg_eid=5b8fe75bf4057148c83c8e462bc00ebf&amp;token=%23tk.IFWNLE_nlt_infoworld_app_rpt_2016-10-27&amp;utm_source=Sailthru&amp;utm_medium=email&amp;utm_campaign=InfoWorld%20Applications%20Report%202016-10-27&amp;utm_term=infoworld_app_rpt#tk.IFW_nlt_infoworld_tech_apple_2016-10-27">infoworld</a>
+    <ul>
+      <li>Devops dictates that software developers should be empowered to provision their 
+own environments, while operations should have the ability to automate continuous, reliable deployment at scale.</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://blog.gruntwork.io/why-we-use-terraform-and-not-chef-puppet-ansible-saltstack-or-cloudformation-7989dad2865c">why terraform and not ansible</a>
+    <ul>
+      <li>terraform is declarative</li>
+      <li>orchestration instead of configuration management</li>
+      <li>immutable</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.gocd.org/2017/07/25/blue-green-deployments">glue-green</a>
+    <ul>
+      <li>nice picture description of greenblue deployment</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.google.ie/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=12&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwiD65Gps4DWAhUEzLwKHZ0pDnEQFghaMAs&amp;url=https%3A%2F%2Fpuppet.com%2Fblog%2Fwhat-a-devops-engineer&amp;usg=AFQjCNGyOmMzFkvRT4WV9mq-uu0PvOLvBw">puppet what is</a>
+    <ul>
+      <li>what is devops engineer from Puppet</li>
+      <li>code or script, automation tools, communication, business aware</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://dzone.com/articles/11-tools-you-must-have-in-your-devops-toolchain">11 tools</a>
+    <ul>
+      <li>must have tools in toolchain</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.slideshare.net/Urbancode/how-to-build-a-devops-toolchain">slideshare</a>
+    <ul>
+      <li>IBM - how to build a devops toolchain</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.infoq.com/presentations/12k-deployments-day#anch158801">infoq</a>
+    <ul>
+      <li>10k deploy a day</li>
+      <li>
+<em>if you run container in production, registry is one of the most important
+part of your infrastructure</em>
+        <ul>
+          <li>pay for it</li>
+        </ul>
+      </li>
+      <li>any tool that’s not cloud native is outdated (it needs to support AWS,
+which might not be the same as our situation)</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.devopsassessment.net/">assessment</a>
+    <ul>
+      <li>Microsoft: maturity level self assessment</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.blazemeter.com/blog/ultimate-devops-tools-ecosystem-tutorial-part-1">blazemeter</a>
+    <ul>
+      <li>ultimate devops tools ecosystem</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://engineering.opsgenie.com/cloud-native-continuous-integration-and-delivery-tools-for-kubernetes-e6ea34d308c">opsgenie</a>
+    <ul>
+      <li>cloud native CI/CD tools for k8s</li>
+      <li>Argo
+        <ul>
+          <li><a href="https://github.com/alexmt/argo-vs-jenkins">vs jenkins</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.toutiao.com/a6561554964139737608">toutiao</a>
+    <ul>
+      <li>capitalOne has 16 gate per line</li>
+      <li>requirement ID in comment message
+        <ul>
+          <li>can work with git hook</li>
+        </ul>
+      </li>
+      <li>test result updates artifact metadata</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/Grafeas/Grafeas">grafeas</a>
+    <ul>
+      <li>metadata API for artifacts such as container image, jar file, etc</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.youtube.com/watch?v=UTKIT6STSVM">youtube</a>
+    <ul>
+      <li>how netflix thinks of devops</li>
+      <li>10s of ops engineers!!!</li>
+      <li>entirely cloud based, transition took 6 years</li>
+      <li>hire smart people and get out of their way</li>
+      <li>100s (500+) microservices</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.spinnaker.io">spinnaker</a>
+    <ul>
+      <li>CD tool for enterprise</li>
+      <li>open sourced by Netflix</li>
+    </ul>
+  </li>
+  <li><a href="https://trunkbaseddevelopment.com">turnkbaseddevelopment.com</a></li>
+  <li>
+<a href="https://www.quora.com/What-is-the-role-of-a-DevOps-consultant">quora</a>
+    <ul>
+      <li>what is the role of a devops consultant</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://dzone.com/articles/devops-101-what-is-a-devops-platform">dzone</a>
+    <ul>
+      <li>pretty high level steps of devops and possible tools</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://about.gitlab.com">about gitlab</a>
+    <ul>
+      <li>devops life cycle and gitlab’s offer</li>
+      <li>overview of what’s involved in devops</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://blog.shippable.com/the-difference-between-ci-pipelines-and-devops-assembly-lines-0">shippable</a>
+    <ul>
+      <li>diff between CI and devops assembly line</li>
+      <li>CI is a small part</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.toptal.com/devops/interview-questions">toptal</a>
+    <ul>
+      <li>devops interview questions</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.infoq.com/articles/devops-cloud-trends-2019">infoq, 2019</a>
+    <ul>
+      <li>DevOps cloud trends 2019</li>
+      <li>Q1 graph</li>
+      <li>AIOps</li>
+      <li>danger of conflating continuous integration (CI) and continuous delivery (CD)</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://medium.com/netflix-techblog/full-cycle-developers-at-netflix-a08c31f83249">netflix, full cycle</a>
+    <ul>
+      <li>Full Cycle Developers at Netflix</li>
+      <li><em>Full cycle developers apply engineering discipline to all areas of the life cycle</em></li>
+    </ul>
+  </li>
+  <li>
+<a href="http://itrevolution.com/the-three-ways-principles-underpinning-devops/">three, ways, 2012, old</a>
+    <ul>
+      <li>The Three Ways: The Principles Underpinning DevOps</li>
+      <li>an  article written in 2012</li>
+      <li>system thinking, amplify feedback loop, culture of continual experiment and learning</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.youtube.com/watch?v=SoNTA78j0tc">youtube, dashboard</a>
+    <ul>
+      <li>capitalone dashboard hygieia dashboard demo video, short</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://sysadmincasts.com/map">map</a>
+    <ul>
+      <li>containers in productioni map</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://engineering.opsgenie.com/cloud-native-continuous-integration-and-delivery-tools-for-kubernetes-e6ea34d308c">blog, state, k8s</a>
+    <ul>
+      <li>State of Cloud Native CI/CD Tools for Kubernetes</li>
+      <li>mentions Argo, Jenkins X, etc</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://gist.github.com/stephenparish/9941e89d80e2bc58a153">git, commit</a>
+    <ul>
+      <li>angularjs commit conventions</li>
+      <li>like this: <code class="highlighter-rouge">refactor(query): split request/util.clj and it's tests (#91)</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://opensource.com/article/19/7/measure-operational-performance">mttr, dead, cirt</a>
+    <ul>
+      <li>CIRT - Critical incident response time</li>
+      <li>MTTR is <em>the average across <strong>all</strong> incidents.</em>
+</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://thenewstack.io/devops-quality-metrics-ranked-from-overrated-distractions-to-hidden-gems">newstack, metrics</a>
+    <ul>
+      <li>DevOps Quality Metrics Ranked: From Overrated Distractions to Hidden Gems</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://xebialabs.com/devops-diagram-generator">generator, diagram</a>
+    <ul>
+      <li>Xebialabs DevOps diagram generator</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.gocd.org/analytics.html">gocd, metrics</a>
+    <ul>
+      <li>gocd analytics</li>
+      <li>pro feature</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://www.realgenekim.me">The Phonix Project</a>
+    <ul>
+      <li>by Gene Kim</li>
+      <li>modeled after “The Goal”</li>
+      <li>Three way of DevOps</li>
+      <li>Four types of work</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.devopsassessment.net">ms, assess</a>
+    <ul>
+      <li>DevOps Self-Assessment from Microsoft</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.visiontemenos.com/blog/devops-safe-devops">safe</a>
+    <ul>
+      <li>DevOps &amp; SAFe® DevOps</li>
+      <li>nice illustrative graphs</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.edureka.co/blog/devops-tools">edureka, tools</a>
+    <ul>
+      <li>How To Orchestrate DevOps Tools Together To Solve Our Problems?</li>
+      <li>a bit dated</li>
+      <li>has nice graphics</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://skookum.com/blog/agile-transformation-and-devops">skook, agile, vs, 2018</a>
+    <ul>
+      <li><em>Agile Transformation and DevOps: Beyond the Buzzwords</em></li>
+      <li>nice long article about DevOps</li>
+      <li>agile vs devops diagram with emphasis on human</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://puppet.com/blog/what-is-devops">puppet</a>
+    <ul>
+      <li>What is DevOps?</li>
+      <li>talks about CAMS and The Three Ways</li>
+      <li>implies that the 3 ways is easier to understand for higher management</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://blog.csdn.net/zouyee/article/details/52934564">csdn, dao</a>
+    <ul>
+      <li>DevOps的道法术器</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://myslide.cn/slides/13022#">gitops, cn, tools, compare</a>
+    <ul>
+      <li>kubernetes and gitops faceoff</li>
+      <li>tools comparision for docker image builder, etc</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://jfrog.com/blog/how-devops-empowers-maslows-hierarchy-of-needs-2-0/">jfrog, ceo</a>
+    <ul>
+      <li><em>By 2020, every company will be a DevOps company.</em></li>
+      <li>intoduces Maslow 2.0, where continuously updated software enables everything</li>
+      <li>power has become a basic need</li>
+      <li><em>DevOps will be seen as solving a singular problem: Continuous Software Updates.</em></li>
+    </ul>
+  </li>
+  <li>
+<a href="http://insights.thoughtworks.cn/instantiate-the-principles-of-devops/">cn, tw, history</a>
+    <ul>
+      <li>a bit of history of DevOps</li>
+      <li>Patrick Debois: 他在想：能否把敏捷的实践引入Ops团队呢？</li>
+      <li>DevOps背后的原则，就是上面两条线中所涉及的敏捷和精益的原则；</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://cdn.oreillystatic.com/en/assets/1/event/29/10%2B%20Deploys%20Per%20Day_%20Dev%20and%20Ops%20Cooperation%20at%20Flickr%20Presentation.pdf">flickr, 10+ deploys per day</a>
+    <ul>
+      <li>actual PDF of the slides</li>
+      <li>also in <code class="highlighter-rouge">dropbox://eBooks/devops</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://devops.com/5-devops-trends-worth-knowing-in-2019/">trend, 2019</a>
+    <ul>
+      <li>automation</li>
+      <li>assembly line</li>
+      <li>micro service</li>
+      <li>security</li>
+      <li>AI</li>
+    </ul>
+  </li>
+  <li><a href="https://www.techrepublic.com/article/devops-the-smart-persons-guide/">cheat sheet</a></li>
+  <li>
+<a href="http://www.gaowei.vip/liblst.htm?ID=eb23c95c-5428-4315-95ce-3f7fdacc23b1">cn, standard, pdf</a>
+    <ul>
+      <li>DevOps 标准</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://ilhicas.com/2019/08/11/What-you-as-a-Devops.html">what, long, list</a>
+    <ul>
+      <li>What do you do as a DevOps?</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://srcco.de/posts/how-zalando-manages-140-kubernetes-clusters.html">k8s, zalando</a>
+    <ul>
+      <li><em>HOW ZALANDO MANAGES 140+ KUBERNETES CLUSTERS</em></li>
+      <li>very interesting but brief article about DevOps, especially managing large number of k8s cluster</li>
+      <li>CPU throtolling disabled</li>
+      <li>request == limit to disable overcommit</li>
+      <li>upgrade 1.4 to 1.14 of k8s with no downtime</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://itnext.io/application-deployment-strategies-on-kubernetes-e3f2f63e0f31">itnext, deploy, complete</a>
+    <ul>
+      <li><strong>Complete guide — Deployment strategies on Kubernetes</strong></li>
+      <li>blue/gree</li>
+      <li>canary</li>
+      <li>A/B testing</li>
+      <li>Shadowing: production traffic is copied to new service for testing</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://github.com/hbstarjason/spinnaker-local">spinnker</a>
+    <ul>
+      <li><strong>Run Spinnaker on bare metal With docker-compose</strong></li>
+    </ul>
+  </li>
+  <li>
+<a href="https://www.infoq.com/articles/unicorn-project">infoq, kim, unicorn</a>
+    <ul>
+      <li><strong>The Unicorn Project and the Five Ideals: Interview with Gene Kim</strong></li>
+      <li>aimed at developers community instead of leaders</li>
+      <li>five ideals
+        <ul>
+          <li>Locality and Simplicity</li>
+          <li>Focus, Flow and Joy</li>
+          <li>Improvement of Daily Work</li>
+          <li>Psychological Safety
+            <ul>
+              <li><em>Google established to what degree team members feel safe to talk about problems, to say what they think without fear of castigation and of being ridiculed or blamed.</em></li>
+            </ul>
+          </li>
+          <li>Customer Focus</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+  </div><a class="u-url" href="/myfastpage/markdown/2020/03/24/devops.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/myfastpage/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/myfastpage/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/myfastpage/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/myfastpage/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/myfastpage/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
