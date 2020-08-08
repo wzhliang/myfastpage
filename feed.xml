@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wzhliang.github.io/myfastpage/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wzhliang.github.io/myfastpage/" rel="alternate" type="text/html" /><updated>2020-03-24T07:24:20-05:00</updated><id>https://wzhliang.github.io/myfastpage/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">On Security</title><link href="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html" rel="alternate" type="text/html" title="On Security" /><published>2020-03-24T00:00:00-05:00</published><updated>2020-03-24T00:00:00-05:00</updated><id>https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html">&lt;h1 id=&quot;cryptology&quot;&gt;Cryptology&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wzhliang.github.io/myfastpage/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wzhliang.github.io/myfastpage/" rel="alternate" type="text/html" /><updated>2020-08-08T04:28:58-05:00</updated><id>https://wzhliang.github.io/myfastpage/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">On Security</title><link href="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html" rel="alternate" type="text/html" title="On Security" /><published>2020-03-24T00:00:00-05:00</published><updated>2020-03-24T00:00:00-05:00</updated><id>https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security</id><content type="html" xml:base="https://wzhliang.github.io/myfastpage/markdown/2020/03/24/security.html">&lt;h1 id=&quot;cryptology&quot;&gt;Cryptology&lt;/h1&gt;
 &lt;h2 id=&quot;symetric-encryption&quot;&gt;Symetric encryption&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Alice and Bob have to have the same secrete key&lt;/li&gt;
@@ -6497,7 +6497,7 @@ relate their practices back to principles and values.&lt;/li&gt;
 &lt;pre&gt;&lt;code&gt;# Title
 &amp;gt; Awesome summary
 
-- toc: true- branch: master- badges: true- comments: true
+- toc:true- branch: master- badges: true- comments: true
 - author: Hamel Husain &amp;amp; Jeremy Howard
 - categories: [fastpages, jupyter]&lt;/code&gt;&lt;/pre&gt;
 &lt;ul&gt;
@@ -7204,7 +7204,7 @@ And another {% fn 2 %}
 
 &lt;h2 id=&quot;basic-formatting&quot;&gt;Basic formatting&lt;/h2&gt;
 
-&lt;p&gt;You can use &lt;em&gt;italics&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;code font text&lt;/code&gt;, and create &lt;a href=&quot;https://www.markdownguide.org/cheat-sheet/&quot;&gt;links&lt;/a&gt;. Here’s a footnote &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Here’s a horizontal rule:&lt;/p&gt;
+&lt;p&gt;You can use &lt;em&gt;italics&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;code font text&lt;/code&gt;, and create &lt;a href=&quot;https://www.markdownguide.org/cheat-sheet/&quot;&gt;links&lt;/a&gt;. Here’s a footnote &lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Here’s a horizontal rule:&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -7303,10 +7303,10 @@ wget https://example.com/cat_photo1.png
 
 &lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
 
-&lt;div class=&quot;footnotes&quot;&gt;
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
   &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;This is the footnote. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;This is the footnote. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name></name></author><summary type="html">Example Markdown Post</summary></entry></feed>
